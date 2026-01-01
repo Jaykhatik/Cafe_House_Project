@@ -1,0 +1,133 @@
+/* ===============================
+   CONTAINER
+================================ */
+.category-container {
+  padding: 25px;
+}
+
+/* ===============================
+   HEADER (FLEX WORKS PERFECTLY)
+================================ */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.category-header h4 {
+  color: #b68c55;
+  margin: 0;
+  text-decoration: underline;
+  text-shadow: 0px 5px 5px #b68c55;
+}
+
+/* ===============================
+   ADD CATEGORY BUTTON
+================================ */
+.add-category-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #b68c55;
+  padding: 10px 22px;
+  color: #000;
+  border-radius: 15px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 0 15px rgba(182, 140, 85, 0.6);
+  transition: 0.25s ease;
+}
+
+.add-category-btn:hover {
+  background: #2e1f1a;
+  color: #b68c55;
+}
+
+/* ===============================
+   CATEGORY CARD
+================================ */
+.category-card {
+  background: #000;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid #c1975b;
+  position: relative;
+  transition: 0.25s ease;
+  height: 100%;
+}
+
+.category-card:hover {
+  border-color: #b68c55;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 15px rgba(31, 24, 18, 0.8);
+}
+
+.category-card h5 {
+  color: #b68c55;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.category-card p {
+  color: #d2c8ba;
+  margin-bottom: 0;
+}
+
+/* ===============================
+   CATEGORY ICON
+================================ */
+.cat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+}
+
+.bg-coffee { background: #8c5a28; }
+.bg-teal   { background: #006d77; }
+.bg-green  { background: #2d6a4f; }
+.bg-blue   { background: #118ab2; }
+
+/* ===============================
+   CARD ACTION ICONS
+================================ */
+.cat-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.cat-actions i {
+  color: #b68c55;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cat-actions i:hover {
+  color: #ff7276;
+  transform: scale(1.15);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .add-category-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+

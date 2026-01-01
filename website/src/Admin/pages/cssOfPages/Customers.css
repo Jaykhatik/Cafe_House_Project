@@ -1,0 +1,190 @@
+
+/* ======================================================================================================================== */
+
+/* customers page */
+
+/* ========================================================================================================================== */
+
+/* ===========================
+   CUSTOMER SECTION WRAPPER
+   =========================== */
+.customer-section {
+  padding: 25px;
+  margin: 20px;
+  background: #000;
+  border-radius: 18px;
+}
+
+
+/* ===========================
+   STATS CARD ROW
+   =========================== */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: #3B2F2F;
+  /* dark brown */
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(199, 161, 122, 0.2);
+  transition: .3s;
+}
+
+.stat-card:hover {
+  background: #6F4E37;
+  /* main brown */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card h3 {
+  color: #C7A17A;
+  /* soft coffee */
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.stat-card .value {
+  color: #F7EEDB;
+  /* cream */
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+/* ===========================
+   SEARCH BAR
+   =========================== */
+.search-box-customers {
+  background: #3B2F2F;
+  border: 1px solid rgba(199, 161, 122, 0.25);
+  padding: 12px 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.search-box-customers input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 8px;
+  font-size: 15px;
+  color: #F7EEDB;
+}
+
+.search-box-customers input::placeholder {
+  color: #C7A17A;
+}
+
+
+/* ===========================
+   CUSTOMER TABLE
+   =========================== */
+.customer-table {
+  background: #2C2420;
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(199, 161, 122, 0.15);
+}
+
+.customer-table table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #F7EEDB;
+}
+.customer-table thead{
+    background-color: #000;
+}
+
+.customer-table thead th {
+  padding: 16px;
+  color: #C7A17A;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(199, 161, 122, 0.15);
+  text-align: left;
+}
+
+.customer-table thead td {
+  padding: 18px 16px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(199, 161, 122, 0.05);
+}
+.customer-table tbody tr{
+    background-color:#3B2F2F ;
+}
+.customer-table tbody tr:hover{
+    background-color: #6F4E37;
+}
+
+/* ===========================
+   NAME CIRCLE
+   =========================== */
+
+.name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.name-circle {
+  width: 45px;
+  height: 45px;
+  background: #6F4E37;
+  border-radius: 50%;
+  color: #F7EEDB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+
+/* ===========================
+   LOYALTY BADGES
+   =========================== */
+.loyalty-badge {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.loyalty-badge.silver {
+  background: rgba(199, 161, 122, 0.25);
+  color: #C7A17A;
+}
+
+.loyalty-badge.bronze {
+  background: rgba(192, 120, 60, 0.4);
+  color: #F7EEDB;
+}
+
+.loyalty-badge.gold {
+  background: rgba(255, 198, 73, 0.3);
+  color: #FFC649;
+}
+
+
+/* ===========================
+   ACTION ICON
+   =========================== */
+.action-eye {
+  font-size: 20px;
+  color: #C7A17A;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.action-eye:hover {
+  color: #F7EEDB;
+}

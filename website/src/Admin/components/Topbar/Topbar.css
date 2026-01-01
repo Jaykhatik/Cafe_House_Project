@@ -1,0 +1,140 @@
+/* ===== TOPBAR CONTAINER ===== */
+.admin-topbar {
+  height: 60px;
+  background: #000;                 /* match sidebar */
+  color: #fff;
+  padding: 0 20px;
+  margin-left: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b68c55; /* subtle separation */
+}
+.topbar-title{
+    font-weight: 700;
+    font-size: 20px;
+    text-shadow: 0px 10px 5px #b68c55;
+}
+/* ===== RIGHT SECTION ===== */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1a1a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* icon color */
+.search-box i {
+  color: #b68c55;
+}
+
+/* typing / focus effect */
+.search-box:focus-within {
+  border-color: #b68c55;
+  background: #111;
+  box-shadow: 0 0 0 2px rgba(182, 140, 85, 0.25);
+}
+
+/* input styling */
+.search-box input {
+  background: none;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: 140px;
+  font-size: 14px;
+}
+
+/* ===== NOTIFICATION ===== */
+.notif {
+  position: relative;
+  cursor: pointer;
+}
+
+.notif i {
+  font-size: 18px;
+  color: #b68c55;
+}
+
+.notif span {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #e04f5f;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ===== USER SECTION ===== */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* profile circle */
+.user-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden; /* keeps image inside the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: whitesmoke; */
+}
+
+.user-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures the full image shows without cropping */
+}
+
+/* name + email horizontally aligned */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+/* admin name */
+.user-info p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* admin email */
+.user-info small {
+  margin: 0;
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .admin-topbar {
+    margin-left: 70px;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .search-box input {
+    width: 90px;
+  }
+}

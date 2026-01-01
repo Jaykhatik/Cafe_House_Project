@@ -1,0 +1,179 @@
+
+/* -------------------------  
+   ORDERS PAGE (Cafe Palette)
+----------------------------*/
+
+/* Container */
+.orders-container {
+  background: #000;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Bar */
+.orders-search {
+  background: #2b211a;
+  border: 1px solid #b68c55;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.orders-search i {
+  font-size: 18px;
+  color: #c1975b;
+}
+
+.orders-search input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  caret-color: #c1975b;
+}
+
+/* On Focus Effect */
+.orders-search:focus-within {
+  border-color: #d8b17a;
+  box-shadow: 0 0 10px rgba(193, 151, 91, 0.4);
+}
+
+/* Tabs */
+.order-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.order-tabs .tab {
+  background: #2b211a;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid #b68c55;
+  color: #e5c59a;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.order-tabs .tab:hover {
+  background: #4a3b30;
+}
+
+.order-tabs .tab.active {
+  background: #c1975b;
+  color: #fff;
+  font-weight: 600;
+  border-color: #d7b482;
+}
+
+/* Table */
+.orders-table {
+  background: #2b211a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #b68c55;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #1f1812;
+}
+
+thead th {
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #c1975b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #5e4d3f;
+}
+
+tbody tr {
+  transition: 0.2s;
+}
+
+tbody tr:hover {
+  background: #4a3b30;
+}
+
+/* Order ID */
+.id {
+  color: #c1975b;
+  font-weight: 700;
+}
+
+/* Customer Name */
+.bold {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Table Number Badge */
+.tag {
+  padding: 5px 10px;
+  border-radius: 16px;
+  border: 1px solid #c1975b;
+  color: #c1975b;
+  font-size: 12px;
+}
+
+/* STATUS BADGES */
+.status {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* STATUS COLORS */
+.pending {
+  background: rgba(208, 125, 40, 0.25);
+  color: #d07d28;
+}
+
+.progress {
+  background: rgba(24, 141, 138, 0.25);
+  color: #188d8a;
+}
+
+.completed {
+  background: rgba(31, 143, 71, 0.25);
+  color: #1f8f47;
+}
+
+.cancelled {
+  background: rgba(199, 74, 67, 0.25);
+  color: #c74a43;
+}
+
+/* Action Icon */
+.action {
+  font-size: 20px;
+  cursor: pointer;
+  color: #c1975b;
+  transition: 0.2s;
+}
+
+.action:hover {
+  transform: scale(1.2);
+  color: #eacaa4;
+}

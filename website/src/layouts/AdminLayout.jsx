@@ -1,18 +1,17 @@
+
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Admin/components/Sidebar/Sidebar";
-import TopNavbar from "../Admin/components/TopNav";
+import Topbar from "../Admin/components/Topbar/Topbar";
 
-
-
-function AdminLayout(){
+const AdminLayout = () => {
   return (
-    <div className="d-flex">
+    <>
       <Sidebar/>
-      <div className="main-content" >
-        <TopNavbar/>
-        <Outlet/>
-      </div>
-    </div>
+      <Topbar title="Dashboard" />
+      <main style={{ marginLeft: "250px", padding: "20px" }}>
+        <Outlet />
+      </main>
+    </>
   );
 };
 

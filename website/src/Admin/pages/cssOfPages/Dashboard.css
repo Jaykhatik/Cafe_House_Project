@@ -1,0 +1,274 @@
+/* =========================================================
+   DASHBOARD STAT CARDS
+========================================================= */
+.stat-card-index {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  border-left: 5px solid #c1975b;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.stat-card-index:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-index .stat-icon-index {
+  width: 50px;
+  height: 50px;
+  background: #c1975b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.stat-card-index .stat-icon-index:hover {
+  background: #b8864b;
+}
+
+.stat-card-index h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #3d3024;
+}
+
+.stat-card-index p {
+  margin: 0;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.growth {
+  font-size: 13px;
+  color: #009688;
+  font-weight: 600;
+}
+
+.growth.green {
+  color: #1fa870;
+}
+
+.urgent {
+  color: #d9534f;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* =========================================================
+   CARD SECTIONS (charts, popular items, orders, stock)
+========================================================= */
+.card-section {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 2rem;
+}
+
+.card-section:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Sales Summary Text */
+.sales-amount {
+  font-size: 24px;
+  color: #3d3024;
+  font-weight: 700;
+}
+
+.sales-amount small {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* =========================================================
+   POPULAR ITEMS
+========================================================= */
+.pop-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.pop-item span:first-child {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3d3024;
+}
+
+.pop-item span:last-child {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* Bars */
+.bar {
+  width: 100%;
+  height: 10px;
+  background: #e6e1dc;
+  border-radius: 12px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  background: #c1975b;
+  border-radius: 12px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* =========================================================
+   RECENT ORDERS
+========================================================= */
+.order-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #faf7f4;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border-left: 4px solid #c1975b;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 1.5rem;
+}
+
+.order-box:hover {
+  background: #f2e9e3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.order-id {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3d3024;
+  width: 60px;
+}
+
+.order-info h6 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3d3024;
+}
+
+.order-info small {
+  color: #7d7d7d;
+}
+
+.amount {
+  font-weight: 700;
+  color: #3d3024;
+}
+
+/* Status Badges */
+.status {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+}
+
+.status.completed {
+  background: #d4f8d0;
+  color: #1b7c29;
+}
+
+.status.progress {
+  background: #fff0c2;
+  color: #a17a00;
+}
+
+.status.pending {
+  background: #ffd6d6;
+  color: #b72c2c;
+}
+
+/* View All Link */
+.view-link {
+  color: #c1975b;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.view-link:hover {
+  text-decoration: underline;
+  color: #b8864b;
+}
+
+/* =========================================================
+   LOW STOCK ALERT BOXES
+========================================================= */
+.stock-box {
+  background: #fff4f4;
+  border: 1px solid #f2c7c7;
+  padding: 16px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 1.5rem;
+}
+
+.stock-box:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.stock-box h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #3d3024;
+}
+
+.stock-box small {
+  color: #7d7d7d;
+}
+
+.restock-btn {
+  background: #d9534f;
+  border: none;
+  color: white;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.restock-btn:hover {
+  background: #c1413a;
+  transform: translateY(-1px);
+}
+
+.custom-icon-lowstock {
+  color: #b68c55;
+}
+
+/* =========================================================
+   RESPONSIVE & ROW SPACING
+========================================================= */
+.row.g-4 {
+  margin-bottom: 2rem;
+}
+
+.main-content .p-4 > .row {
+  margin-bottom: 2rem;
+}
