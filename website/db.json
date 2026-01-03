@@ -1,71 +1,56 @@
 {
-  "dashboard": {
-    "stats": {
-      "totalRevenue": 21000,
-      "totalOrders": 320,
-      "newCustomers": 124,
-      "totalEmployees": 6,
-      "activeReservations": 4
-    },
-    "topSellingItems": [
-      {
-        "item": "Espresso",
-        "sold": 120
-      },
-      {
-        "item": "Cappuccino",
-        "sold": 95
-      },
-      {
-        "item": "Latte",
-        "sold": 80
-      }
-    ]
-  },
   "menuItems": [
     {
       "id": 1,
+      "categoryId": 1,
       "icon": "☕",
       "name": "Cappuccino",
-      "category": "Hot Coffee",
       "ingredients": "Espresso, Milk, Foam",
       "price": 4.5,
       "status": "available"
     },
     {
       "id": 2,
+      "categoryId": 2,
       "icon": "🧊",
       "name": "Iced Latte",
-      "category": "Cold Coffee",
       "ingredients": "Espresso, Milk, Ice",
       "price": 5.0,
       "status": "available"
     },
     {
       "id": 3,
+      "categoryId": 1,
       "icon": "⚡",
       "name": "Espresso",
-      "category": "Hot Coffee",
       "ingredients": "Espresso Shot",
       "price": 3.0,
       "status": "available"
     },
     {
       "id": 4,
+      "categoryId": 2,
       "icon": "🍫",
       "name": "Mocha",
-      "category": "Hot Coffee",
       "ingredients": "Espresso, Chocolate, Milk",
       "price": 5.5,
       "status": "out-of-stock"
     },
     {
       "id": 5,
+      "categoryId": 1,
       "icon": "🍵",
       "name": "Green Tea",
-      "category": "Tea",
       "ingredients": "Green Tea Leaves",
       "price": 3.5,
+      "status": "available"
+    }, {
+      "id": 6,
+      "categoryId": 1,
+      "icon": "☕",
+      "name": "Cappuccino",
+      "ingredients": "Espresso, Milk, Foam",
+      "price": 4.5,
       "status": "available"
     }
   ],
@@ -100,7 +85,24 @@
           "quantity": 1
         }
       ],
-      "total": 12.5,
+      "total": 220.5,
+      "status": "pending",
+      "date": "2024-01-15 19:00"
+    },
+    {
+      "id": 3,
+      "customerId": 1,
+      "items": [
+        {
+          "menuItemId": 1,
+          "quantity": 6
+        },
+        {
+          "menuItemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": 52.5,
       "status": "pending",
       "date": "2024-01-15 19:00"
     }
@@ -222,15 +224,13 @@
       "id": 1,
       "name": "Hot Coffee",
       "icon": "bi-cup-hot-fill",
-      "color": "bg-coffee",
-      "itemCount": 12
+      "color": "bg-coffee"
     },
     {
       "id": 2,
       "name": "Cold Coffee",
       "icon": "bi-cup-straw",
-      "color": "bg-teal",
-      "itemCount": 8
+      "color": "bg-teal"
     }
   ],
   "offers": [
@@ -304,40 +304,6 @@
       "status": "cancelled"
     }
   ],
-  "reports": {
-    "thisMonth": {
-      "revenue": 21000,
-      "orders": 320,
-      "customers": 124,
-      "line": [19000, 17000, 15500, 19000, 20500, 21000],
-      "category": [45, 20, 20, 15],
-      "peakHours": [45, 78, 92, 85, 120, 110, 75, 68, 82, 95, 88, 72]
-    },
-    "lastMonth": {
-      "revenue": 18200,
-      "orders": 280,
-      "customers": 98,
-      "line": [12000, 13000, 15000, 17000, 18000, 18200],
-      "category": [40, 25, 20, 15],
-      "peakHours": [35, 65, 80, 70, 100, 90, 60, 55, 70, 85, 75, 60]
-    },
-    "last3": {
-      "revenue": 48000,
-      "orders": 820,
-      "customers": 310,
-      "line": [14000, 18000, 16000, 20000, 22000, 21000],
-      "category": [42, 23, 18, 17],
-      "peakHours": [50, 60, 70, 90, 120, 100, 80, 75, 90, 100, 85, 70]
-    },
-    "thisYear": {
-      "revenue": 100800,
-      "orders": 1008,
-      "customers": 524,
-      "line": [12000, 14000, 18000, 15500, 21000, 19500],
-      "category": [38, 27, 20, 15],
-      "peakHours": [60, 75, 80, 85, 120, 110, 90, 85, 95, 100, 90, 80]
-    }
-  },
   "employees": [
     {
       "id": 1,
@@ -367,10 +333,7 @@
       "initials": "JD",
       "email": "john@email.com",
       "phone": "+1 234 567 890",
-      "orders": 45,
-      "spent": 678.50,
       "loyalty": "Silver",
-      "points": 340,
       "lastVisit": "2024-01-15"
     },
     {
@@ -379,10 +342,7 @@
       "initials": "AM",
       "email": "alice@email.com",
       "phone": "+1 987 654 321",
-      "orders": 78,
-      "spent": 1230.00,
       "loyalty": "Gold",
-      "points": 980,
       "lastVisit": "2024-12-01"
     }
   ]

@@ -4,236 +4,226 @@ import axios from "axios";
 import "../pages/cssOfPages/Dashboard.css";
 
 function Dashboard() {
-    const salesChartRef = useRef(null);
-    const chartInstanceRef = useRef(null);
+  const salesChartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
 
-    // ===================== STATE =====================
-    const [orders, setOrders] = useState([]);
-    const [customers, setCustomers] = useState([]);
-    const [inventory, setInventory] = useState([]);
-    const [reports, setReports] = useState(null);
-    const [menuItems, setMenuItems] = useState([]);
+  // ===================== STATE =====================
+  const [orders, setOrders] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [inventory, setInventory] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
 
-    // ===================== FETCH DATA =====================
-    useEffect(() => {
-        const fetchDashboardData = async () => {
-            try {
-                const [ordersRes, customersRes, inventoryRes, reportsRes, menuRes] =
-                    await Promise.all([
-                        axios.get("http://localhost:3001/orders"),
-                        axios.get("http://localhost:3001/customers"),
-                        axios.get("http://localhost:3001/inventory"),
-                        axios.get("http://localhost:3001/reports"),
-                        axios.get("http://localhost:3001/menuItems"),
-                    ]);
+  // ===================== FETCH DATA =====================
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [ordersRes, customersRes, inventoryRes, menuRes] =
+          await Promise.all([
+            axios.get("http://localhost:3002/orders"),
+            axios.get("http://localhost:3002/customers"),
+            axios.get("http://localhost:3002/inventory"),
+            axios.get("http://localhost:3002/menuItems"),
+          ]);
 
-                setOrders(ordersRes.data);
-                setCustomers(customersRes.data);
-                setInventory(inventoryRes.data);
-                setReports(reportsRes.data.thisMonth);
-                setMenuItems(menuRes.data);
-            } catch (error) {
-                console.error("Dashboard API Error:", error);
-            }
-        };
-
-        fetchDashboardData();
-    }, []);
-
-    // ===================== CALCULATIONS =====================
-    const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
-
-    const today = "2024-01-15";
-    const todaysOrders = orders.filter(o =>
-        o.date.startsWith(today)
-    ).length;
-
-    const pendingOrders = orders.filter(
-        o => o.status === "pending"
-    ).length;
-
-    const totalCustomers = customers.length;
-
-    const recentOrders = orders.slice(-3).reverse();
-
-    const lowStockItems = inventory.filter(item => item.stock < 40);
-
-    const popularItems = () => {
-        const sales = {};
-
-        orders.forEach(order => {
-            order.items.forEach(item => {
-                sales[item.menuItemId] =
-                    (sales[item.menuItemId] || 0) + item.quantity;
-            });
-        });
-
-        return Object.entries(sales)
-            .map(([id, count]) => {
-                const menu = menuItems.find(m => m.id == id);
-                return {
-                    name: menu?.name || "Item",
-                    orders: count,
-                    width: `${Math.min(count * 10, 100)}%`,
-                };
-            })
-            .sort((a, b) => b.orders - a.orders)
-            .slice(0, 5);
+        setOrders(ordersRes.data);
+        setCustomers(customersRes.data);
+        setInventory(inventoryRes.data);
+        setMenuItems(menuRes.data);
+      } catch (error) {
+        console.error("Dashboard API Error:", error);
+      }
     };
 
-    // ===================== CHART =====================
-    useEffect(() => {
-        if (!reports) return;
+    fetchData();
+  }, []);
 
-        const ctx = salesChartRef.current.getContext("2d");
+  // ===================== CARD VALUES =====================
+  const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
+  const totalOrders = orders.length;
+  const newCustomers = customers.length;
+  const pendingOrders = orders.filter(o => o.status === "pending").length;
 
-        if (chartInstanceRef.current) {
-            chartInstanceRef.current.destroy();
-        }
+  const recentOrders = [...orders].slice(-3).reverse();
 
-        chartInstanceRef.current = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-                datasets: [
-                    {
-                        label: "Sales",
-                        data: reports.line,
-                        borderWidth: 3,
-                        borderColor: "#009688",
-                        tension: 0.35,
-                        fill: false,
-                    },
-                ],
-            },
-            options: {
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { ticks: { color: "#333" } },
-                    x: { ticks: { color: "#333" } },
-                },
-            },
-        });
+  const lowStockItems = inventory.filter(
+    item => item.stockPercentage < 40
+  );
 
-        return () => chartInstanceRef.current.destroy();
-    }, [reports]);
+  // ===================== POPULAR ITEMS =====================
+  const itemSales = {};
+  orders.forEach(order => {
+    order.items.forEach(i => {
+      itemSales[i.menuItemId] =
+        (itemSales[i.menuItemId] || 0) + i.quantity;
+    });
+  });
 
-    // ===================== JSX =====================
-    return (
-        <div className="main-content">
-            <div className="p-4">
+  const popularItems = Object.entries(itemSales)
+    .map(([id, sold]) => {
+      const item = menuItems.find(m => m.id === Number(id));
+      return {
+        item: item?.name || "Unknown",
+        sold,
+      };
+    })
+    .sort((a, b) => b.sold - a.sold)
+    .slice(0, 5);
 
-                {/* Dashboard Cards */}
-                <div className="row g-4 mb-4">
-                    <div className="col-lg-3 col-md-6">
-                        <div className="stat-card-index">
-                            <div className="stat-icon-index">
-                                <i className="bi bi-currency-dollar"></i>
-                            </div>
-                            <h3>${totalSales}</h3>
-                            <p>Total Sales</p>
-                        </div>
-                    </div>
+  // ===================== SALES CHART =====================
+  useEffect(() => {
+    if (!orders.length) return;
 
-                    <div className="col-lg-3 col-md-6">
-                        <div className="stat-card-index">
-                            <div className="stat-icon-index">
-                                <i className="bi bi-cart-check"></i>
-                            </div>
-                            <h3>{todaysOrders}</h3>
-                            <p>Today's Orders</p>
-                        </div>
-                    </div>
+    const dailySales = {};
+    orders.forEach(order => {
+      const date = order.date.split(" ")[0];
+      dailySales[date] = (dailySales[date] || 0) + order.total;
+    });
 
-                    <div className="col-lg-3 col-md-6">
-                        <div className="stat-card-index">
-                            <div className="stat-icon-index">
-                                <i className="bi bi-clock-history"></i>
-                            </div>
-                            <h3>{pendingOrders}</h3>
-                            <p>Pending Orders</p>
-                        </div>
-                    </div>
+    const ctx = salesChartRef.current.getContext("2d");
 
-                    <div className="col-lg-3 col-md-6">
-                        <div className="stat-card-index">
-                            <div className="stat-icon-index">
-                                <i className="bi bi-people"></i>
-                            </div>
-                            <h3>{totalCustomers}</h3>
-                            <p>Total Customers</p>
-                        </div>
-                    </div>
-                </div>
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy();
+    }
 
-                {/* Sales & Popular Items */}
-                <div className="row g-4 mb-4">
-                    <div className="col-lg-8">
-                        <div className="card-section">
-                            <h5>Sales Overview</h5>
-                            <canvas ref={salesChartRef}></canvas>
-                        </div>
-                    </div>
+    chartInstanceRef.current = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: Object.keys(dailySales),
+        datasets: [
+          {
+            label: "Sales",
+            data: Object.values(dailySales),
+            borderColor: "#009688",
+            borderWidth: 3,
+            tension: 0.35,
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        plugins: { legend: { display: false } },
+      },
+    });
 
-                    <div className="col-lg-4">
-                        <div className="card-section">
-                            <h5>Popular Items</h5>
-                            {popularItems().map(item => (
-                                <div className="pop-item" key={item.name}>
-                                    <span>{item.name}</span>
-                                    <span>{item.orders} orders</span>
-                                    <div className="bar">
-                                        <div style={{ width: item.width }}></div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+    return () => chartInstanceRef.current.destroy();
+  }, [orders]);
 
-                {/* Recent Orders + Low Stock */}
-                <div className="row g-4">
-                    <div className="col-lg-8">
-                        <div className="card-section">
-                            <h5>Recent Orders</h5>
-                            {recentOrders.map(order => (
-                                <div className="order-box" key={order.id}>
-                                    <div className="order-id">#{order.id}</div>
-                                    <div className="order-info">
-                                        <h6>Customer #{order.customerId}</h6>
-                                        <small>{order.items.length} items</small>
-                                    </div>
-                                    <span className={`status ${order.status}`}>
-                                        {order.status}
-                                    </span>
-                                    <span className="amount">${order.total}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+  // ===================== JSX =====================
+  return (
+    <div className="main-content">
+      <div className="p-4">
 
-                    <div className="col-lg-4">
-                        <div className="card-section">
-                            <h5>
-                                <i className="bi bi-exclamation-triangle-fill me-2 custom-icon-lowstock"></i>
-                                Low Stock Alerts
-                            </h5>
-                            {lowStockItems.map(item => (
-                                <div className="stock-box" key={item.id}>
-                                    <div>
-                                        <h6>{item.item}</h6>
-                                        <small>{item.stock} {item.unit} remaining</small>
-                                    </div>
-                                    <button className="restock-btn">Restock</button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
+        {/* DASHBOARD CARDS */}
+        <div className="row g-4 mb-4">
+          <div className="col-lg-3 col-md-6">
+            <div className="stat-card-index">
+              <div className="stat-icon-index">
+                <i className="bi bi-currency-dollar"></i>
+              </div>
+              <h3>${totalSales.toFixed(2)}</h3>
+              <p>Total Sales</p>
             </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6">
+            <div className="stat-card-index">
+              <div className="stat-icon-index">
+                <i className="bi bi-cart-check"></i>
+              </div>
+              <h3>{totalOrders}</h3>
+              <p>Total Orders</p>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6">
+            <div className="stat-card-index">
+              <div className="stat-icon-index">
+                <i className="bi bi-clock-history"></i>
+              </div>
+              <h3>{pendingOrders}</h3>
+              <p>Pending Orders</p>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-6">
+            <div className="stat-card-index">
+              <div className="stat-icon-index">
+                <i className="bi bi-people"></i>
+              </div>
+              <h3>{newCustomers}</h3>
+              <p>Customers</p>
+            </div>
+          </div>
         </div>
-    );
+
+        {/* SALES & POPULAR ITEMS */}
+        <div className="row g-4 mb-4">
+          <div className="col-lg-8">
+            <div className="card-section">
+              <h5>Sales Overview</h5>
+              <canvas ref={salesChartRef}></canvas>
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="card-section">
+              <h5>Popular Items</h5>
+              {popularItems.map((item, i) => (
+                <div className="pop-item" key={i}>
+                  <span>{item.item}</span>
+                  <span>{item.sold} orders</span>
+                  <div className="bar">
+                    <div style={{ width: `${item.sold * 2}%` }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RECENT ORDERS & LOW STOCK */}
+        <div className="row g-4">
+          <div className="col-lg-8">
+            <div className="card-section">
+              <h5>Recent Orders</h5>
+              {recentOrders.map(order => (
+                <div className="order-box" key={order.id}>
+                  <div className="order-id">#{order.id}</div>
+                  <div className="order-info">
+                    <h6>Customer #{order.customerId}</h6>
+                    <small>{order.items.length} items</small>
+                  </div>
+                  <span className={`status ${order.status}`}>
+                    {order.status}
+                  </span>
+                  <span className="amount">${order.total}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="card-section">
+              <h5>
+                <i className="bi bi-exclamation-triangle-fill me-2 custom-icon-lowstock"></i>
+                Low Stock Alerts
+              </h5>
+              {lowStockItems.map(item => (
+                <div className="stock-box" key={item.id}>
+                  <div>
+                    <h6>{item.item}</h6>
+                    <small>{item.stockPercentage}% remaining</small>
+                  </div>
+                  <button className="restock-btn">Restock</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;

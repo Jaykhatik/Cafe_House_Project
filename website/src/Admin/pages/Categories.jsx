@@ -5,25 +5,39 @@ import "../pages/cssOfPages/Categories.css";
 function Categories() {
 
   // ===================== STATE =====================
-  // This state will store category data from API
   const [categories, setCategories] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
 
-  // ===================== FETCH DATA FUNCTION =====================
-  // Same simple function style you learned
-  const fetch_data = async () => {
+  // ===================== FETCH CATEGORIES =====================
+  const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/categories");
-      setCategories(response.data); // store API data into state
-    } catch (error) {
-      console.error("Error fetching categories:", error);
+      const res = await axios.get("http://localhost:3002/categories");
+      setCategories(res.data);
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+    }
+  };
+
+  // ===================== FETCH MENU ITEMS =====================
+  const fetchMenuItems = async () => {
+    try {
+      const res = await axios.get("http://localhost:3002/menuItems");
+      setMenuItems(res.data);
+    } catch (err) {
+      console.error("Error fetching menu items:", err);
     }
   };
 
   // ===================== USE EFFECT =====================
-  // Runs once when page loads
   useEffect(() => {
-    fetch_data();
+    fetchCategories();
+    fetchMenuItems();
   }, []);
+
+  // ===================== ITEM COUNT FUNCTION =====================
+  const getItemCount = (categoryId) => {
+    return menuItems.filter(item => item.categoryId === categoryId).length;
+  };
 
   return (
     <div className="main-content">
@@ -54,8 +68,8 @@ function Categories() {
                 {/* CATEGORY NAME */}
                 <h5>{cat.name}</h5>
 
-                {/* ITEM COUNT */}
-                <p>{cat.itemCount} items</p>
+                {/* ✅ DYNAMIC ITEM COUNT */}
+                <p>{getItemCount(cat.id)} items</p>
 
                 {/* ACTION ICONS */}
                 <div className="cat-actions">

@@ -14,9 +14,9 @@ import Customers from './Admin/pages/Customers';
 import Inventory from './Admin/pages/Inventory';
 import Categories from './Admin/pages/Categories';
 import Offers from './Admin/pages/Offers';
-import Reservations from './Admin/pages/Reservation';
-import ReportsAnalytics from './Admin/pages/Reports';
+import Reservations from './Admin/pages/Reservation'; 
 import Settings from './Admin/pages/Settings/Setting';
+import Cart from './website/pages/Cart';
 
 
 
@@ -33,6 +33,7 @@ function App() {
             <Route path="/menu" element={<><Menu /></>} />
             <Route path='/today_special' element={<><Today_special /></>} />
             <Route path='/Contact' element={<><Contact /></>} />
+          <Route path='/cart' element={<Cart/>}/>
           </Route>
           {/* admin pages routing */}
 
@@ -47,7 +48,6 @@ function App() {
             <Route path='categories' element={<Categories/>}/>
             <Route path='offers' element={<Offers/>}/>
             <Route path='reservations' element={<Reservations/>}/>
-            {/* <Route path='reports' element={<ReportsAnalytics/>}/> */}
             <Route path='settings' element={<Settings/>}/>
           </Route>
         </Routes>

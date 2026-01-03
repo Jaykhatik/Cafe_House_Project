@@ -10,7 +10,7 @@ function Offers() {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/offers"); // Replace with your API URL
+        const response = await axios.get("http://localhost:3002/offers"); // Replace with your API URL
         setOffers(response.data);
       } catch (error) {
         console.error("Error fetching offers:", error);

@@ -4,25 +4,32 @@ import "../pages/cssOfPages/Menu-item.css";
 
 const MenuItems = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [menuData, setMenuData] = useState([]); // Store API data
+  const [menuData, setMenuData] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  // ---------------- FETCH DATA FROM API ----------------
+  // -------- FETCH MENU ITEMS --------
   useEffect(() => {
-    const fetchMenuData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/menuItems"); // replace with your API
-        setMenuData(response.data); // save fetched data in state
-      } catch (error) {
-        console.error("Error fetching menu items:", error);
-      }
-    };
+    axios.get("http://localhost:3002/menuItems")
+      .then(res => setMenuData(res.data))
+      .catch(err => console.error(err));
+  }, []);
 
-    fetchMenuData();
-  }, []); // empty dependency: fetch once on mount
+  // -------- FETCH CATEGORIES --------
+  useEffect(() => {
+    axios.get("http://localhost:3002/categories")
+      .then(res => setCategories(res.data))
+      .catch(err => console.error(err));
+  }, []);
 
-  // ---------------- SEARCH FILTER ONLY ----------------
+  // -------- GET CATEGORY NAME BY ID --------
+  const getCategoryName = (categoryId) => {
+    const category = categories.find(cat => cat.id === categoryId);
+    return category ? category.name : "Unknown";
+  };
+
+  // -------- SEARCH FILTER --------
   const filteredMenu = menuData.filter(item =>
-    `${item.name} ${item.category} ${item.ingredients} ${item.price} ${item.status}`
+    `${item.name} ${getCategoryName(item.categoryId)} ${item.ingredients} ${item.price} ${item.status}`
       .toLowerCase()
       .includes(searchValue.toLowerCase())
   );
@@ -74,12 +81,14 @@ const MenuItems = () => {
                       {item.name}
                     </td>
 
+                    {/* ✅ DYNAMIC CATEGORY */}
                     <td>
-                      <span className="badge category">{item.category}</span>
+                      <span className="badge category">
+                        {getCategoryName(item.categoryId)}
+                      </span>
                     </td>
 
                     <td>{item.ingredients}</td>
-
                     <td>${item.price.toFixed(2)}</td>
 
                     <td>
@@ -110,9 +119,9 @@ const MenuItems = () => {
                 </tr>
               )}
             </tbody>
-
           </table>
         </div>
+
       </div>
     </div>
   );

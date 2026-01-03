@@ -43,7 +43,6 @@ function Sidebar() {
             { to: "/admin/categories", icon: "bi-tags", label: "Categories" },
             { to: "/admin/offers", icon: "bi-percent", label: "Offers" },
             { to: "/admin/reservations", icon: "bi-calendar-event", label: "Reservations" },
-            { to: "/admin/reports", icon: "bi-bar-chart-line", label: "Reports" },
             { to: "/admin/settings", icon: "bi-gear", label: "Settings" }
           ].map((item, index) => (
             <li key={index}>

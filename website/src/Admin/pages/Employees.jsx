@@ -15,7 +15,7 @@ function EmployeePage() {
   // Same simple function style as your other pages
   const fetch_data = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/employees");
+      const response = await axios.get("http://localhost:3002/employees");
       setEmployees(response.data); // store API data
     } catch (error) {
       console.error("Error fetching employees:", error);

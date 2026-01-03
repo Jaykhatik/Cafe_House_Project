@@ -15,7 +15,7 @@ function Inventory() {
   // ================== FETCH INVENTORY ==================
   const fetchInventory = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/inventory");
+      const response = await axios.get("http://localhost:3002/inventory");
       setInventory(response.data);
     } catch (error) {
       console.error("Inventory fetch error:", error);

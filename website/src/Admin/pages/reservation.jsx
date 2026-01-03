@@ -43,7 +43,7 @@ function Reservations() {
   useEffect(() => {
     const fetchReservations = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/reservations"); // replace with your API URL
+        const response = await axios.get("http://localhost:3002/reservations"); // replace with your API URL
         setReservations(response.data);
       } catch (error) {
         console.error("Error fetching reservations:", error);
