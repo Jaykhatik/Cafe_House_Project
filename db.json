@@ -3,55 +3,47 @@
     {
       "id": 1,
       "categoryId": 1,
-      "icon": "☕",
-      "name": "Cappuccino",
+      "name": "Americano",
       "ingredients": "Espresso, Milk, Foam",
       "price": 4.5,
-      "status": "available"
+      "status": "available",
+     "image": "/img/americano.avif"
     },
     {
       "id": 2,
       "categoryId": 2,
-      "icon": "🧊",
-      "name": "Iced Latte",
-      "ingredients": "Espresso, Milk, Ice",
-      "price": 5.0,
-      "status": "available"
+      "name": "Brownie",
+      "ingredients": "Chocolate-Brownie",
+      "price": 15.0,
+      "status": "available",
+       "image": "/img/brownie.webp"
     },
     {
       "id": 3,
       "categoryId": 1,
-      "icon": "⚡",
       "name": "Espresso",
       "ingredients": "Espresso Shot",
       "price": 3.0,
-      "status": "available"
+      "status": "available",
+     "image": "/img/1.jpg"
     },
     {
       "id": 4,
       "categoryId": 2,
-      "icon": "🍫",
       "name": "Mocha",
       "ingredients": "Espresso, Chocolate, Milk",
       "price": 5.5,
-      "status": "out-of-stock"
+      "status": "out-of-stock",
+     "image": "/img/mocha.webp"
     },
     {
       "id": 5,
       "categoryId": 1,
-      "icon": "🍵",
-      "name": "Green Tea",
-      "ingredients": "Green Tea Leaves",
-      "price": 3.5,
-      "status": "available"
-    }, {
-      "id": 6,
-      "categoryId": 1,
-      "icon": "☕",
-      "name": "Cappuccino",
-      "ingredients": "Espresso, Milk, Foam",
-      "price": 4.5,
-      "status": "available"
+      "name": "Iced Cofee",
+      "ingredients": "Fresh Iced Cofee",
+      "price": 8.5,
+      "status": "available",
+      "image": "/img/iced-coffe.avif"
     }
   ],
   "orders": [

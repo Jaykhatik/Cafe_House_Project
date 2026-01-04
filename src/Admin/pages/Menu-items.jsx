@@ -77,9 +77,20 @@ const MenuItems = () => {
                     <td>{item.id}</td>
 
                     <td className="item-name">
-                      <div className="item-icon">{item.icon || "☕"}</div>
+                      <div className="item-icon">
+                        <img
+                          src={item.image || "/img/default-coffee.jpg"}
+                          alt={item.name}
+                          className="menu-item-img"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "/img/default-coffee.jpg";
+                          }}
+                        />
+                      </div>
                       {item.name}
                     </td>
+
 
                     {/* ✅ DYNAMIC CATEGORY */}
                     <td>
@@ -93,13 +104,12 @@ const MenuItems = () => {
 
                     <td>
                       <span
-                        className={`badge ${
-                          item.status === "available"
+                        className={`badge ${item.status === "available"
                             ? "available"
                             : item.status === "low-stock"
-                            ? "low"
-                            : "out"
-                        }`}
+                              ? "low"
+                              : "out"
+                          }`}
                       >
                         {item.status}
                       </span>

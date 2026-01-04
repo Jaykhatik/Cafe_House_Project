@@ -1,0 +1,146 @@
+/* ===== CHECKOUT PAGE ===== */
+.checkout-page {
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.checkout-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #c79c60;
+}
+
+.checkout-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* ===== FORM ===== */
+.checkout-form-container {
+  flex: 2;
+  min-width: 300px;
+  background-color: #fdf6f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.checkout-form h3 {
+  margin-bottom: 15px;
+  color: #c79c60;
+}
+
+.checkout-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-form .form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.checkout-form .form-group input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.form-group-inline {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.place-order-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #c79c60;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.place-order-btn:hover {
+  background-color: #b68c55;
+}
+
+/* ===== ORDER SUMMARY ===== */
+.checkout-summary-container {
+  flex: 1;
+  min-width: 250px;
+  background-color: #fff8f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.checkout-summary-container h3 {
+  margin-bottom: 15px;
+  color: #c79c60;
+}
+
+.checkout-summary-items {
+  margin-bottom: 15px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.checkout-summary-totals p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.checkout-total {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* ===== PAYMENT OPTIONS ===== */
+.payment-options h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #c79c60;
+}
+
+.payment-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  background-color: #c79c60;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.payment-btn:hover {
+  background-color: #b68c55;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+}

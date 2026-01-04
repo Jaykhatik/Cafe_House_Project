@@ -1,14 +1,14 @@
 /* ===== CART PAGE ===== */
 .cart-page {
   max-width: 1200px;
-  margin: 100px auto 50px; /* adjust top margin if topbar is fixed */
+  margin: 100px auto 50px; /* adjust top margin if topbar fixed */
   padding: 0 20px;
   font-family: Arial, sans-serif;
   color: #333;
 }
 
 .cart-title {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 30px;
   text-align: center;
@@ -52,6 +52,11 @@
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
   padding-bottom: 15px;
+  transition: transform 0.2s;
+}
+
+.cart-item:hover {
+  transform: scale(1.01);
 }
 
 .cart-item-image img {
@@ -59,6 +64,7 @@
   height: 80px;
   border-radius: 8px;
   object-fit: cover;
+  border: 1px solid #ddd;
 }
 
 .cart-item-details {
@@ -68,11 +74,18 @@
 
 .cart-item-details h4 {
   font-size: 18px;
+  margin-bottom: 6px;
+  color: #c79c60;
+}
+
+.cart-item-desc {
+  font-size: 14px;
   margin-bottom: 8px;
+  color: #666;
 }
 
 .cart-item-details p {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .cart-quantity {
@@ -82,8 +95,8 @@
 }
 
 .cart-quantity button {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border: none;
   background-color: #c79c60;
   color: #fff;
@@ -122,6 +135,10 @@
 .cart-summary {
   margin-top: 40px;
   text-align: right;
+  background-color: #fdf6f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .cart-summary h3 {
@@ -137,18 +154,21 @@
 
 .cart-total {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
 .checkout-btn {
-  margin-top: 15px;
-  padding: 12px 25px;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
   background-color: #c79c60;
   color: #fff;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
@@ -170,5 +190,17 @@
 
   .cart-summary {
     text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-quantity button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    text-align: center;
   }
 }

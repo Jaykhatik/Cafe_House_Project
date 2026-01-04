@@ -14,9 +14,10 @@ import Customers from './Admin/pages/Customers';
 import Inventory from './Admin/pages/Inventory';
 import Categories from './Admin/pages/Categories';
 import Offers from './Admin/pages/Offers';
-import Reservations from './Admin/pages/Reservation'; 
+import Reservations from './Admin/pages/Reservation';
 import Settings from './Admin/pages/Settings/Setting';
 import Cart from './website/pages/Cart';
+import Checkout from './website/pages/Checkout';
 
 
 
@@ -33,22 +34,23 @@ function App() {
             <Route path="/menu" element={<><Menu /></>} />
             <Route path='/today_special' element={<><Today_special /></>} />
             <Route path='/Contact' element={<><Contact /></>} />
-          <Route path='/cart' element={<Cart/>}/>
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart/checkout' element={<Checkout />} />
           </Route>
           {/* admin pages routing */}
 
           <Route path='/admin' element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path='dashboard' element={<Dashboard />} />
-            <Route path='menu' element={<MenuItems/>}/>
-            <Route path='orders' element={<Orders/>}/>
-            <Route path='employees' element={<EmployeePage/>}/>
-            <Route path='customers' element={<Customers/>}/>
-            <Route path='inventory' element={<Inventory/>}/>
-            <Route path='categories' element={<Categories/>}/>
-            <Route path='offers' element={<Offers/>}/>
-            <Route path='reservations' element={<Reservations/>}/>
-            <Route path='settings' element={<Settings/>}/>
+            <Route path='menu' element={<MenuItems />} />
+            <Route path='orders' element={<Orders />} />
+            <Route path='employees' element={<EmployeePage />} />
+            <Route path='customers' element={<Customers />} />
+            <Route path='inventory' element={<Inventory />} />
+            <Route path='categories' element={<Categories />} />
+            <Route path='offers' element={<Offers />} />
+            <Route path='reservations' element={<Reservations />} />
+            <Route path='settings' element={<Settings />} />
           </Route>
         </Routes>
       </Router>

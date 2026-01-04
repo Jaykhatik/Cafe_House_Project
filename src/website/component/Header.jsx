@@ -2,6 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+    // Example: cartItems comes from your state or context
+    // You can replace this with your actual cart state
+    const cartItems = [
+        { id: 1, quantity: 2 },
+        { id: 2, quantity: 1 },
+        { id: 3, quantity: 3 },
+    ];
+
+    // Calculate total items in cart
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
     return (
         <>
             {/* ===== TOPBAR ===== */}
@@ -10,7 +21,7 @@ function Header() {
                     {/* Left: Toll Free */}
                     <div className="tm-topbar-left">
                         <span className="tm-tollfree">
-                            📞 Toll Free: <strong>1800-123-456</strong>
+                            📞 HelpLine No: <strong>1800-123-456</strong>
                         </span>
                     </div>
 
@@ -30,9 +41,18 @@ function Header() {
 
                     {/* Right: Cart & Profile */}
                     <div className="tm-topbar-right">
-                        <NavLink to="/cart" className="tm-topbar-icon tm-cart-icon">
+                        <NavLink
+                            to="/cart"
+                            className={({ isActive }) =>
+                                isActive || window.location.pathname.startsWith("/cart/checkout")
+                                    ? "active-link tm-topbar-icon"
+                                    : "tm-topbar-icon"
+                            }
+                        >
                             <i className="fa fa-shopping-cart"></i>
-                            <span className="tm-cart-badge">3</span> {/* <-- Badge count */}
+                            {totalItems > 0 && (
+                                <span className="tm-cart-badge">{totalItems}</span>
+                            )}
                         </NavLink>
 
                         <NavLink to="/profile" className="tm-topbar-icon">
@@ -42,13 +62,10 @@ function Header() {
                 </div>
             </div>
 
-
             <header className="tm-top-header">
-
                 <div className="container">
                     <div className="row">
                         <div className="tm-top-header-inner">
-
                             {/* LOGO */}
                             <div className="tm-logo-container">
                                 <img
@@ -107,14 +124,17 @@ function Header() {
                                     <li>
                                         <NavLink
                                             to="/cart"
-                                            className={({ isActive }) => isActive ? "active" : ""}
+                                            className={({ isActive }) =>
+                                                isActive || window.location.pathname.startsWith("/cart/checkout")
+                                                    ? "active"
+                                                    : ""
+                                            }
                                         >
                                             Cart
                                         </NavLink>
                                     </li>
                                 </ul>
                             </nav>
-
                         </div>
                     </div>
                 </div>

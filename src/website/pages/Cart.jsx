@@ -8,6 +8,7 @@ function Cart() {
     {
       id: 1,
       name: "Espresso",
+      description: "Strong and bold coffee shot",
       price: 150,
       quantity: 2,
       image: "https://via.placeholder.com/80",
@@ -15,6 +16,7 @@ function Cart() {
     {
       id: 2,
       name: "Cappuccino",
+      description: "Espresso with steamed milk and foam",
       price: 200,
       quantity: 1,
       image: "https://via.placeholder.com/80",
@@ -22,8 +24,25 @@ function Cart() {
     {
       id: 3,
       name: "Blueberry Muffin",
+      description: "Soft muffin with fresh blueberries",
       price: 120,
       quantity: 3,
+      image: "https://via.placeholder.com/80",
+    },
+    {
+      id: 4,
+      name: "Latte",
+      description: "Creamy coffee with steamed milk",
+      price: 180,
+      quantity: 1,
+      image: "https://via.placeholder.com/80",
+    },
+    {
+      id: 5,
+      name: "Chocolate Cake Slice",
+      description: "Rich chocolate cake with layers",
+      price: 250,
+      quantity: 2,
       image: "https://via.placeholder.com/80",
     },
   ]);
@@ -37,13 +56,15 @@ function Cart() {
     );
   };
 
-  // Remove item from cart
+  // Remove item
   const removeItem = (id) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Calculate total
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // Calculations
+  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const tax = Math.round(subtotal * 0.05); // 5% tax
+  const total = subtotal + tax;
 
   return (
     <div className="cart-page">
@@ -66,6 +87,7 @@ function Cart() {
                 </div>
                 <div className="cart-item-details">
                   <h4>{item.name}</h4>
+                  <p className="cart-item-desc">{item.description}</p>
                   <p>Price: ₹{item.price}</p>
                   <div className="cart-quantity">
                     <button onClick={() => updateQuantity(item.id, -1)}>-</button>
@@ -82,9 +104,12 @@ function Cart() {
 
           <div className="cart-summary">
             <h3>Order Summary</h3>
-            <p>Total Items: {cartItems.reduce((sum, item) => sum + item.quantity, 0)}</p>
-            <p className="cart-total">Total Price: ₹{totalPrice}</p>
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <p>Subtotal: ₹{subtotal}</p>
+            <p>Tax (5%): ₹{tax}</p>
+            <p className="cart-total">Total: ₹{total}</p>
+            <NavLink to="/cart/checkout" className="checkout-btn">
+              Proceed to Checkout
+            </NavLink>
           </div>
         </>
       )}
