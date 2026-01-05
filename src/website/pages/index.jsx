@@ -6,24 +6,24 @@ function Index() {
     const [popularItems, setPopularItems] = useState([]);
 
     // ================= FETCH POPULAR ITEMS =================
-    const fetchPopularItems = async () => {
-        try {
-            const response = await axios.get("http://localhost:3002/menuItems");
-
-            // ✅ Popular items = isSpecial === true
-            const specialItems = response.data.filter(
-                item => item.isSpecial === true
-            );
-
-            setPopularItems(specialItems);
-        } catch (error) {
-            console.error("Error fetching menu items", error);
-        }
-    };
-
     useEffect(() => {
+        const fetchPopularItems = async () => {
+            try {
+                const response = await axios.get("http://localhost:3002/menuItems");
+                const specialItems = response.data.filter(item => item.isSpecial === true);
+                setPopularItems(specialItems);
+            } catch (error) {
+                console.error("Error fetching menu items", error);
+            }
+        };
         fetchPopularItems();
     }, []);
+    // ================= TODAY SPECIAL =================
+    const handleSpecialClick = (categoryId) => {
+        // save the categoryId in sessionStorage for one-time scroll
+        sessionStorage.setItem("scrollToCategoryId", categoryId);
+        window.location.href = "/menu"; // navigate to menu page
+    };
 
     return (
         <>
@@ -135,60 +135,46 @@ function Index() {
                             </div>
 
                             <div className="col-lg-12 tm-special-container margin-top-60">
-
-                                {/* LEFT SPECIAL ITEM */}
+                                {/* Coffee */}
                                 <div className="tm-special-item-left">
                                     <div
                                         className="tm-special-img-container"
-                                        onClick={() => {
-                                            localStorage.setItem("selectedCategoryId", 1);
-                                            window.location.href = "/menu";
-                                        }}
+                                        onClick={() => handleSpecialClick(1)}
                                         style={{ cursor: "pointer" }}
                                     >
-                                        <img src="img/poster1.png" alt="Special" className="tm-special-img img-responsive" />
+                                        <img src="img/poster1.png" alt="Coffee" className="tm-special-img img-responsive" />
                                         <div className="tm-special-description">
                                             <h3 className="tm-special-title">Coffee of the Day</h3>
-                                            <p>Our master-roasted beans delivering a deep, smooth & aromatic experience.</p>
+                                            <p>Deep, smooth & aromatic espresso experience.</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* RIGHT SPECIAL ITEMS */}
+                                {/* Snacks */}
                                 <div className="tm-special-column-right">
-
-                                    {/* Snacks */}
                                     <div className="tm-special-item-upper">
                                         <div
                                             className="tm-special-img-container"
-                                            onClick={() => {
-                                                localStorage.setItem("selectedCategoryId", 5);
-                                                window.location.href = "/menu";
-                                            }}
+                                            onClick={() => handleSpecialClick(5)}
                                             style={{ cursor: "pointer" }}
                                         >
-                                            <img src="img/poster2.png" alt="Special" className="tm-special-img img-responsive" />
+                                            <img src="img/poster2.png" alt="Snacks" className="tm-special-img img-responsive" />
                                             <div className="tm-special-description">
                                                 <h3 className="tm-special-title">Snacks</h3>
-                                                <p>Yummy snacks......</p>
+                                                <p>Yummy snacks...</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    {/* Bottom row */}
                                     <div className="tm-special-row-lower">
-
                                         {/* Desserts */}
                                         <div className="tm-special-item-lower">
                                             <div
                                                 className="tm-special-img-container"
-                                                onClick={() => {
-                                                    localStorage.setItem("selectedCategoryId", 5);
-                                                    window.location.href = "/menu";
-                                                }}
+                                                onClick={() => handleSpecialClick(5)}
                                                 style={{ cursor: "pointer" }}
                                             >
-                                                <img src="img/poster4.png" alt="Special" className="tm-special-img img-responsive" />
+                                                <img src="img/poster4.png" alt="Desserts" className="tm-special-img img-responsive" />
                                                 <div className="tm-special-description">
                                                     <p>Pastries & Desserts</p>
                                                 </div>
@@ -199,19 +185,15 @@ function Index() {
                                         <div className="tm-special-item-lower">
                                             <div
                                                 className="tm-special-img-container"
-                                                onClick={() => {
-                                                    localStorage.setItem("selectedCategoryId", 6);
-                                                    window.location.href = "/menu";
-                                                }}
+                                                onClick={() => handleSpecialClick(6)}
                                                 style={{ cursor: "pointer" }}
                                             >
-                                                <img src="img/poster3.png" alt="Special" className="tm-special-img img-responsive" />
+                                                <img src="img/poster3.png" alt="Healthy Drinks" className="tm-special-img img-responsive" />
                                                 <div className="tm-special-description">
                                                     <p>Healthy Drinks</p>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
 
