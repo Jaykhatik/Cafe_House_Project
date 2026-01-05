@@ -18,6 +18,7 @@ import Reservations from './Admin/pages/Reservation';
 import Settings from './Admin/pages/Settings/Setting';
 import Cart from './website/pages/Cart';
 import Checkout from './website/pages/Checkout';
+import About from './website/pages/About';
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
             {/* <Route path='/today_special' element={<><Today_special /></>} /> */}
+            <Route path='/about' element={<><About/></>}/>
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/cart/checkout' element={<Checkout />} />

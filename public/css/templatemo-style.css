@@ -1058,3 +1058,184 @@ button.tm-more-button {
   background: url(../img/shadow.png) no-repeat center bottom;
   padding-bottom: 7px;
 }
+/* ===========================================================about page================================================== */
+/* ====================== VALUES CARDS ====================== */
+.tm-values-card {
+  background: linear-gradient(135deg, #fff7ed, #f7f1e7);
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.tm-values-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, #c79c60, #f7f1e7);
+}
+
+.tm-values-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  display: inline-block;
+  color: #c79c60;
+  transition: all 0.3s ease;
+}
+
+.tm-values-card:hover .tm-values-icon {
+  transform: rotate(15deg) scale(1.2);
+}
+
+.tm-values-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #7c6a51;
+  transition: color 0.3s ease;
+}
+
+.tm-values-card:hover h3 {
+  color: #fff;
+}
+
+.tm-values-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+.tm-values-card:hover p {
+  color: #f9f5f0;
+}
+/* ======================= TIMELINE ======================= */
+.timeline {
+  position: relative;
+  padding: 40px 0;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #c79c60, #f7f1e7);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(199,156,96,0.4);
+}
+
+.timeline-item {
+  position: relative;
+  width: 45%;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  background: #fff7ed;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.4s ease-in-out;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 55%;
+  text-align: left;
+}
+
+.timeline-year {
+  font-size: 22px;
+  font-weight: bold;
+  color: #c79c60;
+  margin-bottom: 10px;
+}
+
+.timeline-content h4 {
+  margin-top: 0;
+  color: #7c6a51;
+}
+
+.timeline-content p {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ================= TESTIMONIAL CARD ================= */
+.tm-testimonial-card {
+    background: linear-gradient(135deg, #fff7ed, #f7f1e7);
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.tm-testimonial-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #c79c60, #f7f1e7);
+}
+
+.tm-testimonial-text {
+    font-style: italic;
+    font-size: 16px;
+    color: #7c6a51;
+    margin-bottom: 15px;
+}
+
+.tm-testimonial-author {
+    font-weight: bold;
+    color: #c79c60;
+}
+
+/* ================= CAFE MOTTO ================= */
+.tm-motto-section {
+    /* background: linear-gradient(135deg, #fef8f0, #fff7ed); */
+    padding: 60px 20px;
+}
+
+.tm-motto-card {
+    display: inline-block;
+    background: #fff7ed;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    max-width: 700px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.tm-motto-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    background: linear-gradient(135deg, #c79c60, #f7f1e7);
+}
+
+.tm-motto-text {
+    font-family: "tm-handwriting-font", cursive;
+    font-size: 22px;
+    color: #7c6a51;
+    margin-bottom: 15px;
+}
+
+.tm-motto-author {
+    font-size: 18px;
+    color: #c79c60;
+    font-weight: bold;
+}
+
