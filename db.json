@@ -25,7 +25,7 @@
       "ingredients": "Espresso, Milk Foam",
       "description": "Classic cappuccino with rich foam.",
       "price": 5.0,
-      "image": "/img/cappuccino.avif",
+      "image": "/img/americano.avif",
       "size": [
         "Small",
         "Medium",
@@ -194,6 +194,22 @@
       ],
       "calories": "40 kcal",
       "rating": 4.5,
+      "isSpecial": true
+    },
+    {
+      "id": 13,
+      "categoryId": 6,
+      "name": "Lemon Hone1 Tea1",
+      "ingredients": "Lemon, Honey1, Tea",
+      "description": "Soothing tea with lemon and honey.",
+      "price": 3,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Small",
+        "Medium"
+      ],
+      "calories": "20 kcal",
+      "rating": 1.5,
       "isSpecial": true
     }
   ],

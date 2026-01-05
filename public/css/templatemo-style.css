@@ -184,7 +184,7 @@ COLOR CODES
   transition: all 0.3s 1s ease-out;
 }
 
-/* end Preloader */
+/* ========================================================end Preloader===================================================== */
 
 body {
   overflow-x: hidden;
@@ -206,6 +206,8 @@ ul {
 .tm-handwriting-font {
   font-family: 'Damion', cursive;
 }
+
+/* ================================header================================================================================ */
 
 .tm-top-header {
   background: black;
@@ -229,13 +231,7 @@ ul {
 }
 
 .tm-nav {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   font-weight: 700;
   text-transform: uppercase;
@@ -250,7 +246,6 @@ ul {
   color: white;
   display: inline-block;
   padding: 15px 15px 20px 30px;
-  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -268,31 +263,25 @@ ul {
 }
 
 .tm-top-header-inner {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+/* toggle icon ke liye */
 
 .mobile-menu-icon {
   display: none;
 }
 
-.tm-section {
-  margin-bottom: 60px;
-}
+/* =========common for giving space to each section====================== */
 
+/* this is in index page */
 .tm-section-margin-bottom-0 {
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 
-/* Welcome */
+/* ==================================================Welcome banner============================================ */
 .tm-welcome-section {
   background: #282726;
   text-align: center;
@@ -341,22 +330,15 @@ ul {
   text-align: right;
 }
 
+/* welcome ka explore more button */
 .tm-more-button-welcome {
   margin: 40px auto;
 }
 
 .tm-more-button {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   background-image: url(../img/tm-brown-button.png);
   width: 196px;
@@ -364,7 +346,6 @@ ul {
   text-transform: uppercase;
   font-size: 16px;
   color: #c79c60;
-  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -374,7 +355,8 @@ ul {
   text-decoration: none;
 }
 
-.tm-position-relative {
+/* welcome ka image setup */
+.tm-position-relative{
   position: relative;
 }
 
@@ -388,18 +370,12 @@ ul {
   position: absolute;
   top: 0;
   left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
 }
 
-/* Main content */
+/* Main content of every page */
 .light-gray-bg {
   background-color: #e4e4e4;
 }
@@ -408,24 +384,11 @@ ul {
   padding-top: 170px;
 }
 
-.img-thumbnail {
-  padding: 8px;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
-.shadow-img {
-  background: url(../img/shadow.png) no-repeat center bottom;
-  padding-bottom: 7px;
-}
-
 .margin-top-30 {
   margin-top: 30px;
 }
 
-/* Footer */
+/* ==================================================Footer=============================================================== */
 .tm-black-bg {
   background-color: #302f2f;
   color: white;
@@ -510,7 +473,9 @@ ul {
   margin-top: 25px;
 }
 
-/* ================= POPULAR ITEMS CONTAINER (FIXED) ================= */
+/* =====================================footer end========================================================================== */
+
+/* ============================= POPULAR ITEMS CONTAINER (FIXED) in index page ========================== */
 .tm-popular-items-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -629,6 +594,8 @@ ul {
   justify-content: center;
 }
 
+/* =================================popular items in index page end========================== */
+
 ol {
   counter-reset: item;
   /*this is count the number from 1 to 6*/
@@ -645,165 +612,34 @@ ol li:before {
   color: #c79c60;
   font-weight: 700;
 }
-
-.tm-section-header-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+.tm-daily-menu-container {
+  overflow: hidden;
 }
 
-/*http://stackoverflow.com/questions/1032914/how-to-make-a-div-to-fill-a-remaining-horizontal-space-a-very-simple-but-annoyi*/
-.tm-section-header {
-  width: 350px;
-}
+/* =====================================common things in website for sections============================= */
 
+/* same in all foe uper hr line which is in golden color */
 .tm-hr-container {
   width: 100%;
   height: 41px;
+}
+.tm-section {
+  margin-bottom: 60px;
 }
 
 .tm-hr {
   border-color: #c79c60;
 }
-
-.tm-daily-menu-container {
-  overflow: hidden;
+.tm-section-header {
+  width: 350px;
 }
-
-
-
-/* Menu */
-.tm-side-menu {
-  color: white;
-  width: 242px;
-  padding-top: 7px;
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.tm-side-menu-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.tm-side-menu li {
-  list-style: none;
-}
-
-.tm-side-menu li a {
-  color: #7c6a51;
-  padding: 7px;
-  display: block;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.tm-side-menu li a:hover,
-.tm-side-menu li a.active {
-  color: #c79c60;
-  text-decoration: none;
-}
-
-.tm-product {
-  margin-right: 0;
-  margin-left: auto;
-  max-width: 652px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+.tm-section-header-container {
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: white;
-  padding: 20px;
+  align-items: flex-end;
 }
 
-.tm-product-text {
-  max-width: 325px;
-}
 
-.tm-product-price {
-  width: 100px;
-  height: 100px;
-  background-color: rgb(82, 76, 76);
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: white;
-  position: relative;
-}
-
-.tm-product-title {
-  margin-top: 0;
-  margin-bottom: 15px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.tm-product-description {
-  margin-bottom: 0;
-  text-align: justify;
-}
-
-.tm-product-price-link {
-  border: 2px solid rgb(174, 174, 174);
-  border-radius: 50%;
-  width: 85px;
-  height: 85px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-align: center;
-  padding-top: 7px;
-  font-size: 40px;
-  color: rgb(174, 174, 174);
-}
-
-.tm-product {
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.tm-product:hover .tm-product-price-link {
-  border-color: #c79c60;
-  color: #c79c60;
-  text-decoration: none;
-}
-
-.tm-product:hover .tm-product-title {
-  color: #c79c60;
-}
-
-.tm-product-price-currency {
-  font-size: 20px;
-  position: absolute;
-  top: 24px;
-  left: 22px;
-}
-
+/* ====================================contact page================================================ */
 .form-control {
   border-color: #c79c60;
   border-radius: 10px;
@@ -828,81 +664,10 @@ button.tm-more-button {
   border-radius: 10px;
 }
 
-/* =====================================index page today special layout================================ */
-.today-special-layout .tm-special-container {
-  display: grid;
-  grid-template-columns: 1.54fr 1fr;
-  /* Left large, right column */
-  gap: 20px;
-  margin-bottom: -200px;
-}
-
-.today-special-layout .tm-special-img-container {
-  display: inline-block;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  /* Important for scaling effect */
-}
-
-.today-special-layout .tm-special-item-left {
-  position: relative;
-}
-
-.today-special-layout .tm-special-column-right {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  /* Top and bottom rows */
-  gap: 20px;
-}
-
-.today-special-layout .tm-special-item-upper {
-  position: relative;
-}
-
-.today-special-layout .tm-special-row-lower {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Two items side by side */
-  gap: 20px;
-}
-
-.today-special-layout .tm-special-item-lower {
-  position: relative;
-}
-
-.today-special-layout .tm-special-img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-  /* NEW EFFECTS */
-  filter: brightness(0.7) blur(1px);
-  /* dark and slightly blurry */
-  transition: transform 0.5s ease, filter 0.5s ease;
-  /* smooth transition */
-}
-
-.today-special-layout .tm-special-img-container:hover .tm-special-img {
-  transform: scale(1.05);
-  /* slightly zoom on hover */
-  filter: brightness(1) blur(0);
-  /* remove blur and darkness */
-}
-
-.today-special-layout .tm-special-description {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  border-radius: 0 0 6px 6px;
-}
 
 
 
-/* =============================topbar================================== */
+/* ============================================================topbar================================================================== */
 /* ===== TOPBAR ===== */
 .tm-topbar {
   width: 100%;
@@ -1075,4 +840,221 @@ button.tm-more-button {
 .tm-topbar-icon.active-link {
   color: #c79c60;
   /* golden highlight for active cart */
+}
+
+
+
+/* =============================================================index page today special layout========================================================= */
+.today-special-layout .tm-special-container {
+  display: grid;
+  grid-template-columns: 1.54fr 1fr;
+  /* Left large, right column */
+  gap: 20px;
+  margin-bottom: -200px;
+}
+
+.today-special-layout .tm-special-img-container {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  /* Important for scaling effect */
+}
+
+.today-special-layout .tm-special-item-left {
+  position: relative;
+}
+
+.today-special-layout .tm-special-column-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  /* Top and bottom rows */
+  gap: 20px;
+}
+
+.today-special-layout .tm-special-item-upper {
+  position: relative;
+}
+
+.today-special-layout .tm-special-row-lower {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two items side by side */
+  gap: 20px;
+}
+
+.today-special-layout .tm-special-item-lower {
+  position: relative;
+}
+
+.today-special-layout .tm-special-img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  /* NEW EFFECTS */
+  filter: brightness(0.7) blur(1px);
+  /* dark and slightly blurry */
+  transition: transform 0.5s ease, filter 0.5s ease;
+  /* smooth transition */
+}
+
+.today-special-layout .tm-special-img-container:hover .tm-special-img {
+  transform: scale(1.05);
+  /* slightly zoom on hover */
+  filter: brightness(1) blur(0);
+  /* remove blur and darkness */
+}
+
+.today-special-layout .tm-special-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 0 0 6px 6px;
+}
+
+/* ===============================================================================Menu page================================================================= */
+/* ======================= SIDE MENU ======================= */
+.tm-side-menupage {
+  align-items: center;
+  margin-left: 30px;
+  padding-top: 7px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tm-side-menupage-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tm-position-relative-menupage {
+  position: relative;
+}
+
+.tm-side-menupage li {
+  list-style: none;
+}
+
+.tm-side-menupage li a {
+  color: #7c6a51;
+  padding: 7px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.tm-side-menupage li a:hover,
+.tm-side-menupage li a.active {
+  color: #c79c60;
+  text-decoration: none;
+}
+
+/* ======================= PRODUCT CARD ======================= */
+.tm-product-menupage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  max-width: 652px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 10px; /* optional rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* subtle shadow */
+  transition: all 0.3s ease;
+}
+
+.tm-product-menupage:hover {
+  transform: translateY(-3px);
+}
+
+.tm-product-menupage img {
+  width: 150px;       /* fixed width */
+  height: 150px;      /* fixed height */
+  object-fit: cover;  /* maintain aspect ratio */
+  border-radius: 8px; /* optional rounded corners */
+  flex-shrink: 0;     /* prevent image from shrinking */
+}
+
+.tm-product-text-menupage {
+  max-width: 60%;     /* leave space for price circle */
+  margin-left: 20px;
+}
+
+.tm-product-title-menupage {
+  margin-top: 0;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.tm-product-description-menupage {
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.tm-product-price-menupage {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(82, 76, 76);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  transition: all 0.3s ease;
+}
+
+.tm-product-price-link-menupage {
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; /* dollar + price side by side */
+  border: 2px solid rgb(174, 174, 174);
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 22px;
+  color: rgb(174, 174, 174);
+  font-weight: bold;
+}
+
+.tm-product-menupage:hover .tm-product-price-link-menupage {
+ border-color: #c79c60;
+  color: #c79c60;
+}
+
+.tm-product-menupage:hover .tm-product-title-menupage {
+  color: #c79c60;
+}
+
+.tm-product-price-currency-menupage {
+ font-size: 18px;
+  margin-right: 3px;
+  vertical-align: top;
+  color: inherit; /* match text color */
+}
+
+/* ======================= IMAGE & UTILITY ======================= */
+.img-thumbnail-menupage {
+  padding: 8px;
+}
+
+.inline-block-menupage {
+  display: inline-block;
+}
+
+.shadow-img-menupage {
+  background: url(../img/shadow.png) no-repeat center bottom;
+  padding-bottom: 7px;
 }
