@@ -130,76 +130,91 @@ function Index() {
                                     Today's Special
                                 </h2>
                                 <div className="tm-hr-container">
-                                    <hr className="tm-hr" /></div>
+                                    <hr className="tm-hr" />
+                                </div>
                             </div>
+
                             <div className="col-lg-12 tm-special-container margin-top-60">
+
                                 {/* LEFT SPECIAL ITEM */}
                                 <div className="tm-special-item-left">
-                                    <div className="tm-special-img-container" onClick={() => {
-                                        localStorage.setItem("selectedCategoryId", 1); // Coffee category ID
-                                        document.getElementById("main")?.scrollIntoView({ behavior: "smooth" });
-                                    }}
-                                        style={{ cursor: "pointer" }}>
+                                    <div
+                                        className="tm-special-img-container"
+                                        onClick={() => {
+                                            localStorage.setItem("selectedCategoryId", 1);
+                                            window.location.href = "/menu";
+                                        }}
+                                        style={{ cursor: "pointer" }}
+                                    >
                                         <img src="img/poster1.png" alt="Special" className="tm-special-img img-responsive" />
-
                                         <div className="tm-special-description">
                                             <h3 className="tm-special-title">Coffee of the Day</h3>
                                             <p>Our master-roasted beans delivering a deep, smooth & aromatic experience.</p>
                                         </div>
-
-
                                     </div>
                                 </div>
+
                                 {/* RIGHT SPECIAL ITEMS */}
                                 <div className="tm-special-column-right">
-                                    {/* Top right item */}
-                                    <div className="tm-special-item-upper">
-                                        <div className="tm-special-img-container">
-                                            <img src="img/poster2.png" alt="Special" className="tm-special-img img-responsive" />
-                                            <a
-                                                href="/menu.html"
-                                                onClick={() => localStorage.setItem("selectedCategoryId", 5)}
-                                            >
-                                                <div className="tm-special-description">
-                                                    <h3 className="tm-special-title">Snacks</h3>
-                                                    <p>Yummy snacks......</p>
-                                                </div>
-                                            </a>
 
+                                    {/* Snacks */}
+                                    <div className="tm-special-item-upper">
+                                        <div
+                                            className="tm-special-img-container"
+                                            onClick={() => {
+                                                localStorage.setItem("selectedCategoryId", 5);
+                                                window.location.href = "/menu";
+                                            }}
+                                            style={{ cursor: "pointer" }}
+                                        >
+                                            <img src="img/poster2.png" alt="Special" className="tm-special-img img-responsive" />
+                                            <div className="tm-special-description">
+                                                <h3 className="tm-special-title">Snacks</h3>
+                                                <p>Yummy snacks......</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    {/* Bottom row with 2 items */}
+
+                                    {/* Bottom row */}
                                     <div className="tm-special-row-lower">
+
+                                        {/* Desserts */}
                                         <div className="tm-special-item-lower">
-                                            <div className="tm-special-img-container">
+                                            <div
+                                                className="tm-special-img-container"
+                                                onClick={() => {
+                                                    localStorage.setItem("selectedCategoryId", 5);
+                                                    window.location.href = "/menu";
+                                                }}
+                                                style={{ cursor: "pointer" }}
+                                            >
                                                 <img src="img/poster4.png" alt="Special" className="tm-special-img img-responsive" />
-                                                <a
-                                                    href="/menu.html"
-                                                    onClick={() => localStorage.setItem("selectedCategoryId", 5)}
-                                                >
-                                                    <div className="tm-special-description">
-                                                        <p>Pastries & Desserts</p>
-                                                    </div>
-                                                </a>
-
+                                                <div className="tm-special-description">
+                                                    <p>Pastries & Desserts</p>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        {/* Healthy Drinks */}
                                         <div className="tm-special-item-lower">
-                                            <div className="tm-special-img-container">
+                                            <div
+                                                className="tm-special-img-container"
+                                                onClick={() => {
+                                                    localStorage.setItem("selectedCategoryId", 6);
+                                                    window.location.href = "/menu";
+                                                }}
+                                                style={{ cursor: "pointer" }}
+                                            >
                                                 <img src="img/poster3.png" alt="Special" className="tm-special-img img-responsive" />
-                                                <a
-                                                    href="/menu.html"
-                                                    onClick={() => localStorage.setItem("selectedCategoryId", 6)}
-                                                >
-                                                    <div className="tm-special-description">
-                                                        <p>Healthy Drinks</p>
-                                                    </div>
-                                                </a>
-
+                                                <div className="tm-special-description">
+                                                    <p>Healthy Drinks</p>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </section>
 
