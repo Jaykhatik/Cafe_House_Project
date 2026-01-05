@@ -95,14 +95,7 @@ function Header() {
                                         </NavLink>
                                     </li>
 
-                                    <li>
-                                        <NavLink
-                                            to="/today_special"
-                                            className={({ isActive }) => isActive ? "active" : ""}
-                                        >
-                                            Today Special
-                                        </NavLink>
-                                    </li>
+                                    
 
                                     <li>
                                         <NavLink

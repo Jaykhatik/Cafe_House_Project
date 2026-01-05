@@ -4,46 +4,197 @@
       "id": 1,
       "categoryId": 1,
       "name": "Americano",
-      "ingredients": "Espresso, Milk, Foam",
+      "ingredients": "Espresso, Hot Water",
+      "description": "Smooth and bold espresso diluted with hot water.",
       "price": 4.5,
-      "status": "available",
-     "image": "/img/americano.avif"
+      "image": "/img/americano.avif",
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "calories": "15 kcal",
+      "rating": 4.5,
+      "isSpecial": true
+      
     },
     {
       "id": 2,
-      "categoryId": 2,
-      "name": "Brownie",
-      "ingredients": "Chocolate-Brownie",
-      "price": 15.0,
-      "status": "available",
-       "image": "/img/brownie.webp"
+      "categoryId": 1,
+      "name": "Cappuccino",
+      "ingredients": "Espresso, Milk Foam",
+      "description": "Classic cappuccino with rich foam.",
+      "price": 5.0,
+      "image": "/img/cappuccino.avif",
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "calories": "120 kcal",
+      "rating": 4.7,
+      "isSpecial": false
     },
     {
       "id": 3,
-      "categoryId": 1,
-      "name": "Espresso",
-      "ingredients": "Espresso Shot",
-      "price": 3.0,
-      "status": "available",
-     "image": "/img/1.jpg"
+      "categoryId": 2,
+      "name": "Iced Coffee",
+      "ingredients": "Cold Brew, Ice",
+      "description": "Refreshing chilled coffee over ice.",
+      "price": 4.8,
+      "image": "/img/iced-coffe.avif",
+      "size": [
+        "Medium",
+        "Large"
+      ],
+      "calories": "90 kcal",
+      "rating": 4.3,
+      "isSpecial": true
     },
     {
       "id": 4,
       "categoryId": 2,
-      "name": "Mocha",
-      "ingredients": "Espresso, Chocolate, Milk",
+      "name": "Cold Brew",
+      "ingredients": "Slow Brewed Coffee",
+      "description": "Smooth low-acidity cold brew coffee.",
       "price": 5.5,
-      "status": "out-of-stock",
-     "image": "/img/mocha.webp"
+      "image": "/img/brownie.webp",
+      "size": [
+        "Medium",
+        "Large"
+      ],
+      "calories": "80 kcal",
+      "rating": 4.6,
+      "isSpecial": false
     },
     {
       "id": 5,
-      "categoryId": 1,
-      "name": "Iced Cofee",
-      "ingredients": "Fresh Iced Cofee",
-      "price": 8.5,
-      "status": "available",
-      "image": "/img/iced-coffe.avif"
+      "categoryId": 3,
+      "name": "Caramel Latte",
+      "ingredients": "Espresso, Milk, Caramel Syrup",
+      "description": "Sweet caramel blended with creamy milk.",
+      "price": 5.8,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "calories": "190 kcal",
+      "rating": 4.8,
+      "isSpecial": true
+    },
+    {
+      "id": 6,
+      "categoryId": 3,
+      "name": "Vanilla Latte",
+      "ingredients": "Espresso, Milk, Vanilla Syrup",
+      "description": "Smooth vanilla flavored latte.",
+      "price": 5.6,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "calories": "180 kcal",
+      "rating": 4.6,
+      "isSpecial": false
+    },
+    {
+      "id": 7,
+      "categoryId": 4,
+      "name": "Mocha",
+      "ingredients": "Coffee, Chocolate, Milk",
+      "description": "Chocolate flavored coffee drink.",
+      "price": 5.9,
+      "image": "/img/mocha.avif",
+      "size": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "calories": "200 kcal",
+      "rating": 4.5,
+      "isSpecial": true
+    },
+    {
+      "id": 8,
+      "categoryId": 4,
+      "name": "Chocolate Frappe",
+      "ingredients": "Chocolate, Ice, Milk",
+      "description": "Icy blended chocolate drink.",
+      "price": 6.2,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Medium",
+        "Large"
+      ],
+      "calories": "230 kcal",
+      "rating": 4.7,
+      "isSpecial": true
+    },
+    {
+      "id": 9,
+      "categoryId": 5,
+      "name": "Chocolate Brownie",
+      "ingredients": "Cocoa, Flour, Butter",
+      "description": "Rich and fudgy chocolate brownie.",
+      "price": 3.5,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Single"
+      ],
+      "calories": "320 kcal",
+      "rating": 4.8,
+      "isSpecial": true
+    },
+    {
+      "id": 10,
+      "categoryId": 5,
+      "name": "Blueberry Muffin",
+      "ingredients": "Blueberry, Flour, Sugar",
+      "description": "Soft muffin loaded with blueberries.",
+      "price": 3.2,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Single"
+      ],
+      "calories": "280 kcal",
+      "rating": 4.4,
+      "isSpecial": false
+    },
+    {
+      "id": 11,
+      "categoryId": 6,
+      "name": "Green Tea",
+      "ingredients": "Green Tea Leaves",
+      "description": "Refreshing antioxidant-rich green tea.",
+      "price": 2.8,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Small",
+        "Medium"
+      ],
+      "calories": "5 kcal",
+      "rating": 4.2,
+      "isSpecial": false
+    },
+    {
+      "id": 12,
+      "categoryId": 6,
+      "name": "Lemon Honey Tea",
+      "ingredients": "Lemon, Honey, Tea",
+      "description": "Soothing tea with lemon and honey.",
+      "price": 3.2,
+      "image": "/img/brownie.webp",
+      "size": [
+        "Small",
+        "Medium"
+      ],
+      "calories": "40 kcal",
+      "rating": 4.5,
+      "isSpecial": true
     }
   ],
   "orders": [
@@ -223,6 +374,30 @@
       "name": "Cold Coffee",
       "icon": "bi-cup-straw",
       "color": "bg-teal"
+    },
+    {
+      "id": 3,
+      "name": "Special Latte",
+      "icon": "bi-star-fill",
+      "color": "bg-warning"
+    },
+    {
+      "id": 4,
+      "name": "Chocolate Drinks",
+      "icon": "bi-cup-fill",
+      "color": "bg-chocolate"
+    },
+    {
+      "id": 5,
+      "name": "Desserts & Snacks",
+      "icon": "bi-cookie",
+      "color": "bg-pink"
+    },
+    {
+      "id": 6,
+      "name": "Healthy & Tea",
+      "icon": "bi-leaf-fill",
+      "color": "bg-success"
     }
   ],
   "offers": [

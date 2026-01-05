@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import "../pages/cssOfPages/Menu-item.css";
 
@@ -21,10 +21,18 @@ const MenuItems = () => {
       .catch(err => console.error(err));
   }, []);
 
-  // -------- GET CATEGORY NAME BY ID --------
+  // -------- CREATE CATEGORY MAP FOR FAST LOOKUP --------
+  const categoryMap = useMemo(() => {
+    const map = {};
+    categories.forEach(cat => {
+      map[Number(cat.id)] = cat.name; // Ensure numeric keys
+    });
+    return map;
+  }, [categories]);
+
+  // -------- GET CATEGORY NAME --------
   const getCategoryName = (categoryId) => {
-    const category = categories.find(cat => cat.id === categoryId);
-    return category ? category.name : "Unknown";
+    return categoryMap[Number(categoryId)] || "Unknown";
   };
 
   // -------- SEARCH FILTER --------
@@ -82,15 +90,11 @@ const MenuItems = () => {
                           src={item.image || "/img/default-coffee.jpg"}
                           alt={item.name}
                           className="menu-item-img"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "/img/default-coffee.jpg";
-                          }}
+                          onError={(e) => { e.target.onerror = null; e.target.src = "/img/default-coffee.jpg"; }}
                         />
                       </div>
                       {item.name}
                     </td>
-
 
                     {/* ✅ DYNAMIC CATEGORY */}
                     <td>
@@ -104,12 +108,13 @@ const MenuItems = () => {
 
                     <td>
                       <span
-                        className={`badge ${item.status === "available"
+                        className={`badge ${
+                          item.status === "available"
                             ? "available"
                             : item.status === "low-stock"
                               ? "low"
                               : "out"
-                          }`}
+                        }`}
                       >
                         {item.status}
                       </span>

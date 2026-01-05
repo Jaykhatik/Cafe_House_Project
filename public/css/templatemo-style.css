@@ -827,26 +827,32 @@ button.tm-more-button {
   border: 3px solid #fff;
   border-radius: 10px;
 }
+
 /* =====================================index page today special layout================================ */
 .today-special-layout .tm-special-container {
   display: grid;
-  grid-template-columns: 1.54fr 1fr; /* Left large, right column */
+  grid-template-columns: 1.54fr 1fr;
+  /* Left large, right column */
   gap: 20px;
   margin-bottom: -200px;
 }
+
 .today-special-layout .tm-special-img-container {
   display: inline-block;
   position: relative;
   max-width: 100%;
-  overflow: hidden; /* Important for scaling effect */
+  overflow: hidden;
+  /* Important for scaling effect */
 }
+
 .today-special-layout .tm-special-item-left {
   position: relative;
 }
 
 .today-special-layout .tm-special-column-right {
   display: grid;
-  grid-template-rows: 1fr 1fr; /* Top and bottom rows */
+  grid-template-rows: 1fr 1fr;
+  /* Top and bottom rows */
   gap: 20px;
 }
 
@@ -856,7 +862,8 @@ button.tm-more-button {
 
 .today-special-layout .tm-special-row-lower {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two items side by side */
+  grid-template-columns: 1fr 1fr;
+  /* Two items side by side */
   gap: 20px;
 }
 
@@ -868,14 +875,18 @@ button.tm-more-button {
   width: 100%;
   display: block;
   border-radius: 6px;
-    /* NEW EFFECTS */
-  filter: brightness(0.7) blur(1px); /* dark and slightly blurry */
-  transition: transform 0.5s ease, filter 0.5s ease; /* smooth transition */
+  /* NEW EFFECTS */
+  filter: brightness(0.7) blur(1px);
+  /* dark and slightly blurry */
+  transition: transform 0.5s ease, filter 0.5s ease;
+  /* smooth transition */
 }
 
 .today-special-layout .tm-special-img-container:hover .tm-special-img {
-  transform: scale(1.05); /* slightly zoom on hover */
-  filter: brightness(1) blur(0); /* remove blur and darkness */
+  transform: scale(1.05);
+  /* slightly zoom on hover */
+  filter: brightness(1) blur(0);
+  /* remove blur and darkness */
 }
 
 .today-special-layout .tm-special-description {
@@ -1064,130 +1075,4 @@ button.tm-more-button {
 .tm-topbar-icon.active-link {
   color: #c79c60;
   /* golden highlight for active cart */
-}
-
-
-
-/* ===================================today special page================================================== */
-.today-special-section .tm-popular-items-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* 4 cards per row */
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.today-special-section .tm-popular-item {
-  width: 100%;
-  max-width: 220px;
-  /* smaller than before */
-  height: auto;
-  /* shorter height */
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.today-special-section .tm-popular-item-img {
-  width: 100%;
-  height: 120px;
-  /* smaller image */
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.today-special-section .tm-popular-item-description {
-  flex: 1;
-  text-align: center;
-  padding: 10px 12px 40px;
-}
-
-/* Smaller first letter in titles */
-.today-special-section .bigger-first-letter {
-  font-size: 24px;
-  vertical-align: baseline;
-}
-
-.today-special-section .tm-popular-item-title {
-  font-size: 16px;
-  /* smaller title */
-  margin-bottom: 4px;
-  height: auto;
-}
-
-.today-special-section .tm-popular-item-description p {
-  font-size: 12px;
-  /* smaller text */
-  line-height: 1.3;
-}
-
-.today-special-section .order-now-container {
-  width: 60px;
-  /* smaller than original 90px */
-  height: 60px;
-  bottom: -30px;
-  /* adjust vertical position */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(82, 76, 76);
-  /* keep grey color */
-  border-radius: 50%;
-}
-
-.today-special-section .order-now-container.small-order {
-  width: 60px;
-  height: 60px;
-  bottom: -30px;
-}
-
-.today-special-section .order-now-container.small-order .order-now-link {
-  width: 50px;
-  height: 50px;
-  font-size: 14px;
-}
-
-/* Hover effects */
-.today-special-section .tm-popular-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
-
-/* Price styling */
-.today-special-section .price {
-  margin-top: 5px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.today-special-section .original-price {
-  text-decoration: line-through;
-  color: #888;
-  margin-left: 5px;
-}
-
-.today-special-section .discount-price {
-  color: #c79c60;
-  font-weight: bold;
-}
-
-/* RESPONSIVE */
-@media (max-width: 992px) {
-  .today-special-section .tm-popular-items-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .today-special-section .tm-popular-items-container {
-    grid-template-columns: 1fr;
-  }
-
-  .today-special-section .tm-popular-item-img {
-    height: 100px;
-  }
 }

@@ -4,7 +4,7 @@ import WebsiteLayout from './layouts/WebsiteLayout';
 import Index from './website/pages';
 import Menu from './website/pages/menu';
 import Contact from './website/pages/contact'
-import Today_special from './website/pages/today_special'
+// import Today_special from './website/pages/today_special'
 import AdminLayout from './layouts/AdminLayout';
 import Dashboard from './Admin/pages/dashboard';
 import MenuItems from './Admin/pages/Menu-items';
@@ -32,7 +32,7 @@ function App() {
           <Route element={<WebsiteLayout />}>
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
-            <Route path='/today_special' element={<><Today_special /></>} />
+            {/* <Route path='/today_special' element={<><Today_special /></>} /> */}
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/cart/checkout' element={<Checkout />} />
