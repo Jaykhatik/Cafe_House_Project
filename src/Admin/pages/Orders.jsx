@@ -30,14 +30,18 @@ function Orders() {
     fetchData();
   }, []);
 
-  // ================= HELPERS =================
+  // ================= HELPERS (FIXED ID MATCH) =================
   const getCustomerName = (customerId) => {
-    const customer = customers.find(c => c.id === customerId);
+    const customer = customers.find(
+      c => Number(c.id) === Number(customerId)
+    );
     return customer ? customer.name : "Unknown Customer";
   };
 
   const getItemName = (menuItemId) => {
-    const item = menuItems.find(m => m.id === menuItemId);
+    const item = menuItems.find(
+      m => Number(m.id) === Number(menuItemId)
+    );
     return item ? item.name : "Item";
   };
 
@@ -122,7 +126,9 @@ function Orders() {
                 filteredOrders.map(order => (
                   <tr key={order.id}>
                     <td className="id">#{order.id}</td>
-                    <td className="bold">{getCustomerName(order.customerId)}</td>
+                    <td className="bold">
+                      {getCustomerName(order.customerId)}
+                    </td>
                     <td>
                       {order.items.map((item, i) => (
                         <div key={i}>

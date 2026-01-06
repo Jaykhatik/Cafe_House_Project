@@ -53,8 +53,11 @@ function Menu() {
 
     if (loading) return <p>Loading menu...</p>;
 
-    // ================= FILTER ITEMS =================
-    const filteredItems = menuItems.filter(item => item.categoryId === activeCategoryId);
+    // ================= FILTER ITEMS (ONLY FIX HERE) =================
+    const filteredItems = menuItems.filter(
+        item => Number(item.categoryId) === Number(activeCategoryId)
+    );
+
     return (
         <>
             <div>
@@ -91,6 +94,7 @@ function Menu() {
                         />
                     </div>
                 </section>
+
                 <div className="tm-main-section light-gray-bg">
                     <div className="container" id="main">
                         <section className="tm-section row">
@@ -114,7 +118,7 @@ function Menu() {
                                                     <li key={cat.id}>
                                                         <a
                                                             href="#"
-                                                            className={activeCategoryId === cat.id ? "active" : ""}
+                                                            className={Number(activeCategoryId) === Number(cat.id) ? "active" : ""}
                                                             onClick={(e) => {
                                                                 e.preventDefault();
                                                                 setActiveCategoryId(cat.id);
@@ -126,26 +130,35 @@ function Menu() {
                                                 ))}
                                             </ul>
                                         </nav>
-                                        <img src="img/vertical-menu-bg.png" alt="Menu bg" className="tm-side-menupage-bg" />
+                                        <img
+                                            src="img/vertical-menu-bg.png"
+                                            alt="Menu bg"
+                                            className="tm-side-menupage-bg"
+                                        />
                                     </div>
                                 </div>
 
                                 {/* PRODUCTS */}
-                                <div className="tm-menu-product-content col-lg-9 col-md-9" ref={(el) => categoryRefs.current[activeCategoryId] = el}>
+                                <div
+                                    className="tm-menu-product-content col-lg-9 col-md-9"
+                                    ref={(el) => categoryRefs.current[activeCategoryId] = el}
+                                >
                                     {filteredItems.length > 0 ? (
                                         filteredItems.map((item) => (
                                             <div className="tm-product-menupage" key={item.id}>
                                                 <img src={item.image} alt={item.name} />
                                                 <div className="tm-product-text-menupage">
                                                     <h3 className="tm-product-title-menupage">{item.name}</h3>
-                                                    <p className="tm-product-description-menupage">{item.description}</p>
+                                                    <p className="tm-product-description-menupage">
+                                                        {item.description}
+                                                    </p>
                                                 </div>
                                                 <div className="tm-product-price-menupage">
-                            <a href="#" className="tm-product-price-link-menupage">
-                              <span className="tm-product-price-currency-menupage">$</span>
-                              {item.price}
-                            </a>
-                          </div>
+                                                    <a href="#" className="tm-product-price-link-menupage">
+                                                        <span className="tm-product-price-currency-menupage">$</span>
+                                                        {item.price}
+                                                    </a>
+                                                </div>
                                             </div>
                                         ))
                                     ) : (

@@ -4,9 +4,9 @@ import "../pages/cssOfPages/Customers.css";
 
 const Customers = () => {
   // ================= STATES =================
-  const [search, setSearch] = useState(""); // for search input
-  const [customers, setCustomers] = useState([]); // from customers API
-  const [orders, setOrders] = useState([]); // from orders API
+  const [search, setSearch] = useState("");
+  const [customers, setCustomers] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   // ================= FETCH CUSTOMERS =================
   const fetchCustomers = async () => {
@@ -34,19 +34,22 @@ const Customers = () => {
     fetchOrders();
   }, []);
 
-  // ================= HELPER FUNCTIONS =================
-  // Get all orders for a specific customer
+  // ================= HELPER FUNCTIONS (FIXED) =================
   const getCustomerOrders = (customerId) =>
-    orders.filter((o) => o.customerId === customerId);
+    orders.filter(
+      (o) => Number(o.customerId) === Number(customerId)
+    );
 
-  // Count of orders
-  const getOrderCount = (customerId) => getCustomerOrders(customerId).length;
+  const getOrderCount = (customerId) =>
+    getCustomerOrders(customerId).length;
 
-  // Total spent by customer
   const getTotalSpent = (customerId) =>
-    getCustomerOrders(customerId).reduce((sum, o) => sum + (o.total || 0), 0);
+    getCustomerOrders(customerId).reduce(
+      (sum, o) => sum + (o.total || 0),
+      0
+    );
 
-  // Filter customers based on search input
+  // ================= FILTER =================
   const filteredCustomers = customers.filter((c) =>
     `${c.name} ${c.email} ${c.loyalty} ${c.lastVisit}`
       .toLowerCase()
@@ -63,7 +66,7 @@ const Customers = () => {
     <div className="main-content">
       <div className="customer-section">
 
-        {/* ================= STATS CARDS ================= */}
+        {/* STATS */}
         <div className="stats-row">
           <div className="stat-card">
             <h3>Total Customers</h3>
@@ -83,7 +86,7 @@ const Customers = () => {
           </div>
         </div>
 
-        {/* ================= SEARCH ================= */}
+        {/* SEARCH */}
         <div className="search-box-customers">
           <input
             type="text"
@@ -93,7 +96,7 @@ const Customers = () => {
           />
         </div>
 
-        {/* ================= CUSTOMER TABLE ================= */}
+        {/* TABLE */}
         <div className="customer-table">
           <table>
             <thead>
