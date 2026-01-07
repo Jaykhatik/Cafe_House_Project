@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { useCart } from "../component/cartcontext";
+
 
 function Menu() {
+    const { addToCart } = useCart();
     const [categories, setCategories] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
     const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -152,6 +155,12 @@ function Menu() {
                                                     <p className="tm-product-description-menupage">
                                                         {item.description}
                                                     </p>
+                                                    <button
+      className="tm-add-to-cart-btn"
+      onClick={() => addToCart(item)}
+    >
+      Add to Cart
+    </button>
                                                 </div>
                                                 <div className="tm-product-price-menupage">
                                                     <a href="#" className="tm-product-price-link-menupage">

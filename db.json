@@ -5,7 +5,7 @@
       "categoryId": 1,
       "name": "Americano",
       "ingredients": "Espresso, Hot Water",
-      "description": "Smooth and bold espresso diluted with hot water.",
+      "description": "Smooth and bold espresso diluted.",
       "price": 4.5,
       "image": "/img/americano.avif",
       "size": [
@@ -40,7 +40,7 @@
       "categoryId": 2,
       "name": "Iced Coffee",
       "ingredients": "Cold Brew, Ice",
-      "description": "Refreshing chilled coffee over ice.",
+      "description": "Refreshing chilled coffee over ice coffee.",
       "price": 4.8,
       "image": "/img/iced-coffe.avif",
       "size": [
@@ -72,7 +72,7 @@
       "categoryId": 3,
       "name": "Caramel Latte",
       "ingredients": "Espresso, Milk, Caramel Syrup",
-      "description": "Sweet caramel blended with creamy milk.",
+      "description": "Sweet caramel blended with...",
       "price": 5.8,
       "image": "/img/brownie.webp",
       "size": [

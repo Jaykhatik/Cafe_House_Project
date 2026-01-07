@@ -808,6 +808,8 @@ button.tm-more-button {
 .tm-product-text-menupage {
   max-width: 60%;     /* leave space for price circle */
   margin-left: 20px;
+   display: flex;
+  flex-direction: column;
 }
 
 .tm-product-title-menupage {
@@ -866,6 +868,22 @@ button.tm-more-button {
   margin-right: 3px;
   vertical-align: top;
   color: inherit; /* match text color */
+}
+.tm-add-to-cart-btn {
+  margin-top: 12px;
+  align-self: flex-start;
+  background-color: #c79c60;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tm-add-to-cart-btn:hover {
+  background-color: #b0784f;
 }
 
 /* ======================= IMAGE & UTILITY ======================= */
