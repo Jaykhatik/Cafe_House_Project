@@ -1,118 +1,130 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { useCart } from "../component/cartcontext";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../pages/cssOfWebsite/Cart.css";
 
 function Cart() {
-  // Sample cart data
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Espresso",
-      description: "Strong and bold coffee shot",
-      price: 150,
-      quantity: 2,
-      image: "https://via.placeholder.com/80",
-    },
-    {
-      id: 2,
-      name: "Cappuccino",
-      description: "Espresso with steamed milk and foam",
-      price: 200,
-      quantity: 1,
-      image: "https://via.placeholder.com/80",
-    },
-    {
-      id: 3,
-      name: "Blueberry Muffin",
-      description: "Soft muffin with fresh blueberries",
-      price: 120,
-      quantity: 3,
-      image: "https://via.placeholder.com/80",
-    },
-    {
-      id: 4,
-      name: "Latte",
-      description: "Creamy coffee with steamed milk",
-      price: 180,
-      quantity: 1,
-      image: "https://via.placeholder.com/80",
-    },
-    {
-      id: 5,
-      name: "Chocolate Cake Slice",
-      description: "Rich chocolate cake with layers",
-      price: 250,
-      quantity: 2,
-      image: "https://via.placeholder.com/80",
-    },
-  ]);
+  const { cartItems, increaseQty, decreaseQty, removeItem, subtotal } = useCart();
+  const navigate = useNavigate();
 
-  // Update quantity
-  const updateQuantity = (id, value) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + value) } : item
-      )
+  if (cartItems.length === 0) {
+    return (
+      <div className="tm-main-section" style={{ padding: "80px 0", textAlign: "center" }}>
+        <h2>Your cart is empty ☕</h2>
+        <NavLink to="/" className="tm-more-button" style={{ marginTop: "20px" }}>
+          Go Back Home
+        </NavLink>
+      </div>
     );
-  };
-
-  // Remove item
-  const removeItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  // Calculations
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const tax = Math.round(subtotal * 0.05); // 5% tax
-  const total = subtotal + tax;
+  }
 
   return (
-    <div className="cart-page">
-      <h2 className="cart-title">Your Cart</h2>
-
-      {cartItems.length === 0 ? (
-        <div className="empty-cart">
-          <p>Your cart is empty.</p>
-          <NavLink to="/" className="back-home-btn">
-            Go Back to Shop
-          </NavLink>
+    <div className="tm-main-section detail-bg" style={{ padding: "60px 0" }}>
+      <div className="container" style={{ maxWidth: "1100px" }}>
+        
+        {/* ================= BREADCRUMB ================= */}
+        <div className="detail-breadcrumb" style={{ marginBottom: "25px", color: "#888" }}>
+          <NavLink to="/">Home</NavLink> / <span>Cart</span>
         </div>
-      ) : (
-        <>
-          <div className="cart-table">
-            {cartItems.map((item) => (
-              <div className="cart-item" key={item.id}>
-                <div className="cart-item-image">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="cart-item-details">
-                  <h4>{item.name}</h4>
-                  <p className="cart-item-desc">{item.description}</p>
-                  <p>Price: ₹{item.price}</p>
-                  <div className="cart-quantity">
-                    <button onClick={() => updateQuantity(item.id, -1)}>-</button>
+
+        <h1 style={{ marginBottom: "30px", color: "#333" }}>Shopping Cart</h1>
+
+        <div style={{ display: "flex", gap: "30px", flexWrap: "wrap" }}>
+
+          {/* ================= CART ITEMS ================= */}
+          <div style={{ flex: "1 1 60%", display: "flex", flexDirection: "column", gap: "20px" }}>
+            {cartItems.map(item => (
+              <div key={item.id} style={{
+                display: "flex",
+                alignItems: "center",
+                background: "#fff",
+                padding: "15px",
+                borderRadius: "18px",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
+              }}>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "12px" }}
+                />
+                <div style={{ flex: 1, marginLeft: "20px" }}>
+                  <h3 style={{ marginBottom: "5px" }}>{item.name}</h3>
+                  <p style={{ color: "#c79a2b", fontWeight: "bold" }}>₹{item.price}</p>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "10px" }}>
+                    <button
+                      style={{ padding: "4px 10px", borderRadius: "6px", cursor: "pointer" }}
+                      onClick={() => decreaseQty(item.id)}
+                    >-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                    <button
+                      style={{ padding: "4px 10px", borderRadius: "6px", cursor: "pointer" }}
+                      onClick={() => increaseQty(item.id)}
+                    >+</button>
                   </div>
                 </div>
-                <div className="cart-item-remove">
-                  <button onClick={() => removeItem(item.id)}>Remove</button>
+
+                <div style={{ textAlign: "right" }}>
+                  <p style={{ fontWeight: "bold" }}>₹{(item.price * item.quantity).toFixed(2)}</p>
+                  <button
+                    onClick={() => removeItem(item.id)}
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "#ff4d4f",
+                      fontSize: "18px",
+                      cursor: "pointer"
+                    }}
+                  >
+                    ✕
+                  </button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="cart-summary">
-            <h3>Order Summary</h3>
-            <p>Subtotal: ₹{subtotal}</p>
-            <p>Tax (5%): ₹{tax}</p>
-            <p className="cart-total">Total: ₹{total}</p>
-            <NavLink to="/cart/checkout" className="checkout-btn">
+          {/* ================= SUMMARY ================= */}
+          <div style={{
+            flex: "1 1 35%",
+            background: "#fff",
+            padding: "25px",
+            borderRadius: "18px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+            height: "fit-content"
+          }}>
+            <h2 style={{ marginBottom: "20px" }}>Order Summary</h2>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+              <span>Subtotal</span>
+              <span>₹{subtotal.toFixed(2)}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
+              <span>Total</span>
+              <span style={{ fontWeight: "bold", color: "#c79a2b" }}>₹{subtotal.toFixed(2)}</span>
+            </div>
+            <button
+              onClick={() => navigate("/checkout")}
+              style={{
+                width: "100%",
+                padding: "15px 0",
+                background: "#c79a2b",
+                color: "#fff",
+                fontSize: "16px",
+                fontWeight: "bold",
+                borderRadius: "30px",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.3s"
+              }}
+              onMouseOver={e => e.target.style.background = "#b38720"}
+              onMouseOut={e => e.target.style.background = "#c79a2b"}
+            >
               Proceed to Checkout
-            </NavLink>
+            </button>
           </div>
-        </>
-      )}
+
+        </div>
+
+      </div>
     </div>
   );
 }

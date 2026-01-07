@@ -1,31 +1,33 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useLocation } from "react-router-dom";
 
 function Header() {
+    const location = useLocation();
+
     // Example: cartItems comes from your state or context
     // You can replace this with your actual cart state
-    const cartItems = [
-        { id: 1, quantity: 2 },
-        { id: 2, quantity: 1 },
-        { id: 3, quantity: 3 },
-    ];
+    // const cartItems = [
+    //     { id: 1, quantity: 2 },
+    //     { id: 2, quantity: 1 },
+    //     { id: 3, quantity: 3 },
+    // ];
 
     // Calculate total items in cart
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    // const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
         <>
             {/* ===== TOPBAR ===== */}
-            <div className="tm-topbar">
+            {/* <div className="tm-topbar">
                 <div className="container tm-topbar-inner">
-                    {/* Left: Toll Free */}
+                    
                     <div className="tm-topbar-left">
                         <span className="tm-tollfree">
                             📞 HelpLine No: <strong>1800-123-456</strong>
                         </span>
                     </div>
 
-                    {/* Center: Search Bar */}
+                    
                     <div className="tm-topbar-center">
                         <form className="tm-search-form">
                             <input
@@ -39,7 +41,7 @@ function Header() {
                         </form>
                     </div>
 
-                    {/* Right: Cart & Profile */}
+                    
                     <div className="tm-topbar-right">
                         <NavLink
                             to="/cart"
@@ -60,7 +62,7 @@ function Header() {
                         </NavLink>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <header className="tm-top-header">
                 <div className="container">
@@ -87,12 +89,18 @@ function Header() {
                             <nav className="tm-nav">
                                 <ul>
                                     <li>
-                                        <NavLink
-                                            to="/"
-                                            className={({ isActive }) => isActive ? "active" : ""}
-                                        >
-                                            Home
-                                        </NavLink>
+                                       <NavLink
+    to="/"
+    className={
+        location.pathname === "/" ||
+        location.pathname.startsWith("/menuitem")
+            ? "active"
+            : ""
+    }
+>
+    Home
+</NavLink>
+
                                     </li>
 
                                      <li>
@@ -122,7 +130,7 @@ function Header() {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink
+                                        {/* <NavLink
                                             to="/cart"
                                             className={({ isActive }) =>
                                                 isActive || window.location.pathname.startsWith("/cart/checkout")
@@ -131,7 +139,7 @@ function Header() {
                                             }
                                         >
                                             Cart
-                                        </NavLink>
+                                        </NavLink> */}
                                     </li>
                                 </ul>
                             </nav>

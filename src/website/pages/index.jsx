@@ -5,6 +5,10 @@ import { NavLink } from 'react-router-dom';
 function Index() {
     const [popularItems, setPopularItems] = useState([]);
 
+  // ✅ SCROLL TO TOP WHEN INDEX LOADS
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
     // ================= FETCH POPULAR ITEMS =================
     useEffect(() => {
         const fetchPopularItems = async () => {
@@ -106,11 +110,12 @@ function Index() {
 
                                                 <div className="order-now-container">
                                                     <NavLink
-                                                        to={`/menu/${item.id}`}
-                                                        className="order-now-link tm-handwriting-font"
-                                                    >
-                                                        View Details
-                                                    </NavLink>
+  to={`/menuitem/${item.id}`}
+  className="order-now-link tm-handwriting-font"
+>
+  View Details
+</NavLink>
+
                                                 </div>
                                             </div>
                                         </div>

@@ -1,155 +1,131 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import "../pages/cssOfWebsite/Checkout.css";
+import { useCart } from "../component/cartcontext";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function Checkout() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: "",
+  const { cartItems, subtotal, clearCart } = useCart();
+  const navigate = useNavigate();
+
+  const [customer, setCustomer] = useState({
+    name: "John Doe",
+    email: "john@example.com",
+    phone: "+1 234 567 890",
+    address: "123 Main Street, City, Country",
   });
 
-  // Sample cart summary data
-  const cartItems = [
-    { id: 1, name: "Espresso", quantity: 2, price: 150 },
-    { id: 2, name: "Cappuccino", quantity: 1, price: 200 },
-    { id: 3, name: "Blueberry Muffin", quantity: 3, price: 120 },
-  ];
+  const orderId = `ORD-${Date.now()}`;
+  const discount = subtotal > 50 ? 10 : 0;
+  const total = subtotal - discount;
 
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const tax = Math.round(subtotal * 0.05); // 5% tax
-  const total = subtotal + tax;
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handlePlaceOrder = () => {
+    alert(`Order ${orderId} placed successfully!`);
+    clearCart();
+    navigate("/");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Order Placed Successfully!");
-  };
+  if (cartItems.length === 0)
+    return (
+      <div className="tm-main-section" style={{ padding: "50px 0", textAlign: "center" }}>
+        <h2>Your Cart is Empty</h2>
+        <NavLink to="/" className="tm-more-button">Go Back Home</NavLink>
+      </div>
+    );
 
   return (
-    <div className="checkout-page">
-      <h2 className="checkout-title">Checkout</h2>
+    <div className="tm-main-section detail-bg" style={{ padding: "60px 0" }}>
+      <div className="container" style={{ maxWidth: "1100px" }}>
 
-      <div className="checkout-container">
-        {/* ===== BILLING FORM ===== */}
-        <div className="checkout-form-container">
-          <h3>Billing Details</h3>
-          <form className="checkout-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Full Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Address</label>
-              <input
-                type="text"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group-inline">
-              <div className="form-group">
-                <label>City</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>State</label>
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>ZIP</label>
-                <input
-                  type="text"
-                  name="zip"
-                  value={formData.zip}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label>Phone Number</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <button type="submit" className="place-order-btn">
-              Place Order
-            </button>
-          </form>
+        {/* ================= BREADCRUMB ================= */}
+        <div className="detail-breadcrumb" style={{ marginBottom: "20px", color: "#888" }}>
+          <NavLink to="/">Home</NavLink> / <NavLink to="/cart">Cart</NavLink> / <span>Checkout</span>
         </div>
 
-        {/* ===== ORDER SUMMARY ===== */}
-        <div className="checkout-summary-container">
-          <h3>Order Summary</h3>
-          <div className="checkout-summary-items">
-            {cartItems.map((item) => (
-              <div className="checkout-item" key={item.id}>
-                <span>{item.name} x {item.quantity}</span>
-                <span>₹{item.price * item.quantity}</span>
+        {/* ================= SINGLE CARD ================= */}
+        <div style={{
+          background: "#fff",
+          borderRadius: "20px",
+          boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
+          padding: "30px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px"
+        }}>
+          
+          {/* ORDER ID + CUSTOMER INFO */}
+          <div style={{ borderBottom: "1px solid #eee", paddingBottom: "20px" }}>
+            <h2 style={{ color: "#c79a2b", marginBottom: "10px" }}>Checkout</h2>
+            <p><b>Order ID:</b> {orderId}</p>
+            <p><b>Name:</b> {customer.name}</p>
+            <p><b>Email:</b> {customer.email}</p>
+            <p><b>Phone:</b> {customer.phone}</p>
+            <p><b>Address:</b> {customer.address}</p>
+          </div>
+
+          {/* CART ITEMS */}
+          <div>
+            <h3 style={{ marginBottom: "15px" }}>Order Items</h3>
+            {cartItems.map(item => (
+              <div key={item.id} style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "20px",
+                marginBottom: "15px",
+                padding: "10px",
+                borderRadius: "15px",
+                background: "#fafafa"
+              }}>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: "12px" }}
+                />
+                <div style={{ flex: 1 }}>
+                  <h4>{item.name}</h4>
+                  <p>Price: ${item.price.toFixed(2)}</p>
+                  <p>Quantity: {item.quantity}</p>
+                  {item.discount && <p>Discount: ${item.discount}</p>}
+                  <p><b>Total: ${(item.price * item.quantity - (item.discount || 0)).toFixed(2)}</b></p>
+                </div>
               </div>
             ))}
           </div>
-          <div className="checkout-summary-totals">
-            <p>Subtotal: ₹{subtotal}</p>
-            <p>Tax (5%): ₹{tax}</p>
-            <p className="checkout-total">Total: ₹{total}</p>
-          </div>
 
-          {/* Payment options */}
-          <div className="payment-options">
-            <h4>Payment Options</h4>
-            <button className="payment-btn">Credit/Debit Card</button>
-            <button className="payment-btn">UPI</button>
-            <button className="payment-btn">Cash on Delivery</button>
+          {/* SUMMARY + PLACE ORDER */}
+          <div style={{
+            borderTop: "1px solid #eee",
+            paddingTop: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "20px"
+          }}>
+            <div>
+              <p>Subtotal: ${subtotal.toFixed(2)}</p>
+              <p>Discount: ${discount.toFixed(2)}</p>
+              <h3 style={{ color: "#c79a2b" }}>Total: ${total.toFixed(2)}</h3>
+            </div>
+
+            <button
+              onClick={handlePlaceOrder}
+              style={{
+                padding: "16px 35px",
+                background: "#c79a2b",
+                color: "#fff",
+                border: "none",
+                borderRadius: "30px",
+                fontSize: "16px",
+                cursor: "pointer",
+                transition: "all 0.3s"
+              }}
+              onMouseOver={e => e.target.style.background = "#b38720"}
+              onMouseOut={e => e.target.style.background = "#c79a2b"}
+            >
+              Place Order
+            </button>
           </div>
         </div>
+
       </div>
     </div>
   );

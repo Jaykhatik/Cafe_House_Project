@@ -19,6 +19,7 @@ import Settings from './Admin/pages/Settings/Setting';
 import Cart from './website/pages/Cart';
 import Checkout from './website/pages/Checkout';
 import About from './website/pages/About';
+import MenuItemDetails from './website/pages/MenuItemDetails';
 
 
 
@@ -33,11 +34,13 @@ function App() {
           <Route element={<WebsiteLayout />}>
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
+            {/* SINGLE ITEM PAGE */}
+            <Route path="/menuitem/:id" element={<MenuItemDetails />} />
             {/* <Route path='/today_special' element={<><Today_special /></>} /> */}
-            <Route path='/about' element={<><About/></>}/>
+            <Route path='/about' element={<><About /></>} />
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/cart/checkout' element={<Checkout />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Route>
           {/* admin pages routing */}
 
