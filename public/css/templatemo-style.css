@@ -268,6 +268,7 @@ ul {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 /* toggle icon ke liye */
 
 .mobile-menu-icon {
@@ -356,7 +357,7 @@ ul {
 }
 
 /* welcome ka image setup */
-.tm-position-relative{
+.tm-position-relative {
   position: relative;
 }
 
@@ -612,6 +613,7 @@ ol li:before {
   color: #c79c60;
   font-weight: 700;
 }
+
 .tm-daily-menu-container {
   overflow: hidden;
 }
@@ -623,6 +625,7 @@ ol li:before {
   width: 100%;
   height: 41px;
 }
+
 .tm-section {
   margin-bottom: 60px;
 }
@@ -630,9 +633,11 @@ ol li:before {
 .tm-hr {
   border-color: #c79c60;
 }
+
 .tm-section-header {
   width: 350px;
 }
+
 .tm-section-header-container {
   display: flex;
   align-items: flex-end;
@@ -741,6 +746,7 @@ button.tm-more-button {
 
 /* ===============================================================================Menu page================================================================= */
 /* ======================= SIDE MENU ======================= */
+
 .tm-side-menupage {
   align-items: center;
   margin-left: 30px;
@@ -779,6 +785,15 @@ button.tm-more-button {
 }
 
 /* ======================= PRODUCT CARD ======================= */
+/* ================= FIX: SINGLE ITEM DELETE LAYOUT ================= */
+
+.tm-menu-product-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+    min-height: 520px; /* adjust once if needed */
+}
+
 .tm-product-menupage {
   display: flex;
   justify-content: space-between;
@@ -786,10 +801,13 @@ button.tm-more-button {
   background-color: white;
   padding: 20px;
   max-width: 652px;
+  width: 100%;
   cursor: pointer;
   margin-bottom: 20px;
-  border-radius: 10px; /* optional rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* subtle shadow */
+  border-radius: 10px;
+  /* optional rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  /* subtle shadow */
   transition: all 0.3s ease;
 }
 
@@ -798,17 +816,23 @@ button.tm-more-button {
 }
 
 .tm-product-menupage img {
-  width: 150px;       /* fixed width */
-  height: 150px;      /* fixed height */
-  object-fit: cover;  /* maintain aspect ratio */
-  border-radius: 8px; /* optional rounded corners */
-  flex-shrink: 0;     /* prevent image from shrinking */
+  width: 150px;
+  /* fixed width */
+  height: 150px;
+  /* fixed height */
+  object-fit: cover;
+  /* maintain aspect ratio */
+  border-radius: 8px;
+  /* optional rounded corners */
+  flex-shrink: 0;
+  /* prevent image from shrinking */
 }
 
 .tm-product-text-menupage {
-  max-width: 60%;     /* leave space for price circle */
+  max-width: 60%;
+  /* leave space for price circle */
   margin-left: 20px;
-   display: flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -834,15 +858,17 @@ button.tm-more-button {
   color: white;
   position: relative;
   flex-shrink: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* subtle shadow */
   transition: all 0.3s ease;
 }
 
 .tm-product-price-link-menupage {
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row; /* dollar + price side by side */
+  flex-direction: row;
+  /* dollar + price side by side */
   border: 2px solid rgb(174, 174, 174);
   border-radius: 50%;
   width: 85px;
@@ -855,7 +881,7 @@ button.tm-more-button {
 }
 
 .tm-product-menupage:hover .tm-product-price-link-menupage {
- border-color: #c79c60;
+  border-color: #c79c60;
   color: #c79c60;
 }
 
@@ -864,11 +890,13 @@ button.tm-more-button {
 }
 
 .tm-product-price-currency-menupage {
- font-size: 18px;
+  font-size: 18px;
   margin-right: 3px;
   vertical-align: top;
-  color: inherit; /* match text color */
+  color: inherit;
+  /* match text color */
 }
+
 .tm-add-to-cart-btn {
   margin-top: 12px;
   align-self: flex-start;
@@ -899,13 +927,14 @@ button.tm-more-button {
   background: url(../img/shadow.png) no-repeat center bottom;
   padding-bottom: 7px;
 }
+
 /* ===========================================================about page================================================== */
 /* ====================== VALUES CARDS ====================== */
 .tm-values-card {
   background: linear-gradient(135deg, #fff7ed, #f7f1e7);
   padding: 30px 20px;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   text-align: center;
   transition: all 0.4s ease;
   cursor: pointer;
@@ -914,7 +943,7 @@ button.tm-more-button {
 
 .tm-values-card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   background: linear-gradient(135deg, #c79c60, #f7f1e7);
 }
 
@@ -951,6 +980,7 @@ button.tm-more-button {
 .tm-values-card:hover p {
   color: #f9f5f0;
 }
+
 /* ======================= TIMELINE ======================= */
 .timeline {
   position: relative;
@@ -968,7 +998,7 @@ button.tm-more-button {
   height: 100%;
   background: linear-gradient(to bottom, #c79c60, #f7f1e7);
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(199,156,96,0.4);
+  box-shadow: 0 0 10px rgba(199, 156, 96, 0.4);
 }
 
 .timeline-item {
@@ -979,7 +1009,7 @@ button.tm-more-button {
   margin-bottom: 50px;
   background: #fff7ed;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.4s ease-in-out;
 }
 
@@ -1012,71 +1042,70 @@ button.tm-more-button {
 
 .timeline-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* ================= TESTIMONIAL CARD ================= */
 .tm-testimonial-card {
-    background: linear-gradient(135deg, #fff7ed, #f7f1e7);
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: all 0.4s ease;
-    position: relative;
+  background: linear-gradient(135deg, #fff7ed, #f7f1e7);
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
 }
 
 .tm-testimonial-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg, #c79c60, #f7f1e7);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #c79c60, #f7f1e7);
 }
 
 .tm-testimonial-text {
-    font-style: italic;
-    font-size: 16px;
-    color: #7c6a51;
-    margin-bottom: 15px;
+  font-style: italic;
+  font-size: 16px;
+  color: #7c6a51;
+  margin-bottom: 15px;
 }
 
 .tm-testimonial-author {
-    font-weight: bold;
-    color: #c79c60;
+  font-weight: bold;
+  color: #c79c60;
 }
 
 /* ================= CAFE MOTTO ================= */
 .tm-motto-section {
-    /* background: linear-gradient(135deg, #fef8f0, #fff7ed); */
-    padding: 60px 20px;
+  /* background: linear-gradient(135deg, #fef8f0, #fff7ed); */
+  padding: 60px 20px;
 }
 
 .tm-motto-card {
-    display: inline-block;
-    background: #fff7ed;
-    padding: 40px 30px;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    max-width: 700px;
-    text-align: center;
-    transition: all 0.4s ease;
+  display: inline-block;
+  background: #fff7ed;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  text-align: center;
+  transition: all 0.4s ease;
 }
 
 .tm-motto-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    background: linear-gradient(135deg, #c79c60, #f7f1e7);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #c79c60, #f7f1e7);
 }
 
 .tm-motto-text {
-    font-family: "tm-handwriting-font", cursive;
-    font-size: 22px;
-    color: #7c6a51;
-    margin-bottom: 15px;
+  font-family: "tm-handwriting-font", cursive;
+  font-size: 22px;
+  color: #7c6a51;
+  margin-bottom: 15px;
 }
 
 .tm-motto-author {
-    font-size: 18px;
-    color: #c79c60;
-    font-weight: bold;
+  font-size: 18px;
+  color: #c79c60;
+  font-weight: bold;
 }
-

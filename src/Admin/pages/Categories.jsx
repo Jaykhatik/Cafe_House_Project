@@ -3,10 +3,20 @@ import axios from "axios";
 import "../pages/cssOfPages/Categories.css";
 
 function Categories() {
-
   // ===================== STATE =====================
   const [categories, setCategories] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
+
+  // Add/Edit Modal
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [editingCategory, setEditingCategory] = useState(null);
+  const [categoryName, setCategoryName] = useState("");
+  const [categoryIcon, setCategoryIcon] = useState("");
+  const [categoryColor, setCategoryColor] = useState("");
+
+  // Delete Modal
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteCategory, setDeleteCategory] = useState(null);
 
   // ===================== FETCH CATEGORIES =====================
   const fetchCategories = async () => {
@@ -34,43 +44,120 @@ function Categories() {
     fetchMenuItems();
   }, []);
 
-  // ===================== CREATE ITEM COUNT MAP (PERFORMANCE OPTIMIZED) =====================
+  // ===================== ITEM COUNT MAP =====================
   const itemCountMap = useMemo(() => {
     const map = {};
-    menuItems.forEach(item => {
-      const categoryKey = Number(item.categoryId); // ensure number
+    menuItems.forEach((item) => {
+      const categoryKey = Number(item.categoryId);
       map[categoryKey] = (map[categoryKey] || 0) + 1;
     });
     return map;
   }, [menuItems]);
 
-  // ===================== GET ITEM COUNT =====================
   const getItemCount = (categoryId) => {
     return itemCountMap[Number(categoryId)] || 0;
   };
 
+  // ===================== ADD / EDIT HANDLERS =====================
+  const handleAddClick = () => {
+    setEditingCategory(null);
+    setCategoryName("");
+    setCategoryIcon("");
+    setCategoryColor("");
+    setShowAddModal(true);
+  };
+
+  const handleEditClick = (cat) => {
+    setEditingCategory(cat);
+    setCategoryName(cat.name);
+    setCategoryIcon(cat.icon);
+    setCategoryColor(cat.color);
+    setShowAddModal(true);
+  };
+
+  const handleSaveCategory = async () => {
+    if (!categoryName || !categoryIcon || !categoryColor) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    const newCategory = {
+      name: categoryName,
+      icon: categoryIcon,
+      color: categoryColor,
+    };
+
+    try {
+      if (editingCategory) {
+        // EDIT
+        await axios.put(
+          `http://localhost:3002/categories/${editingCategory.id}`,
+          newCategory
+        );
+      } else {
+        // ADD
+        await axios.post("http://localhost:3002/categories", newCategory);
+      }
+
+      setShowAddModal(false);
+      setEditingCategory(null);
+      fetchCategories(); // Refresh list
+    } catch (err) {
+      console.error("Error saving category:", err);
+    }
+  };
+
+  // ===================== DELETE HANDLERS =====================
+  const handleDeleteClick = (cat) => {
+    setDeleteCategory(cat);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+  try {
+    // 1️⃣ Delete all menu items in that category
+    const itemsToDelete = menuItems.filter(
+      item => Number(item.categoryId) === Number(deleteCategory.id)
+    );
+
+    for (let item of itemsToDelete) {
+      await axios.delete(`http://localhost:3002/menuItems/${item.id}`);
+    }
+
+    // 2️⃣ Delete the category
+    await axios.delete(`http://localhost:3002/categories/${deleteCategory.id}`);
+
+    // Update UI
+    setCategories(prev => prev.filter(cat => cat.id !== deleteCategory.id));
+    setMenuItems(prev =>
+      prev.filter(item => Number(item.categoryId) !== Number(deleteCategory.id))
+    );
+
+    setShowDeleteModal(false);
+    setDeleteCategory(null);
+  } catch (err) {
+    console.error("Delete failed:", err);
+  }
+};
+
+
   return (
     <div className="main-content">
       <div className="container-fluid category-container">
-
         {/* ================= HEADER ================= */}
         <div className="category-header">
           <h4>All Categories</h4>
-
-          <button className="add-category-btn">
-            <i className="bi bi-plus-lg"></i>
-            Add Category
+          <button className="add-category-btn" onClick={handleAddClick}>
+            <i className="bi bi-plus-lg"></i> Add Category
           </button>
         </div>
 
         {/* ================= CATEGORY CARDS ================= */}
         <div className="row g-4">
-
           {categories.length > 0 ? (
             categories.map((cat) => (
               <div className="col-lg-3 col-md-4 col-sm-6" key={cat.id}>
                 <div className="category-card">
-
                   {/* ICON */}
                   <div className={`cat-icon ${cat.color}`}>
                     <i className={`bi ${cat.icon}`}></i>
@@ -79,24 +166,91 @@ function Categories() {
                   {/* CATEGORY NAME */}
                   <h5>{cat.name}</h5>
 
-                  {/* ✅ DYNAMIC ITEM COUNT */}
+                  {/* ITEM COUNT */}
                   <p>{getItemCount(cat.id)} items</p>
 
                   {/* ACTION ICONS */}
                   <div className="cat-actions">
-                    <i className="bi bi-pencil-square"></i>
-                    <i className="bi bi-trash"></i>
+                    <i
+                      className="bi bi-pencil-square"
+                      onClick={() => handleEditClick(cat)}
+                    ></i>
+                    <i
+                      className="bi bi-trash"
+                      onClick={() => handleDeleteClick(cat)}
+                    ></i>
                   </div>
-
                 </div>
               </div>
             ))
           ) : (
             <p className="text-center w-100">No categories found</p>
           )}
-
         </div>
       </div>
+
+      {/* ================= ADD / EDIT MODAL ================= */}
+      {showAddModal && (
+        <div className="modal-overlay">
+          <div className="modal-card">
+            <h3>{editingCategory ? "Edit Category" : "Add Category"}</h3>
+
+            <input
+              type="text"
+              placeholder="Category Name"
+              value={categoryName}
+              onChange={(e) => setCategoryName(e.target.value)}
+            />
+
+            <input
+              type="text"
+              placeholder="Category Icon (e.g., bi-cup-hot-fill)"
+              value={categoryIcon}
+              onChange={(e) => setCategoryIcon(e.target.value)}
+            />
+
+            <input
+              type="text"
+              placeholder="Category Color (e.g., bg-coffee)"
+              value={categoryColor}
+              onChange={(e) => setCategoryColor(e.target.value)}
+            />
+
+            <div className="modal-actions">
+              <button onClick={() => setShowAddModal(false)}>Cancel</button>
+              <button
+                style={{ background: "#198754", color: "#fff" }}
+                onClick={handleSaveCategory}
+              >
+                {editingCategory ? "Update" : "Add"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================= DELETE MODAL ================= */}
+      {showDeleteModal && deleteCategory && (
+        <div className="modal-overlay">
+          <div className="modal-card">
+            <h3>Delete Category</h3>
+            <p>
+              Are you sure you want to delete{" "}
+              <strong>{deleteCategory.name}</strong>?
+            </p>
+
+            <div className="modal-actions">
+              <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
+              <button
+                style={{ background: "#dc3545", color: "#fff" }}
+                onClick={handleConfirmDelete}
+              >
+                Yes, Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

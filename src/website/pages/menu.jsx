@@ -58,8 +58,11 @@ function Menu() {
 
     // ================= FILTER ITEMS (ONLY FIX HERE) =================
     const filteredItems = menuItems.filter(
-        item => Number(item.categoryId) === Number(activeCategoryId)
-    );
+    item =>
+        Number(item.categoryId) === Number(activeCategoryId) &&
+        item.status !== "inactive"
+);
+
 
     return (
         <>
@@ -156,11 +159,11 @@ function Menu() {
                                                         {item.description}
                                                     </p>
                                                     <button
-      className="tm-add-to-cart-btn"
-      onClick={() => addToCart(item)}
-    >
-      Add to Cart
-    </button>
+                                                        className="tm-add-to-cart-btn"
+                                                        onClick={() => addToCart(item)}
+                                                    >
+                                                        Add to Cart
+                                                    </button>
                                                 </div>
                                                 <div className="tm-product-price-menupage">
                                                     <a href="#" className="tm-product-price-link-menupage">

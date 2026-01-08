@@ -6,6 +6,28 @@ const MenuItems = () => {
   const [searchValue, setSearchValue] = useState("");
   const [menuData, setMenuData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editItem, setEditItem] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  const [newItem, setNewItem] = useState({
+    name: "",
+    categoryId: "",
+    ingredients: "",
+    description: "",
+    price: "",
+    image: "",
+    calories: "",
+    rating: "",
+    isSpecial: false,
+    status: "active"
+  });
+
+
+
+
 
   // -------- FETCH MENU ITEMS --------
   useEffect(() => {
@@ -34,6 +56,131 @@ const MenuItems = () => {
   const getCategoryName = (categoryId) => {
     return categoryMap[Number(categoryId)] || "Unknown";
   };
+  //edit click function
+  const handleEditClick = (item) => {
+    setEditItem({ ...item }); // copy item data
+    setShowEditModal(true);   // open modal
+  };
+  const handleEditChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    let newValue = value;
+
+    // convert number fields
+    if (name === "price" || name === "rating" || name === "categoryId") {
+      newValue = Number(value);
+    }
+
+    // checkbox
+    if (type === "checkbox") {
+      newValue = checked;
+    }
+
+    setEditItem(prev => ({
+      ...prev,
+      [name]: newValue
+    }));
+  };
+
+  const handleUpdateItem = async () => {
+    try {
+      await axios.put(
+        `http://localhost:3002/menuItems/${editItem.id}`,
+        editItem
+      );
+
+      // Update UI
+      setMenuData(prev =>
+        prev.map(item =>
+          item.id === editItem.id ? editItem : item
+        )
+      );
+
+      setShowEditModal(false);
+    } catch (err) {
+      console.error("Update failed", err);
+    }
+  };
+
+  //delete
+  const handleDeleteClick = (item) => {
+    setDeleteItem(item);
+    setShowDeleteModal(true);
+  };
+  const handleConfirmDelete = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:3002/menuItems/${deleteItem.id}`
+      );
+
+      // remove from UI
+      setMenuData(prev =>
+        prev.filter(item => item.id !== deleteItem.id)
+      );
+
+      setShowDeleteModal(false);
+      setDeleteItem(null);
+    } catch (error) {
+      console.error("Delete failed", error);
+    }
+  };
+
+
+  //add item
+  const handleAddClick = () => {
+    setNewItem({
+      name: "",
+      categoryId: "",
+      ingredients: "",
+      description: "",
+      price: "",
+      image: "",
+      calories: "",
+      rating: "",
+      isSpecial: false
+    });
+
+    setShowAddModal(true);
+  };
+  const handleAddChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    let newValue = value;
+
+    if (name === "price" || name === "rating" || name === "categoryId") {
+      newValue = Number(value);
+    }
+
+    if (type === "checkbox") {
+      newValue = checked;
+    }
+
+    setNewItem(prev => ({
+      ...prev,
+      [name]: newValue
+    }));
+  };
+  const handleAddItem = async () => {
+    try {
+      const payload = {
+        ...newItem,
+        id: Date.now().toString() // JSON server safe id
+      };
+
+      const res = await axios.post(
+        "http://localhost:3002/menuItems",
+        payload
+      );
+
+      // update UI instantly
+      setMenuData(prev => [...prev, res.data]);
+
+      setShowAddModal(false);
+    } catch (error) {
+      console.error("Add item failed", error);
+    }
+  };
+
 
   // -------- SEARCH FILTER --------
   const filteredMenu = menuData.filter(item =>
@@ -58,7 +205,11 @@ const MenuItems = () => {
             />
           </div>
 
-          <button className="add-item-btn d-flex align-items-center">
+          <button
+            className="add-item-btn d-flex align-items-center"
+            onClick={handleAddClick}
+          >
+
             <i className="bi bi-plus-lg me-2"></i> Add Item
           </button>
         </div>
@@ -104,25 +255,31 @@ const MenuItems = () => {
                     </td>
 
                     <td>{item.ingredients}</td>
-                    <td>${item.price.toFixed(2)}</td>
+                    <td>${Number(item.price).toFixed(2)}</td>
+
+
+                   <td>
+  <span className={`status-badge ${item.status || "active"}`}>
+    {item.status === "inactive" ? "Inactive" : "Active"}
+  </span>
+</td>
 
                     <td>
-                      <span
-                        className={`badge ${
-                          item.status === "available"
-                            ? "available"
-                            : item.status === "low-stock"
-                              ? "low"
-                              : "out"
-                        }`}
+                      <i
+                        className="action edit"
+                        onClick={() => handleEditClick(item)}
                       >
-                        {item.status}
-                      </span>
-                    </td>
+                        ✏️
+                      </i>
 
-                    <td>
-                      <i className="action edit">✏️</i>
-                      <i className="action delete">🗑</i>
+
+                      <i
+                        className="action delete"
+                        onClick={() => handleDeleteClick(item)}
+                      >
+                        🗑
+                      </i>
+
                     </td>
                   </tr>
                 ))
@@ -138,6 +295,199 @@ const MenuItems = () => {
         </div>
 
       </div>
+      {showEditModal && editItem && (
+        <div className="modal-overlay">
+          <div className="modal-card scrollable">
+
+            <h3>Edit Menu Item</h3>
+
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              value={editItem.name}
+              onChange={handleEditChange}
+            />
+
+            <label>Ingredients</label>
+            <input
+              type="text"
+              name="ingredients"
+              value={editItem.ingredients}
+              onChange={handleEditChange}
+            />
+
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={editItem.description}
+              onChange={handleEditChange}
+            />
+
+            <label>Price</label>
+            <input
+              type="number"
+              step="0.1"
+              name="price"
+              value={editItem.price}
+              onChange={handleEditChange}
+            />
+
+            <label>Image URL</label>
+            <input
+              type="text"
+              name="image"
+              value={editItem.image}
+              onChange={handleEditChange}
+            />
+
+            <label>Calories</label>
+            <input
+              type="text"
+              name="calories"
+              value={editItem.calories}
+              onChange={handleEditChange}
+            />
+
+            <label>Rating</label>
+            <input
+              type="number"
+              step="0.1"
+              name="rating"
+              value={editItem.rating}
+              onChange={handleEditChange}
+            />
+
+            <label>Category</label>
+            <select
+              name="categoryId"
+              value={editItem.categoryId}
+              onChange={handleEditChange}
+            >
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+<label>Status</label>
+<select
+  name="status"
+  value={editItem.status}
+  onChange={handleEditChange}
+>
+  <option value="active">Active</option>
+  <option value="inactive">Inactive</option>
+</select>
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                name="isSpecial"
+                checked={editItem.isSpecial}
+                onChange={handleEditChange}
+              />
+              Special Item
+            </label>
+
+            <div className="modal-actions">
+              <button onClick={() => setShowEditModal(false)}>Cancel</button>
+              <button onClick={handleUpdateItem}>Save Changes</button>
+            </div>
+
+          </div>
+        </div>
+      )}
+      {showDeleteModal && deleteItem && (
+        <div className="modal-overlay">
+          <div className="modal-card">
+
+            <h3>Delete Item</h3>
+
+            <p>
+              Are you sure you want to delete
+              <strong> {deleteItem.name}</strong>?
+            </p>
+
+            <div className="modal-actions">
+              <button onClick={() => setShowDeleteModal(false)}>
+                Cancel
+              </button>
+
+              <button
+                style={{ background: "#dc3545", color: "#fff" }}
+                onClick={handleConfirmDelete}
+              >
+                Yes, Delete
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+      {showAddModal && (
+        <div className="modal-overlay">
+          <div className="modal-card scrollable">
+
+            <h3>Add Menu Item</h3>
+
+            <label>Name</label>
+            <input name="name" value={newItem.name} onChange={handleAddChange} />
+
+            <label>Ingredients</label>
+            <input name="ingredients" value={newItem.ingredients} onChange={handleAddChange} />
+
+            <label>Description</label>
+            <textarea name="description" value={newItem.description} onChange={handleAddChange} />
+
+            <label>Price</label>
+            <input type="number" name="price" value={newItem.price} onChange={handleAddChange} />
+
+            <label>Image URL</label>
+            <input name="image" value={newItem.image} onChange={handleAddChange} />
+
+            <label>Calories</label>
+            <input name="calories" value={newItem.calories} onChange={handleAddChange} />
+
+            <label>Rating</label>
+            <input type="number" step="0.1" name="rating" value={newItem.rating} onChange={handleAddChange} />
+
+            <label>Category</label>
+            <select name="categoryId" value={newItem.categoryId} onChange={handleAddChange}>
+              <option value="">Select category</option>
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+            <label>Status</label>
+<select
+  name="status"
+  value={newItem.status || "active"}
+  onChange={handleAddChange}
+>
+  <option value="active">Active</option>
+  <option value="inactive">Inactive</option>
+</select>
+
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                name="isSpecial"
+                checked={newItem.isSpecial}
+                onChange={handleAddChange}
+              />
+              Special Item
+            </label>
+
+            <div className="modal-actions">
+              <button onClick={() => setShowAddModal(false)}>Cancel</button>
+              <button onClick={handleAddItem}>Add Item</button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+
     </div>
   );
 };

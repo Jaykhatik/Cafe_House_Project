@@ -1,108 +1,7 @@
 {
   "menuItems": [
     {
-      "id": 1,
-      "categoryId": 1,
-      "name": "Americano",
-      "ingredients": "Espresso, Hot Water",
-      "description": "Smooth and bold espresso diluted.",
-      "price": 4.5,
-      "image": "/img/americano.avif",
-      "size": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "calories": "15 kcal",
-      "rating": 4.5,
-      "isSpecial": true
-      
-    },
-    {
-      "id": 2,
-      "categoryId": 1,
-      "name": "Cappuccino",
-      "ingredients": "Espresso, Milk Foam",
-      "description": "Classic cappuccino with rich foam.",
-      "price": 5.0,
-      "image": "/img/americano.avif",
-      "size": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "calories": "120 kcal",
-      "rating": 4.7,
-      "isSpecial": false
-    },
-    {
-      "id": 3,
-      "categoryId": 2,
-      "name": "Iced Coffee",
-      "ingredients": "Cold Brew, Ice",
-      "description": "Refreshing chilled coffee over ice coffee.",
-      "price": 4.8,
-      "image": "/img/iced-coffe.avif",
-      "size": [
-        "Medium",
-        "Large"
-      ],
-      "calories": "90 kcal",
-      "rating": 4.3,
-      "isSpecial": true
-    },
-    {
-      "id": 4,
-      "categoryId": 2,
-      "name": "Cold Brew",
-      "ingredients": "Slow Brewed Coffee",
-      "description": "Smooth low-acidity cold brew coffee.",
-      "price": 5.5,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Medium",
-        "Large"
-      ],
-      "calories": "80 kcal",
-      "rating": 4.6,
-      "isSpecial": false
-    },
-    {
-      "id": 5,
-      "categoryId": 3,
-      "name": "Caramel Latte",
-      "ingredients": "Espresso, Milk, Caramel Syrup",
-      "description": "Sweet caramel blended with...",
-      "price": 5.8,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "calories": "190 kcal",
-      "rating": 4.8,
-      "isSpecial": true
-    },
-    {
-      "id": 6,
-      "categoryId": 3,
-      "name": "Vanilla Latte",
-      "ingredients": "Espresso, Milk, Vanilla Syrup",
-      "description": "Smooth vanilla flavored latte.",
-      "price": 5.6,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "calories": "180 kcal",
-      "rating": 4.6,
-      "isSpecial": false
-    },
-    {
-      "id": 7,
+      "id": "7",
       "categoryId": 4,
       "name": "Mocha",
       "ingredients": "Coffee, Chocolate, Milk",
@@ -116,10 +15,11 @@
       ],
       "calories": "200 kcal",
       "rating": 4.5,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     },
     {
-      "id": 8,
+      "id": "8",
       "categoryId": 4,
       "name": "Chocolate Frappe",
       "ingredients": "Chocolate, Ice, Milk",
@@ -132,10 +32,11 @@
       ],
       "calories": "230 kcal",
       "rating": 4.7,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     },
     {
-      "id": 9,
+      "id": "9",
       "categoryId": 5,
       "name": "Chocolate Brownie",
       "ingredients": "Cocoa, Flour, Butter",
@@ -147,10 +48,11 @@
       ],
       "calories": "320 kcal",
       "rating": 4.8,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     },
     {
-      "id": 10,
+      "id": "10",
       "categoryId": 5,
       "name": "Blueberry Muffin",
       "ingredients": "Blueberry, Flour, Sugar",
@@ -162,10 +64,11 @@
       ],
       "calories": "280 kcal",
       "rating": 4.4,
-      "isSpecial": false
+      "isSpecial": false,
+      "status": "active"
     },
     {
-      "id": 11,
+      "id": "11",
       "categoryId": 6,
       "name": "Green Tea",
       "ingredients": "Green Tea Leaves",
@@ -178,10 +81,11 @@
       ],
       "calories": "5 kcal",
       "rating": 4.2,
-      "isSpecial": false
+      "isSpecial": false,
+      "status": "active"
     },
     {
-      "id": 12,
+      "id": "12",
       "categoryId": 6,
       "name": "Lemon Honey Tea",
       "ingredients": "Lemon, Honey, Tea",
@@ -194,10 +98,11 @@
       ],
       "calories": "40 kcal",
       "rating": 4.5,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     },
     {
-      "id": 13,
+      "id": "13",
       "categoryId": 6,
       "name": "Lemon Hone1 Tea1",
       "ingredients": "Lemon, Honey1, Tea",
@@ -210,12 +115,26 @@
       ],
       "calories": "20 kcal",
       "rating": 1.5,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
+    },
+    {
+      "id": "1767857002286",
+      "name": "chai",
+      "categoryId": 6,
+      "ingredients": "masala,dudh,sugar,tea",
+      "description": "jbwnbwnb",
+      "price": 20,
+      "image": "/img/americano.avif",
+      "calories": "200 kcal",
+      "rating": 2.8,
+      "isSpecial": true,
+      "status": "active"
     }
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "customerId": 1,
       "items": [
         {
@@ -232,7 +151,7 @@
       "date": "2024-01-15 18:30"
     },
     {
-      "id": 2,
+      "id": "2",
       "customerId": 2,
       "items": [
         {
@@ -249,7 +168,7 @@
       "date": "2024-01-15 19:00"
     },
     {
-      "id": 3,
+      "id": "3",
       "customerId": 1,
       "items": [
         {
@@ -268,7 +187,7 @@
   ],
   "inventory": [
     {
-      "id": 1,
+      "id": "1",
       "item": "Coffee Beans (Arabica)",
       "category": "Raw Materials",
       "supplier": "Bean Co.",
@@ -278,7 +197,7 @@
       "lastRestock": "2024-01-10"
     },
     {
-      "id": 2,
+      "id": "2",
       "item": "Milk (Whole)",
       "category": "Dairy",
       "supplier": "DairyFresh",
@@ -288,7 +207,7 @@
       "lastRestock": "2024-01-14"
     },
     {
-      "id": 3,
+      "id": "3",
       "item": "Chocolate Syrup",
       "category": "Flavoring",
       "supplier": "ChocoWorld",
@@ -298,7 +217,7 @@
       "lastRestock": "2024-01-05"
     },
     {
-      "id": 4,
+      "id": "4",
       "item": "Fresh Cream",
       "category": "Dairy",
       "supplier": "DairyFresh",
@@ -308,7 +227,7 @@
       "lastRestock": "2024-01-15"
     },
     {
-      "id": 5,
+      "id": "5",
       "item": "Sugar (Brown)",
       "category": "Raw Materials",
       "supplier": "SweetCo",
@@ -318,7 +237,7 @@
       "lastRestock": "2024-01-12"
     },
     {
-      "id": 6,
+      "id": "6",
       "item": "Tea Leaves (Assam)",
       "category": "Raw Materials",
       "supplier": "TeaWorld",
@@ -328,7 +247,7 @@
       "lastRestock": "2024-01-08"
     },
     {
-      "id": 7,
+      "id": "7",
       "item": "Vanilla Essence",
       "category": "Flavoring",
       "supplier": "FlavorMax",
@@ -338,7 +257,7 @@
       "lastRestock": "2024-01-09"
     },
     {
-      "id": 8,
+      "id": "8",
       "item": "Paper Cups (250ml)",
       "category": "Supplies",
       "supplier": "EcoCups",
@@ -348,7 +267,7 @@
       "lastRestock": "2024-01-11"
     },
     {
-      "id": 9,
+      "id": "9",
       "item": "Strawberry Syrup",
       "category": "Flavoring",
       "supplier": "ChocoWorld",
@@ -358,7 +277,7 @@
       "lastRestock": "2024-01-13"
     },
     {
-      "id": 10,
+      "id": "10",
       "item": "Espresso Cups",
       "category": "Supplies",
       "supplier": "EcoCups",
@@ -368,7 +287,7 @@
       "lastRestock": "2024-01-10"
     },
     {
-      "id": 11,
+      "id": "11",
       "item": "Whipped Cream",
       "category": "Dairy",
       "supplier": "DairyFresh",
@@ -380,37 +299,19 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "Hot Coffee",
-      "icon": "bi-cup-hot-fill",
-      "color": "bg-coffee"
-    },
-    {
-      "id": 2,
-      "name": "Cold Coffee",
-      "icon": "bi-cup-straw",
-      "color": "bg-teal"
-    },
-    {
-      "id": 3,
-      "name": "Special Latte",
-      "icon": "bi-star-fill",
-      "color": "bg-warning"
-    },
-    {
-      "id": 4,
+      "id": "4",
       "name": "Chocolate Drinks",
       "icon": "bi-cup-fill",
       "color": "bg-chocolate"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Desserts & Snacks",
       "icon": "bi-cookie",
       "color": "bg-pink"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Healthy & Tea",
       "icon": "bi-leaf-fill",
       "color": "bg-success"
@@ -425,7 +326,8 @@
       "maxUsage": 100,
       "validFrom": "2024-01-01",
       "validTo": "2024-01-31",
-      "status": "active"
+      "status": "active",
+      "id": "efb7"
     },
     {
       "code": "FLAT5",
@@ -435,7 +337,8 @@
       "maxUsage": 50,
       "validFrom": "2024-01-01",
       "validTo": "2024-01-15",
-      "status": "expired"
+      "status": "expired",
+      "id": "80cb"
     },
     {
       "code": "COFFEE10",
@@ -445,7 +348,8 @@
       "maxUsage": 200,
       "validFrom": "2024-01-10",
       "validTo": "2024-02-10",
-      "status": "active"
+      "status": "active",
+      "id": "99b0"
     },
     {
       "code": "WEEKEND15",
@@ -455,7 +359,8 @@
       "maxUsage": 150,
       "validFrom": "2024-01-15",
       "validTo": "2024-01-21",
-      "status": "active"
+      "status": "active",
+      "id": "a1cd"
     }
   ],
   "reservations": [
@@ -466,7 +371,8 @@
       "time": "7:00 PM",
       "guests": 4,
       "table": "T-5",
-      "status": "confirmed"
+      "status": "confirmed",
+      "id": "bbcd"
     },
     {
       "name": "Jane Smith",
@@ -475,7 +381,8 @@
       "time": "8:00 PM",
       "guests": 2,
       "table": "T-2",
-      "status": "pending"
+      "status": "pending",
+      "id": "b295"
     },
     {
       "name": "Sarah Wilson",
@@ -484,12 +391,13 @@
       "time": "7:30 PM",
       "guests": 3,
       "table": "T-3",
-      "status": "cancelled"
+      "status": "cancelled",
+      "id": "5990"
     }
   ],
   "employees": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Mia Roberts",
       "initials": "MR",
       "role": "Head Chef",
@@ -499,7 +407,7 @@
       "status": "active"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "John Carter",
       "initials": "JC",
       "role": "Cashier",
@@ -511,7 +419,7 @@
   ],
   "customers": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "initials": "JD",
       "email": "john@email.com",
@@ -520,7 +428,7 @@
       "lastVisit": "2024-01-15"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Alice Moore",
       "initials": "AM",
       "email": "alice@email.com",
