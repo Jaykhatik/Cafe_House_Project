@@ -130,6 +130,18 @@
       "rating": 2.8,
       "isSpecial": true,
       "status": "active"
+    },
+    {
+      "id": "1767899925092",
+      "name": "teanew",
+      "categoryId": 5,
+      "ingredients": "masala,dudh,sugar,tea",
+      "description": "aafsd",
+      "price": 456,
+      "image": "/img/mocha.avif",
+      "calories": "50 kcal",
+      "rating": 44,
+      "isSpecial": true
     }
   ],
   "orders": [
@@ -315,6 +327,12 @@
       "name": "Healthy & Tea",
       "icon": "bi-leaf-fill",
       "color": "bg-success"
+    },
+    {
+      "id": "8b99",
+      "name": "tea",
+      "icon": "bi-cup-hot",
+      "color": "bg-coffee"
     }
   ],
   "offers": [
