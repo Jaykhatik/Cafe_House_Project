@@ -415,6 +415,16 @@
       "phone": "+1 785 223 452",
       "shift": "Evening",
       "status": "on-leave"
+    },
+    {
+      "id": "2e5d",
+      "name": "Rakesh",
+      "initials": "RK",
+      "role": "Cleaner",
+      "email": "rakesh21@gmail.com",
+      "phone": "7897897897",
+      "shift": "Evening",
+      "status": "on-leave"
     }
   ],
   "customers": [
