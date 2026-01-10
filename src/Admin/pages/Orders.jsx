@@ -56,7 +56,7 @@ function Orders() {
       getCustomerName(order.customerId) +
       itemsText +
       order.status +
-      order.total
+      order.totalAmount
     )
       .toLowerCase()
       .includes(search.toLowerCase());
@@ -137,7 +137,7 @@ function Orders() {
                       ))}
                     </td>
                     <td>{order.date}</td>
-                    <td>${order.total}</td>
+                    <td>${order.totalAmount}</td>
                     <td>
                       <span className={`status ${order.status}`}>
                         {order.status === "pending" && "⏳ Pending"}

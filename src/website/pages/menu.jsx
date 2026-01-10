@@ -25,7 +25,7 @@ function Menu() {
 
                 const scrollToId = sessionStorage.getItem("scrollToCategoryId");
                 if (scrollToId) {
-                    setActiveCategoryId(Number(scrollToId));
+                   setActiveCategoryId(scrollToId);
                 } else if (catRes.data.length > 0) {
                     setActiveCategoryId(catRes.data[0].id);
                 }
@@ -43,7 +43,8 @@ function Menu() {
     useEffect(() => {
         const scrollToId = sessionStorage.getItem("scrollToCategoryId");
         if (scrollToId && !hasScrolledRef.current) {
-            const ref = categoryRefs.current[Number(scrollToId)];
+            const ref = categoryRefs.current[scrollToId];
+
             if (ref) {
                 hasScrolledRef.current = true;
                 setTimeout(() => {
@@ -58,10 +59,11 @@ function Menu() {
 
     // ================= FILTER ITEMS (ONLY FIX HERE) =================
     const filteredItems = menuItems.filter(
-    item =>
-        Number(item.categoryId) === Number(activeCategoryId) &&
-        item.status !== "inactive"
+  item =>
+    String(item.categoryId) === String(activeCategoryId) &&
+    item.status !== "inactive"
 );
+
 
 
     return (
@@ -124,7 +126,7 @@ function Menu() {
                                                     <li key={cat.id}>
                                                         <a
                                                             href="#"
-                                                            className={Number(activeCategoryId) === Number(cat.id) ? "active" : ""}
+                                                            className={String(activeCategoryId) === String(cat.id) ? "active" : ""}
                                                             onClick={(e) => {
                                                                 e.preventDefault();
                                                                 setActiveCategoryId(cat.id);

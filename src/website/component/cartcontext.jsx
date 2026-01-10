@@ -34,9 +34,7 @@ export const CartProvider = ({ children }) => {
   const increaseQty = (id) => {
     setCartItems(prev =>
       prev.map(item =>
-        item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
@@ -45,9 +43,7 @@ export const CartProvider = ({ children }) => {
     setCartItems(prev =>
       prev
         .map(item =>
-          item.id === id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
         )
         .filter(item => item.quantity > 0)
     );
@@ -57,15 +53,13 @@ export const CartProvider = ({ children }) => {
     setCartItems(prev => prev.filter(item => item.id !== id));
   };
 
-  const totalItems = cartItems.reduce(
-    (sum, item) => sum + item.quantity,
-    0
-  );
+  // ✅ DEFINE clearCart
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <CartContext.Provider
@@ -75,6 +69,7 @@ export const CartProvider = ({ children }) => {
         increaseQty,
         decreaseQty,
         removeItem,
+        clearCart, // ✅ now defined
         totalItems,
         subtotal
       }}
@@ -83,5 +78,6 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
 
 export const useCart = () => useContext(CartContext);

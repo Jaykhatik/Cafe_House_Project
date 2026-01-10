@@ -1,27 +1,88 @@
 import React, { useState } from "react";
 import { useCart } from "../component/cartcontext";
 import { useNavigate, NavLink } from "react-router-dom";
+import axios from "axios";
+import { useRef } from "react";
+
+
 
 function Checkout() {
   const { cartItems, subtotal, clearCart } = useCart();
   const navigate = useNavigate();
+  const isSubmitting = useRef(false);
+
 
   const [customer, setCustomer] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    phone: "+1 234 567 890",
-    address: "123 Main Street, City, Country",
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
   });
 
-  const orderId = `ORD-${Date.now()}`;
+  // const customerId = Date.now().toString();
+  // const orderId = `ORD-${Date.now()}`;
   const discount = subtotal > 50 ? 10 : 0;
   const total = subtotal - discount;
+  const saveCustomer = async () => {
+    const res = await axios.post("http://localhost:3002/customers", {
+      name: customer.name,
+      initials: customer.name ? customer.name.charAt(0).toUpperCase() : "",
+      email: customer.email,
+      phone: customer.phone,
+      address: customer.address,
+      loyalty: "Bronze",
+      lastVisit: new Date().toISOString().split("T")[0],
+    });
 
-  const handlePlaceOrder = () => {
-    alert(`Order ${orderId} placed successfully!`);
-    clearCart();
-    navigate("/");
+    return res.data.id; // 👈 IMPORTANT
   };
+
+const saveOrder = async (customerId) => {
+  const res = await axios.post("http://localhost:3002/orders", {
+    customerId,
+    totalAmount: total,
+    status: "pending",
+    date: new Date().toLocaleString(),
+    items: cartItems.map(item => ({
+      menuItemId: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    })),
+  });
+
+  return res.data.id; // backend order id
+};
+
+
+const handlePlaceOrder = async () => {
+  if (isSubmitting.current) return; // ✅ STOP double submit
+  isSubmitting.current = true;
+
+  if (!customer.name || !customer.phone) {
+    alert("Please fill customer details");
+    isSubmitting.current = false;
+    return;
+  }
+
+  try {
+    const savedCustomerId = await saveCustomer();
+    const savedOrderId = await saveOrder(savedCustomerId);
+
+    clearCart();
+    navigate("/", { replace: true });
+
+    alert(`Order ${savedOrderId} placed successfully!`);
+  } catch (error) {
+    console.error("Order error:", error);
+    alert("Something went wrong while placing order");
+  } finally {
+    isSubmitting.current = false;
+  }
+};
+
+
+
 
   if (cartItems.length === 0)
     return (
@@ -50,15 +111,40 @@ function Checkout() {
           flexDirection: "column",
           gap: "30px"
         }}>
-          
+
           {/* ORDER ID + CUSTOMER INFO */}
           <div style={{ borderBottom: "1px solid #eee", paddingBottom: "20px" }}>
             <h2 style={{ color: "#c79a2b", marginBottom: "10px" }}>Checkout</h2>
-            <p><b>Order ID:</b> {orderId}</p>
-            <p><b>Name:</b> {customer.name}</p>
-            <p><b>Email:</b> {customer.email}</p>
-            <p><b>Phone:</b> {customer.phone}</p>
-            <p><b>Address:</b> {customer.address}</p>
+           <p><b>Order ID:</b> Will be generated after placing order</p>
+
+            <div>
+              <h3>Customer Details</h3>
+
+              <input
+                placeholder="Full Name"
+                value={customer.name}
+                onChange={e => setCustomer({ ...customer, name: e.target.value })}
+              />
+
+              <input
+                placeholder="Email"
+                value={customer.email}
+                onChange={e => setCustomer({ ...customer, email: e.target.value })}
+              />
+
+              <input
+                placeholder="Phone"
+                value={customer.phone}
+                onChange={e => setCustomer({ ...customer, phone: e.target.value })}
+              />
+
+              <textarea
+                placeholder="Address"
+                value={customer.address}
+                onChange={e => setCustomer({ ...customer, address: e.target.value })}
+              />
+            </div>
+
           </div>
 
           {/* CART ITEMS */}

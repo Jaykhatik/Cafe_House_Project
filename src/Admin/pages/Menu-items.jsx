@@ -147,7 +147,7 @@ const MenuItems = () => {
 
     let newValue = value;
 
-    if (name === "price" || name === "rating" || name === "categoryId") {
+    if (name === "price" || name === "rating" ) {
       newValue = Number(value);
     }
 

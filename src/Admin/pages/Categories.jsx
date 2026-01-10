@@ -82,9 +82,10 @@ function Categories() {
     }
 
     const newCategory = {
-      name: categoryName,
-      icon: categoryIcon,
-      color: categoryColor,
+     id: Date.now().toString(),   // ✅ ADD THIS LINE
+  name: categoryName,
+  icon: categoryIcon,
+  color: categoryColor,
     };
 
     try {

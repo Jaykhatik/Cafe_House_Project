@@ -45,7 +45,8 @@ const Customers = () => {
 
   const getTotalSpent = (customerId) =>
     getCustomerOrders(customerId).reduce(
-      (sum, o) => sum + (o.total || 0),
+      (sum, o) => sum + (o.totalAmount || 0)
+,
       0
     );
 
@@ -58,7 +59,7 @@ const Customers = () => {
 
   // ================= STATS =================
   const totalCustomers = customers.length;
-  const totalRevenue = orders.reduce((sum, o) => sum + (o.total || 0), 0);
+  const totalRevenue = orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
   const avgOrderValue =
     totalCustomers > 0 ? (totalRevenue / totalCustomers).toFixed(2) : 0;
 
