@@ -31,12 +31,16 @@ function Orders() {
   }, []);
 
   // ================= HELPERS (FIXED ID MATCH) =================
-  const getCustomerName = (customerId) => {
-    const customer = customers.find(
-      c => Number(c.id) === Number(customerId)
-    );
-    return customer ? customer.name : "Unknown Customer";
-  };
+const getCustomerName = (customerId) => {
+  if (!customerId || customers.length === 0) return "Unknown Customer";
+
+  const customer = customers.find(
+    c => String(c.id) === String(customerId)
+  );
+
+  return customer?.name || "Unknown Customer";
+};
+
 
   const getItemName = (menuItemId) => {
     const item = menuItems.find(

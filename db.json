@@ -119,31 +119,6 @@
       "status": "active"
     },
     {
-      "id": "1767857002286",
-      "name": "chai",
-      "categoryId": 6,
-      "ingredients": "masala,dudh,sugar,tea",
-      "description": "jbwnbwnb",
-      "price": 20,
-      "image": "/img/americano.avif",
-      "calories": "200 kcal",
-      "rating": 2.8,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "1767899925092",
-      "name": "teanew",
-      "categoryId": 5,
-      "ingredients": "masala,dudh,sugar,tea",
-      "description": "aafsd",
-      "price": 456,
-      "image": "/img/mocha.avif",
-      "calories": "50 kcal",
-      "rating": 44,
-      "isSpecial": true
-    },
-    {
       "id": "1768027541421",
       "name": "teanew99",
       "categoryId": "8b99",
@@ -170,11 +145,26 @@
   ],
   "orders": [
     {
-      "id": "8487",
-      "customerId": "addf",
+      "id": "ea69",
+      "customerId": "db35",
+      "totalAmount": 17.700000000000003,
+      "status": "pending",
+      "date": "12/01/2026, 11:36:01",
+      "items": [
+        {
+          "menuItemId": "7",
+          "name": "Mocha",
+          "price": 5.9,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "9f91",
+      "customerId": "6d2d",
       "totalAmount": 6.2,
       "status": "pending",
-      "date": "10/01/2026, 14:24:56",
+      "date": "12/01/2026, 11:37:53",
       "items": [
         {
           "menuItemId": "8",
@@ -185,16 +175,106 @@
       ]
     },
     {
-      "id": "68e6",
-      "customerId": "844e",
+      "id": "c761",
+      "customerId": "5ac3",
       "totalAmount": 3.5,
       "status": "pending",
-      "date": "10/01/2026, 14:34:58",
+      "date": "12/01/2026, 11:45:36",
       "items": [
         {
           "menuItemId": "9",
           "name": "Chocolate Brownie",
           "price": 3.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "3fd2",
+      "customerId": "5bef",
+      "totalAmount": 5.9,
+      "status": "pending",
+      "date": "12/01/2026, 11:56:21",
+      "items": [
+        {
+          "menuItemId": "7",
+          "name": "Mocha",
+          "price": 5.9,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "8f9c",
+      "customerId": "02a6",
+      "totalAmount": 12.4,
+      "status": "pending",
+      "date": "12/01/2026, 12:10:21",
+      "items": [
+        {
+          "menuItemId": "8",
+          "name": "Chocolate Frappe",
+          "price": 6.2,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "08e7",
+      "customerId": "516a",
+      "totalAmount": 6.2,
+      "status": "pending",
+      "date": "12/01/2026, 12:11:32",
+      "items": [
+        {
+          "menuItemId": "8",
+          "name": "Chocolate Frappe",
+          "price": 6.2,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "23e8",
+      "customerId": "02a6",
+      "totalAmount": 6.2,
+      "status": "pending",
+      "date": "12/01/2026, 12:20:51",
+      "items": [
+        {
+          "menuItemId": "8",
+          "name": "Chocolate Frappe",
+          "price": 6.2,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "e38f",
+      "customerId": "02a6",
+      "totalAmount": 17.700000000000003,
+      "status": "pending",
+      "date": "12/01/2026, 12:22:06",
+      "items": [
+        {
+          "menuItemId": "7",
+          "name": "Mocha",
+          "price": 5.9,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "f148",
+      "customerId": "5bef",
+      "totalAmount": 5.9,
+      "status": "pending",
+      "date": "12/01/2026, 12:34:05",
+      "items": [
+        {
+          "menuItemId": "7",
+          "name": "Mocha",
+          "price": 5.9,
           "quantity": 1
         }
       ]
@@ -456,24 +536,64 @@
   ],
   "customers": [
     {
-      "id": "addf",
-      "name": "dhruv",
-      "initials": "D",
-      "email": "dhruv@gmail.com",
-      "phone": "7897897897",
-      "address": "surat",
+      "id": "db35",
+      "name": "badal",
+      "initials": "B",
+      "email": "badal@gmail.com",
+      "phone": "1114447778",
+      "address": "rajkot",
       "loyalty": "Bronze",
-      "lastVisit": "2026-01-10"
+      "lastVisit": "2026-01-12"
     },
     {
-      "id": "844e",
-      "name": "rahul",
-      "initials": "R",
-      "email": "jak@gmail.com",
-      "phone": "1478523698",
-      "address": "skekfw",
+      "id": "6d2d",
+      "name": "prashant",
+      "initials": "P",
+      "email": "parmar@gmail.com",
+      "phone": "8989898989",
+      "address": "suart",
       "loyalty": "Bronze",
-      "lastVisit": "2026-01-10"
+      "lastVisit": "2026-01-12"
+    },
+    {
+      "id": "5ac3",
+      "name": "jk",
+      "initials": "J",
+      "email": "jk@gmail.com",
+      "phone": "9879879879",
+      "address": "rajashtan",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-12"
+    },
+    {
+      "id": "5bef",
+      "name": "jay",
+      "initials": "J",
+      "email": "jay@gmail.com",
+      "phone": "9879877412",
+      "address": "suart",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-12"
+    },
+    {
+      "id": "02a6",
+      "name": "kunal",
+      "initials": "K",
+      "email": "kunal@gmail.com",
+      "phone": "1112223336",
+      "address": "ahmedabad",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-12"
+    },
+    {
+      "id": "516a",
+      "name": "kunal",
+      "initials": "K",
+      "email": "kunal@gmail.com",
+      "phone": "7897897412",
+      "address": "suart",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-12"
     }
   ]
 }

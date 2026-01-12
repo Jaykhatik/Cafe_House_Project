@@ -36,9 +36,10 @@ const Customers = () => {
 
   // ================= HELPER FUNCTIONS (FIXED) =================
   const getCustomerOrders = (customerId) =>
-    orders.filter(
-      (o) => Number(o.customerId) === Number(customerId)
-    );
+  orders.filter(
+    (o) => o.customerId === customerId
+  );
+
 
   const getOrderCount = (customerId) =>
     getCustomerOrders(customerId).length;

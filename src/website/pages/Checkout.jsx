@@ -23,6 +23,8 @@ function Checkout() {
   // const orderId = `ORD-${Date.now()}`;
   const discount = subtotal > 50 ? 10 : 0;
   const total = subtotal - discount;
+
+
   const saveCustomer = async () => {
     const res = await axios.post("http://localhost:3002/customers", {
       name: customer.name,
@@ -37,49 +39,66 @@ function Checkout() {
     return res.data.id; // 👈 IMPORTANT
   };
 
-const saveOrder = async (customerId) => {
-  const res = await axios.post("http://localhost:3002/orders", {
-    customerId,
-    totalAmount: total,
-    status: "pending",
-    date: new Date().toLocaleString(),
-    items: cartItems.map(item => ({
-      menuItemId: item.id,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-    })),
-  });
+  const saveOrder = async (customerId) => {
+    const res = await axios.post("http://localhost:3002/orders", {
+      customerId,
+      totalAmount: total,
+      status: "pending",
+      date: new Date().toLocaleString(),
+      items: cartItems.map(item => ({
+        menuItemId: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      })),
+    });
 
-  return res.data.id; // backend order id
-};
+    return res.data.id; // backend order id
+  };
+
+  const findExistingCustomer = async (email) => {
+    const res = await axios.get("http://localhost:3002/customers");
+    return res.data.find(
+      (c) => c.email.toLowerCase() === email.toLowerCase()
+    );
+  };
+
+  const handlePlaceOrder = async () => {
+    if (isSubmitting.current) return; // ✅ STOP double submit
+    isSubmitting.current = true;
+
+    if (!customer.name || !customer.phone) {
+      alert("Please fill customer details");
+      isSubmitting.current = false;
+      return;
+    }
+
+    try {
+     const existingCustomer = await findExistingCustomer(customer.email);
 
 
-const handlePlaceOrder = async () => {
-  if (isSubmitting.current) return; // ✅ STOP double submit
-  isSubmitting.current = true;
+      let savedCustomerId;
 
-  if (!customer.name || !customer.phone) {
-    alert("Please fill customer details");
-    isSubmitting.current = false;
-    return;
-  }
+      if (existingCustomer) {
+        savedCustomerId = existingCustomer.id;
+      } else {
+        savedCustomerId = await saveCustomer();
+      }
 
-  try {
-    const savedCustomerId = await saveCustomer();
-    const savedOrderId = await saveOrder(savedCustomerId);
 
-    clearCart();
-    navigate("/", { replace: true });
+      const savedOrderId = await saveOrder(savedCustomerId);
 
-    alert(`Order ${savedOrderId} placed successfully!`);
-  } catch (error) {
-    console.error("Order error:", error);
-    alert("Something went wrong while placing order");
-  } finally {
-    isSubmitting.current = false;
-  }
-};
+      clearCart();
+      navigate("/", { replace: true });
+
+      alert(`Order ${savedOrderId} placed successfully!`);
+    } catch (error) {
+      console.error("Order error:", error);
+      alert("Something went wrong while placing order");
+    } finally {
+      isSubmitting.current = false;
+    }
+  };
 
 
 
@@ -115,7 +134,7 @@ const handlePlaceOrder = async () => {
           {/* ORDER ID + CUSTOMER INFO */}
           <div style={{ borderBottom: "1px solid #eee", paddingBottom: "20px" }}>
             <h2 style={{ color: "#c79a2b", marginBottom: "10px" }}>Checkout</h2>
-           <p><b>Order ID:</b> Will be generated after placing order</p>
+            <p><b>Order ID:</b> Will be generated after placing order</p>
 
             <div>
               <h3>Customer Details</h3>
