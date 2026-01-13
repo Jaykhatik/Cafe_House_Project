@@ -21,7 +21,7 @@ import Checkout from './website/pages/Checkout';
 import About from './website/pages/About';
 import MenuItemDetails from './website/pages/MenuItemDetails';
 import Profile from './website/pages/Profile';
-import Auth from './website/pages/auth';
+import CafeAuth from './Authnetication/authentication';
 
 
 
@@ -44,7 +44,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
             <Route path='/profile' element={<Profile/>}/>
-            <Route path='/auth' element={<Auth/>}/>
+            <Route path='/authentication' element={<CafeAuth/>}/>
           </Route>
           {/* admin pages routing */}
 

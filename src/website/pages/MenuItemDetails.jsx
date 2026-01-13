@@ -38,13 +38,13 @@ function MenuItemDetails() {
             <h1 className="detail-title">{item.name}</h1>
 
             <p className="detail-description">
-              {item.description}
-            </p>
+  {item.description || "Delicious handcrafted item made fresh for you."}
+</p>
 
             <div className="detail-meta">
-              <span>⭐ {item.rating}</span>
-              <span>{item.calories}</span>
-            </div>
+  <span>⭐ {item.rating || "4.5"}</span>
+  <span>{item.calories || "250 kcal"}</span>
+</div>
 
             <p className="detail-ingredients">
               <b>Ingredients:</b> {item.ingredients}
@@ -53,23 +53,22 @@ function MenuItemDetails() {
             <div className="detail-sizes">
               <b>Available Sizes</b>
               <div className="size-list">
-                {item.size.map((s, i) => (
-                  <span key={i} className="size-badge">
-                    {s}
-                  </span>
-                ))}
+                {Array.isArray(item.size) && item.size.map((s, i) => (
+  <span key={i} className="size-badge">{s}</span>
+))}
+
               </div>
             </div>
 
             <div className="detail-footer">
               <h2 className="price">${item.price}</h2>
 
-             <button
-  className="order-btn"
-  onClick={() => addToCart(item)}
->
-  Add to Cart
-</button>
+              <button
+                className="order-btn"
+                onClick={() => addToCart(item)}
+              >
+                Add to Cart
+              </button>
 
             </div>
           </div>

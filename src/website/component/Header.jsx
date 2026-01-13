@@ -129,17 +129,13 @@ function Header() {
                                             Contact
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        {/* <NavLink
-                                            to="/cart"
-                                            className={({ isActive }) =>
-                                                isActive || window.location.pathname.startsWith("/cart/checkout")
-                                                    ? "active"
-                                                    : ""
-                                            }
+                                     <li>
+                                        <NavLink
+                                            to="/authentication"
+                                            className={({ isActive }) => isActive ? "active" : ""}
                                         >
-                                            Cart
-                                        </NavLink> */}
+                                            Login
+                                        </NavLink>
                                     </li>
                                 </ul>
                             </nav>

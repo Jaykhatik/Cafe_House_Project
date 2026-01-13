@@ -13,17 +13,18 @@ const MenuItems = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   const [newItem, setNewItem] = useState({
-    name: "",
-    categoryId: "",
-    ingredients: "",
-    description: "",
-    price: "",
-    image: "",
-    calories: "",
-    rating: "",
-    isSpecial: false,
-    status: "active"
-  });
+  name: "",
+  categoryId: "",
+  ingredients: "",
+  description: "",
+  price: "",
+  image: "",
+  calories: "",
+  rating: "",
+  size: ["Small", "Medium", "Large"], // ✅ ADD THIS
+  isSpecial: false,
+  status: "active"
+});
 
 
 

@@ -131,15 +131,15 @@
       "isSpecial": true
     },
     {
-      "id": "1768028021885",
-      "name": "kalupro",
+      "id": "1768286335850",
+      "name": "prashant-frappe",
       "categoryId": "1768027983278",
-      "ingredients": "black damar",
-      "description": "hhhh99",
-      "price": 99,
-      "image": "/img/mocha.avif",
-      "calories": "120 kcal",
-      "rating": 8,
+      "ingredients": "anger,frustration",
+      "description": "ganduuuu",
+      "price": 1,
+      "image": "",
+      "calories": "20",
+      "rating": 0,
       "isSpecial": true
     }
   ],
@@ -275,6 +275,21 @@
           "menuItemId": "7",
           "name": "Mocha",
           "price": 5.9,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "5dc7",
+      "customerId": "e032",
+      "totalAmount": 3.2,
+      "status": "pending",
+      "date": "13/01/2026, 11:51:29",
+      "items": [
+        {
+          "menuItemId": "12",
+          "name": "Lemon Honey Tea",
+          "price": 3.2,
           "quantity": 1
         }
       ]
@@ -594,6 +609,16 @@
       "address": "suart",
       "loyalty": "Bronze",
       "lastVisit": "2026-01-12"
+    },
+    {
+      "id": "e032",
+      "name": "rahul",
+      "initials": "R",
+      "email": "rahul@gmail.com",
+      "phone": "4785698569",
+      "address": "surat",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-13"
     }
   ]
 }
