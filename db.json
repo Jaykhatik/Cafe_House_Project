@@ -1,295 +1,30 @@
 {
   "menuItems": [
     {
-      "id": "7",
-      "categoryId": 4,
-      "name": "Mocha",
-      "ingredients": "Coffee, Chocolate, Milk",
-      "description": "Chocolate flavored coffee drink.",
-      "price": 5.9,
-      "image": "/img/mocha.avif",
-      "size": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "calories": "200 kcal",
-      "rating": 4.5,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "8",
-      "categoryId": 4,
-      "name": "Chocolate Frappe",
-      "ingredients": "Chocolate, Ice, Milk",
-      "description": "Icy blended chocolate drink.",
-      "price": 6.2,
+      "id": "ITEM_1768653218644",
+      "name": "Cold Brew",
+      "categoryId": "CAT_1768653111431",
+      "ingredients": "chocolate,milk,ice",
+      "description": "best",
+      "price": 205,
       "image": "/img/brownie.webp",
-      "size": [
-        "Medium",
-        "Large"
-      ],
-      "calories": "230 kcal",
-      "rating": 4.7,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "9",
-      "categoryId": 5,
-      "name": "Chocolate Brownie",
-      "ingredients": "Cocoa, Flour, Butter",
-      "description": "Rich and fudgy chocolate brownie.",
-      "price": 3.5,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Single"
-      ],
-      "calories": "320 kcal",
-      "rating": 4.8,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "10",
-      "categoryId": 5,
-      "name": "Blueberry Muffin",
-      "ingredients": "Blueberry, Flour, Sugar",
-      "description": "Soft muffin loaded with blueberries.",
-      "price": 3.2,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Single"
-      ],
-      "calories": "280 kcal",
-      "rating": 4.4,
-      "isSpecial": false,
-      "status": "active"
-    },
-    {
-      "id": "11",
-      "categoryId": 6,
-      "name": "Green Tea",
-      "ingredients": "Green Tea Leaves",
-      "description": "Refreshing antioxidant-rich green tea.",
-      "price": 2.8,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Small",
-        "Medium"
-      ],
-      "calories": "5 kcal",
-      "rating": 4.2,
-      "isSpecial": false,
-      "status": "active"
-    },
-    {
-      "id": "12",
-      "categoryId": 6,
-      "name": "Lemon Honey Tea",
-      "ingredients": "Lemon, Honey, Tea",
-      "description": "Soothing tea with lemon and honey.",
-      "price": 3.2,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Small",
-        "Medium"
-      ],
-      "calories": "40 kcal",
-      "rating": 4.5,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "13",
-      "categoryId": 6,
-      "name": "Lemon Hone1 Tea1",
-      "ingredients": "Lemon, Honey1, Tea",
-      "description": "Soothing tea with lemon and honey.",
-      "price": 3,
-      "image": "/img/brownie.webp",
-      "size": [
-        "Small",
-        "Medium"
-      ],
-      "calories": "20 kcal",
-      "rating": 1.5,
-      "isSpecial": true,
-      "status": "active"
-    },
-    {
-      "id": "1768027541421",
-      "name": "teanew99",
-      "categoryId": "8b99",
-      "ingredients": "Coffee, Chocolate, Milk",
-      "description": "jjj",
-      "price": 3,
-      "image": "/img/mocha.avif",
       "calories": "80 kcal",
-      "rating": 7,
-      "isSpecial": true
-    },
-    {
-      "id": "1768286335850",
-      "name": "prashant-frappe",
-      "categoryId": "1768027983278",
-      "ingredients": "anger,frustration",
-      "description": "ganduuuu",
-      "price": 1,
-      "image": "",
-      "calories": "20",
-      "rating": 0,
+      "rating": 9.7,
       "isSpecial": true
     }
   ],
   "orders": [
     {
-      "id": "ea69",
-      "customerId": "db35",
-      "totalAmount": 17.700000000000003,
+      "id": "ORDER_1768653501939",
+      "customerId": "CUSTOMER_1768653501923",
+      "totalAmount": 195,
       "status": "pending",
-      "date": "12/01/2026, 11:36:01",
+      "date": "17/01/2026, 18:08:21",
       "items": [
         {
-          "menuItemId": "7",
-          "name": "Mocha",
-          "price": 5.9,
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "id": "9f91",
-      "customerId": "6d2d",
-      "totalAmount": 6.2,
-      "status": "pending",
-      "date": "12/01/2026, 11:37:53",
-      "items": [
-        {
-          "menuItemId": "8",
-          "name": "Chocolate Frappe",
-          "price": 6.2,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "c761",
-      "customerId": "5ac3",
-      "totalAmount": 3.5,
-      "status": "pending",
-      "date": "12/01/2026, 11:45:36",
-      "items": [
-        {
-          "menuItemId": "9",
-          "name": "Chocolate Brownie",
-          "price": 3.5,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "3fd2",
-      "customerId": "5bef",
-      "totalAmount": 5.9,
-      "status": "pending",
-      "date": "12/01/2026, 11:56:21",
-      "items": [
-        {
-          "menuItemId": "7",
-          "name": "Mocha",
-          "price": 5.9,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "8f9c",
-      "customerId": "02a6",
-      "totalAmount": 12.4,
-      "status": "pending",
-      "date": "12/01/2026, 12:10:21",
-      "items": [
-        {
-          "menuItemId": "8",
-          "name": "Chocolate Frappe",
-          "price": 6.2,
-          "quantity": 2
-        }
-      ]
-    },
-    {
-      "id": "08e7",
-      "customerId": "516a",
-      "totalAmount": 6.2,
-      "status": "pending",
-      "date": "12/01/2026, 12:11:32",
-      "items": [
-        {
-          "menuItemId": "8",
-          "name": "Chocolate Frappe",
-          "price": 6.2,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "23e8",
-      "customerId": "02a6",
-      "totalAmount": 6.2,
-      "status": "pending",
-      "date": "12/01/2026, 12:20:51",
-      "items": [
-        {
-          "menuItemId": "8",
-          "name": "Chocolate Frappe",
-          "price": 6.2,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "e38f",
-      "customerId": "02a6",
-      "totalAmount": 17.700000000000003,
-      "status": "pending",
-      "date": "12/01/2026, 12:22:06",
-      "items": [
-        {
-          "menuItemId": "7",
-          "name": "Mocha",
-          "price": 5.9,
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "id": "f148",
-      "customerId": "5bef",
-      "totalAmount": 5.9,
-      "status": "pending",
-      "date": "12/01/2026, 12:34:05",
-      "items": [
-        {
-          "menuItemId": "7",
-          "name": "Mocha",
-          "price": 5.9,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "5dc7",
-      "customerId": "e032",
-      "totalAmount": 3.2,
-      "status": "pending",
-      "date": "13/01/2026, 11:51:29",
-      "items": [
-        {
-          "menuItemId": "12",
-          "name": "Lemon Honey Tea",
-          "price": 3.2,
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 205,
           "quantity": 1
         }
       ]
@@ -409,34 +144,10 @@
   ],
   "categories": [
     {
-      "id": "4",
-      "name": "Chocolate Drinks",
-      "icon": "bi-cup-fill",
-      "color": "bg-chocolate"
-    },
-    {
-      "id": "5",
-      "name": "Desserts & Snacks",
-      "icon": "bi-cookie",
-      "color": "bg-pink"
-    },
-    {
-      "id": "6",
-      "name": "Healthy & Tea",
-      "icon": "bi-leaf-fill",
-      "color": "bg-success"
-    },
-    {
-      "id": "8b99",
-      "name": "tea",
-      "icon": "bi-cup-hot",
+      "id": "CAT_1768653111431",
+      "name": "Chocolate_Drinks",
+      "icon": "bi-cup-hot-fill",
       "color": "bg-coffee"
-    },
-    {
-      "id": "1768027983278",
-      "name": "kaluu",
-      "icon": "bi-cup-hot",
-      "color": "bg-red"
     }
   ],
   "offers": [
@@ -551,74 +262,14 @@
   ],
   "customers": [
     {
-      "id": "db35",
-      "name": "badal",
-      "initials": "B",
-      "email": "badal@gmail.com",
-      "phone": "1114447778",
-      "address": "rajkot",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "6d2d",
-      "name": "prashant",
-      "initials": "P",
-      "email": "parmar@gmail.com",
-      "phone": "8989898989",
-      "address": "suart",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "5ac3",
-      "name": "jk",
-      "initials": "J",
-      "email": "jk@gmail.com",
-      "phone": "9879879879",
-      "address": "rajashtan",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "5bef",
-      "name": "jay",
-      "initials": "J",
-      "email": "jay@gmail.com",
-      "phone": "9879877412",
-      "address": "suart",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "02a6",
-      "name": "kunal",
-      "initials": "K",
-      "email": "kunal@gmail.com",
-      "phone": "1112223336",
+      "id": "CUSTOMER_1768653501923",
+      "name": "usha",
+      "initials": "U",
+      "email": "usha@gmail.com",
+      "phone": "1234567898",
       "address": "ahmedabad",
       "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "516a",
-      "name": "kunal",
-      "initials": "K",
-      "email": "kunal@gmail.com",
-      "phone": "7897897412",
-      "address": "suart",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-12"
-    },
-    {
-      "id": "e032",
-      "name": "rahul",
-      "initials": "R",
-      "email": "rahul@gmail.com",
-      "phone": "4785698569",
-      "address": "surat",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-13"
+      "lastVisit": "2026-01-17"
     }
   ]
 }

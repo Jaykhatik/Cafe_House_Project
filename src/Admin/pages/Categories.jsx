@@ -45,18 +45,19 @@ function Categories() {
   }, []);
 
   // ===================== ITEM COUNT MAP =====================
-  const itemCountMap = useMemo(() => {
-    const map = {};
-    menuItems.forEach((item) => {
-      const categoryKey = Number(item.categoryId);
-      map[categoryKey] = (map[categoryKey] || 0) + 1;
-    });
-    return map;
-  }, [menuItems]);
+const itemCountMap = useMemo(() => {
+  const map = {};
+  menuItems.forEach((item) => {
+    const key = String(item.categoryId);
+    map[key] = (map[key] || 0) + 1;
+  });
+  return map;
+}, [menuItems]);
 
-  const getItemCount = (categoryId) => {
-    return itemCountMap[Number(categoryId)] || 0;
-  };
+const getItemCount = (categoryId) => {
+  return itemCountMap[String(categoryId)] || 0;
+};
+
 
   // ===================== ADD / EDIT HANDLERS =====================
   const handleAddClick = () => {
@@ -82,7 +83,7 @@ function Categories() {
     }
 
     const newCategory = {
-     id: Date.now().toString(),   // ✅ ADD THIS LINE
+     id: `CAT_${Date.now()}`,   // ✅ ADD THIS LINE
   name: categoryName,
   icon: categoryIcon,
   color: categoryColor,
@@ -118,7 +119,7 @@ function Categories() {
   try {
     // 1️⃣ Delete all menu items in that category
     const itemsToDelete = menuItems.filter(
-      item => Number(item.categoryId) === Number(deleteCategory.id)
+      item => String(item.categoryId) === String(deleteCategory.id)
     );
 
     for (let item of itemsToDelete) {
@@ -131,7 +132,7 @@ function Categories() {
     // Update UI
     setCategories(prev => prev.filter(cat => cat.id !== deleteCategory.id));
     setMenuItems(prev =>
-      prev.filter(item => Number(item.categoryId) !== Number(deleteCategory.id))
+      prev.filter(item => String(item.categoryId) !== String(deleteCategory.id))
     );
 
     setShowDeleteModal(false);

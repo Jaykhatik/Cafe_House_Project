@@ -13,18 +13,18 @@ const MenuItems = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   const [newItem, setNewItem] = useState({
-  name: "",
-  categoryId: "",
-  ingredients: "",
-  description: "",
-  price: "",
-  image: "",
-  calories: "",
-  rating: "",
-  size: ["Small", "Medium", "Large"], // ✅ ADD THIS
-  isSpecial: false,
-  status: "active"
-});
+    name: "",
+    categoryId: "",
+    ingredients: "",
+    description: "",
+    price: "",
+    image: "",
+    calories: "",
+    rating: "",
+    size: ["Small", "Medium", "Large"], // ✅ ADD THIS
+    isSpecial: false,
+    status: "active"
+  });
 
 
 
@@ -148,7 +148,7 @@ const MenuItems = () => {
 
     let newValue = value;
 
-    if (name === "price" || name === "rating" ) {
+    if (name === "price" || name === "rating") {
       newValue = Number(value);
     }
 
@@ -163,9 +163,11 @@ const MenuItems = () => {
   };
   const handleAddItem = async () => {
     try {
+      const rawId = Date.now().toString();
+
       const payload = {
         ...newItem,
-        id: Date.now().toString() // JSON server safe id
+        id: `ITEM_${rawId}` // ✅ REQUIRED FORMAT
       };
 
       const res = await axios.post(
@@ -259,11 +261,11 @@ const MenuItems = () => {
                     <td>${Number(item.price).toFixed(2)}</td>
 
 
-                   <td>
-  <span className={`status-badge ${item.status || "active"}`}>
-    {item.status === "inactive" ? "Inactive" : "Active"}
-  </span>
-</td>
+                    <td>
+                      <span className={`status-badge ${item.status || "active"}`}>
+                        {item.status === "inactive" ? "Inactive" : "Active"}
+                      </span>
+                    </td>
 
                     <td>
                       <i
@@ -371,15 +373,15 @@ const MenuItems = () => {
                 </option>
               ))}
             </select>
-<label>Status</label>
-<select
-  name="status"
-  value={editItem.status}
-  onChange={handleEditChange}
->
-  <option value="active">Active</option>
-  <option value="inactive">Inactive</option>
-</select>
+            <label>Status</label>
+            <select
+              name="status"
+              value={editItem.status}
+              onChange={handleEditChange}
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
             <label className="checkbox">
               <input
                 type="checkbox"
@@ -460,14 +462,14 @@ const MenuItems = () => {
               ))}
             </select>
             <label>Status</label>
-<select
-  name="status"
-  value={newItem.status || "active"}
-  onChange={handleAddChange}
->
-  <option value="active">Active</option>
-  <option value="inactive">Inactive</option>
-</select>
+            <select
+              name="status"
+              value={newItem.status || "active"}
+              onChange={handleAddChange}
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
 
             <label className="checkbox">
               <input

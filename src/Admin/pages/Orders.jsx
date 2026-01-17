@@ -31,23 +31,27 @@ function Orders() {
   }, []);
 
   // ================= HELPERS (FIXED ID MATCH) =================
-const getCustomerName = (customerId) => {
-  if (!customerId || customers.length === 0) return "Unknown Customer";
+  const getCustomerName = (customerId) => {
+    if (!customerId || customers.length === 0) return "Unknown Customer";
 
-  const customer = customers.find(
-    c => String(c.id) === String(customerId)
-  );
+    const customer = customers.find(
+      c => String(c.id) === String(customerId)
+    );
 
-  return customer?.name || "Unknown Customer";
-};
+    return customer?.name || "Unknown Customer";
+  };
 
 
   const getItemName = (menuItemId) => {
+    if (!menuItemId || menuItems.length === 0) return "Item";
+
     const item = menuItems.find(
-      m => Number(m.id) === Number(menuItemId)
+      m => String(m.id) === String(menuItemId)
     );
-    return item ? item.name : "Item";
+
+    return item?.name || "Item";
   };
+
 
   // ================= FILTER =================
   const filteredOrders = orders.filter(order => {

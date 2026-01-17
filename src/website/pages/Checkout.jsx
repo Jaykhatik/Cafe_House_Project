@@ -25,36 +25,46 @@ function Checkout() {
   const total = subtotal - discount;
 
 
-  const saveCustomer = async () => {
-    const res = await axios.post("http://localhost:3002/customers", {
-      name: customer.name,
-      initials: customer.name ? customer.name.charAt(0).toUpperCase() : "",
-      email: customer.email,
-      phone: customer.phone,
-      address: customer.address,
-      loyalty: "Bronze",
-      lastVisit: new Date().toISOString().split("T")[0],
-    });
+ const saveCustomer = async () => {
+  const rawId = Date.now().toString();           // 👈 base id
+  const customerId = `CUSTOMER_${rawId}`;       // ✅ REQUIRED FORMAT
 
-    return res.data.id; // 👈 IMPORTANT
-  };
+  const res = await axios.post("http://localhost:3002/customers", {
+    id: customerId,                              // ✅ ADD THIS LINE
+    name: customer.name,
+    initials: customer.name ? customer.name.charAt(0).toUpperCase() : "",
+    email: customer.email,
+    phone: customer.phone,
+    address: customer.address,
+    loyalty: "Bronze",
+    lastVisit: new Date().toISOString().split("T")[0],
+  });
 
-  const saveOrder = async (customerId) => {
-    const res = await axios.post("http://localhost:3002/orders", {
-      customerId,
-      totalAmount: total,
-      status: "pending",
-      date: new Date().toLocaleString(),
-      items: cartItems.map(item => ({
-        menuItemId: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity,
-      })),
-    });
+  return res.data.id;
+};
 
-    return res.data.id; // backend order id
-  };
+
+ const saveOrder = async (customerId) => {
+  const rawId = Date.now().toString();   // 👈 generate base id
+  const orderId = `ORDER_${rawId}`;      // ✅ REQUIRED FORMAT
+
+  const res = await axios.post("http://localhost:3002/orders", {
+    id: orderId,                         // ✅ ADD THIS LINE
+    customerId,
+    totalAmount: total,
+    status: "pending",
+    date: new Date().toLocaleString(),
+    items: cartItems.map(item => ({
+      menuItemId: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    })),
+  });
+
+  return res.data.id;
+};
+
 
   const findExistingCustomer = async (email) => {
     const res = await axios.get("http://localhost:3002/customers");
