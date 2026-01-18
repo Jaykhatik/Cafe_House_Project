@@ -28,6 +28,21 @@
           "quantity": 1
         }
       ]
+    },
+    {
+      "id": "ORDER_1768717798871",
+      "customerId": "CUSTOMER_1768717798854",
+      "totalAmount": 1630,
+      "status": "pending",
+      "date": "18/01/2026, 11:59:58",
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 205,
+          "quantity": 8
+        }
+      ]
     }
   ],
   "inventory": [
@@ -270,6 +285,16 @@
       "address": "ahmedabad",
       "loyalty": "Bronze",
       "lastVisit": "2026-01-17"
+    },
+    {
+      "id": "CUSTOMER_1768717798854",
+      "name": "ch",
+      "initials": "C",
+      "email": "ch@gmail.com",
+      "phone": "7897897897",
+      "address": "fnfn",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-18"
     }
   ]
 }

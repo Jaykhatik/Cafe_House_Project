@@ -1,68 +1,129 @@
-/* PAGE BACKGROUND */
+/* ================= PAGE BACKGROUND ================= */
 .tm-profile-page {
   background: #faf7f2;
-  padding: 40px 0;
+  padding: 40px 15px;
   min-height: 85vh;
 }
 
-/* MAIN CARD */
-.tm-profile-card {
-  max-width: 1100px;
+/* ================= WRAPPER ================= */
+.tm-profile-wrapper {
+  max-width: 1200px;
   margin: auto;
-  background: #fff;
   display: flex;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  overflow: hidden;
+  gap: 25px;
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 .tm-profile-sidebar {
   width: 280px;
   background: #000;
-  color: #fff;
+  border-radius: 18px;
   padding: 25px;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* USER */
+/* ================= USER INFO ================= */
 .tm-profile-user {
   text-align: center;
-  margin-bottom: 30px;
 }
 
-.tm-avatar {
-  width: 70px;
-  height: 70px;
+/* PROFILE IMAGE WRAPPER */
+.tm-profile-avatar {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 12px;
+}
+
+/* PROFILE IMAGE */
+.tm-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #c49b63;
+}
+
+/* UPLOAD BUTTON (WORKING UI) */
+.tm-avatar-upload {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 30px;
+  height: 30px;
   background: #c49b63;
   border-radius: 50%;
-  margin: 0 auto 10px;
+  color: #3b2f2f;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 22px;
-  color: #3b2f2f;
+  cursor: pointer;
+  border: 2px solid #3b2f2f;
+  transition: background 0.3s ease;
 }
 
-/* MENU */
+.tm-avatar-upload:hover {
+  background: #b38750;
+}
+
+/* NAME & EMAIL */
+.tm-profile-user h3 {
+  margin: 8px 0 3px;
+  font-size: 18px;
+}
+
+.tm-profile-user p {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ================= STATS ================= */
+.tm-profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 18px;
+}
+
+.tm-profile-stats strong {
+  display: block;
+  font-size: 18px;
+  color: #c49b63;
+}
+
+.tm-profile-stats span {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ================= MENU ================= */
+.tm-profile-menu {
+  margin-top: 35px;
+}
+
 .tm-profile-menu button {
   width: 100%;
-  padding: 12px;
+  padding: 12px 14px;
   margin-bottom: 12px;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  text-align: left;
+  font-size: 15px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
 }
 
 .tm-profile-menu button:hover {
-  background: rgba(196,155,99,0.15);
+  background: rgba(196,155,99,0.2);
 }
 
 .tm-profile-menu button.active {
@@ -71,68 +132,117 @@
   font-weight: 600;
 }
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
 .tm-logout-btn {
+  margin-top: 25px;
   padding: 12px;
   border: none;
   background: #b23b3b;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tm-logout-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
-/* CONTENT */
+/* ================= CONTENT ================= */
 .tm-profile-content {
   flex: 1;
-  padding: 35px;
 }
 
-.tm-profile-section h2 {
-  margin-bottom: 20px;
+/* CARD */
+.tm-profile-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.tm-profile-card h2 {
+  margin-bottom: 25px;
+  font-size: 20px;
   color: #3b2f2f;
 }
 
-/* INFO GRID */
-.tm-info-grid {
+/* ================= FORM ================= */
+.tm-profile-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
 }
 
-.tm-info-grid div {
-  background: #faf7f2;
-  padding: 18px;
+.tm-profile-form label {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.tm-profile-form input {
+  width: 100%;
+  padding: 12px 14px;
   border-radius: 10px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+  border: 1px solid #e2d6c3;
+  background: #faf7f2;
+  font-size: 14px;
 }
 
-.tm-info-grid span {
-  font-size: 12px;
+.tm-profile-form input:focus {
+  outline: none;
+  border-color: #c49b63;
+}
+
+.tm-profile-form input:disabled {
+  background: #f3eee6;
   color: #888;
 }
 
-.tm-info-grid p {
-  font-weight: 600;
-  color: #3b2f2f;
-  margin-top: 5px;
+/* ================= ACTION BUTTONS ================= */
+.tm-profile-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
 }
 
-/* EMPTY */
+.tm-profile-actions .primary {
+  padding: 12px 30px;
+  background: #c49b63;
+  color: #3b2f2f;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tm-profile-actions .primary:hover {
+  background: #b38750;
+}
+
+.tm-profile-actions .secondary {
+  padding: 12px 30px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ================= EMPTY ================= */
 .tm-empty {
-  padding: 40px;
-  background: #faf7f2;
-  border-radius: 10px;
+  padding: 50px;
   text-align: center;
   color: #777;
+  background: #faf7f2;
+  border-radius: 12px;
 }
 
-/* ANIMATION */
+/* ================= ANIMATION ================= */
 .fade-in {
   animation: fadeIn 0.35s ease-in-out;
 }
@@ -148,13 +258,27 @@
   }
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .tm-profile-card {
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .tm-profile-wrapper {
     flex-direction: column;
   }
 
   .tm-profile-sidebar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .tm-profile-form {
+    grid-template-columns: 1fr;
+  }
+
+  .tm-profile-actions {
+    flex-direction: column;
+  }
+
+  .tm-profile-actions button {
     width: 100%;
   }
 }
