@@ -169,48 +169,26 @@
   ],
   "offers": [
     {
-      "code": "WELCOME20",
-      "discount": "20%",
-      "minOrder": "$15",
-      "used": 45,
-      "maxUsage": 100,
-      "validFrom": "2024-01-01",
-      "validTo": "2024-01-31",
-      "status": "active",
-      "id": "efb7"
+      "id": "OFFER_1768733849404",
+      "code": "JAY30",
+      "discount": "30%",
+      "minOrder": "$200",
+      "maxUsage": "2",
+      "used": 0,
+      "validFrom": "2026-01-22",
+      "validTo": "2026-01-23",
+      "status": "active"
     },
     {
-      "code": "FLAT5",
-      "discount": "$5",
-      "minOrder": "$20",
-      "used": 50,
-      "maxUsage": 50,
-      "validFrom": "2024-01-01",
-      "validTo": "2024-01-15",
-      "status": "expired",
-      "id": "80cb"
-    },
-    {
-      "code": "COFFEE10",
+      "id": "OFFER_1768733949005",
+      "code": "RAHUL10",
       "discount": "10%",
-      "minOrder": "$10",
-      "used": 78,
-      "maxUsage": 200,
-      "validFrom": "2024-01-10",
-      "validTo": "2024-02-10",
-      "status": "active",
-      "id": "99b0"
-    },
-    {
-      "code": "WEEKEND15",
-      "discount": "15%",
-      "minOrder": "$25",
-      "used": 12,
-      "maxUsage": 150,
-      "validFrom": "2024-01-15",
-      "validTo": "2024-01-21",
-      "status": "active",
-      "id": "a1cd"
+      "minOrder": "$100",
+      "maxUsage": "4",
+      "used": 0,
+      "validFrom": "2026-01-31",
+      "validTo": "2026-02-01",
+      "status": "active"
     }
   ],
   "reservations": [
