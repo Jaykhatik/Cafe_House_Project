@@ -181,7 +181,7 @@ tbody tr:hover {
 
 /* model */
 /* ================= MODAL OVERLAY ================= */
-.modal-overlay {
+.modal-overlay-orderpage {
   position: fixed;
   top: 0;
   left: 0;
@@ -197,7 +197,7 @@ tbody tr:hover {
 }
 
 /* ================= MODAL CONTENT ================= */
-.modal-content {
+.modal-content-orderpage {
   background-color: #fff;
   border-radius: 15px;
   max-width: 600px;
@@ -216,7 +216,7 @@ tbody tr:hover {
 }
 
 /* ================= MODAL HEADER ================= */
-.modal-content h3 {
+.modal-content-orderpage h3 {
   font-size: 22px;
   color: #c79c60;
   margin-bottom: 15px;
@@ -228,13 +228,13 @@ tbody tr:hover {
 }
 
 /* ================= CUSTOMER & ORDER INFO ================= */
-.modal-content p {
+.modal-content-orderpage p {
   margin: 8px 0;
   font-size: 15px;
   color: #444;
 }
 
-.modal-content h4 {
+.modal-content-orderpage h4 {
   margin-top: 15px;
   margin-bottom: 8px;
   font-size: 16px;
@@ -242,7 +242,7 @@ tbody tr:hover {
 }
 
 /* ================= SELECT DROPDOWN ================= */
-.modal-content select {
+.modal-content-orderpage select {
   padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -251,20 +251,20 @@ tbody tr:hover {
   margin-left: 10px;
 }
 
-.modal-content select:focus {
+.modal-content-orderpage select:focus {
   border-color: #c79c60;
   outline: none;
 }
 
 /* ================= MODAL ACTIONS ================= */
-.modal-actions {
+.modal-actions-orderpage {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 20px;
 }
 
-.modal-actions button {
+.modal-actions-orderpage button {
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -272,41 +272,41 @@ tbody tr:hover {
   transition: all 0.2s;
 }
 
-.modal-actions button:hover {
+.modal-actions-orderpage button:hover {
   transform: translateY(-2px);
 }
 
 /* Update button style */
-.modal-actions button:first-child {
+.modal-actions-orderpage button:first-child {
   background-color: #c79c60;
   color: #fff;
   border: none;
 }
 
-.modal-actions button:first-child:hover {
+.modal-actions-orderpage button:first-child:hover {
   background-color: #b68c55;
 }
 
 /* Close button style */
-.modal-actions button:last-child {
+.modal-actions-orderpage button:last-child {
   background-color: #eee;
   color: #333;
   border: none;
 }
 
-.modal-actions button:last-child:hover {
+.modal-actions-orderpage button:last-child:hover {
   background-color: #ddd;
 }
 
 /* ================= ITEMS LIST ================= */
-.modal-content .items-list {
+.modal-content-orderpage .items-list {
   margin-top: 10px;
   padding: 10px 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
-.modal-content .items-list p {
+.modal-content-orderpage .items-list p {
   display: flex;
   justify-content: space-between;
   padding: 6px 0;
@@ -316,60 +316,60 @@ tbody tr:hover {
   border-bottom: 1px dashed #ddd;
 }
 
-.modal-content .items-list p:last-child {
+.modal-content-orderpage .items-list p:last-child {
   border-bottom: none;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .modal-content {
+  .modal-content-orderpage {
     padding: 20px;
   }
 
-  .modal-content h3 {
+  .modal-content-orderpage h3 {
     font-size: 20px;
   }
 
-  .modal-content h4 {
+  .modal-content-orderpage h4 {
     font-size: 15px;
   }
 
-  .modal-content p {
+  .modal-content-orderpage p {
     font-size: 14px;
   }
 
-  .modal-actions button {
+  .modal-actions-orderpage button {
     font-size: 13px;
     padding: 6px 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .modal-content {
+  .modal-content-orderpage {
     padding: 15px 15px;
   }
 
-  .modal-content h3 {
+  .modal-content-orderpage h3 {
     font-size: 18px;
   }
 
-  .modal-content h4 {
+  .modal-content-orderpage h4 {
     font-size: 14px;
   }
 
-  .modal-content p {
+  .modal-content-orderpage p {
     font-size: 13px;
   }
 }
 /* ================= ORDER ITEMS ================= */
-.order-items {
+.order-items-orderpage {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 10px;
 }
 
-.order-item-card {
+.order-item-card-orderpage {
   display: flex;
   gap: 15px;
   padding: 12px;
@@ -379,7 +379,7 @@ tbody tr:hover {
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
 
-.order-item-card img {
+.order-item-card-orderpage img {
   width: 70px;
   height: 70px;
   object-fit: cover;
@@ -387,14 +387,14 @@ tbody tr:hover {
   flex-shrink: 0;
 }
 
-.order-item-info h5 {
+.order-item-info-orderpage h5 {
   margin: 0 0 4px 0;
   font-size: 15px;
   font-weight: 600;
   color: #333;
 }
 
-.order-item-info p {
+.order-item-info-orderpage p {
   margin: 2px 0;
   font-size: 13px;
   color: #666;
@@ -402,12 +402,12 @@ tbody tr:hover {
 
 /* ================= MOBILE ================= */
 @media (max-width: 480px) {
-  .order-item-card {
+  .order-item-card-orderpage {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .order-item-card img {
+  .order-item-card-orderpage img {
     width: 100%;
     height: 140px;
   }

@@ -161,56 +161,20 @@
   gap: 14px;
 }
 
-.edit-icon {
-  color: #c49b63;
+.edit-icon-employee {
+  color: rgb(134, 208, 134);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
-.edit-icon:hover{
+.edit-icon-employee:hover{
     color: green;
-    transform: scale(1.5);
 }
 
-.delete-icon {
+.delete-icon-employee {
   color: #d9534f;
   cursor: pointer;
 }
-.delete-icon:hover{
+.delete-icon-employee:hover{
     color: red;
-}
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 400px;
-  max-width: 90%;
-}
-
-.modal-card h3 {
-  margin-bottom: 15px;
-}
-
-.modal-body input,
-.modal-body select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
 }
 
 /* -------- RESPONSIVE -------- */
@@ -222,6 +186,158 @@
 
   .employee-search,
   .add-employee-btn {
+    width: 100%;
+  }
+}
+
+/* model */
+
+/* ================= EMPLOYEE MODAL OVERLAY ================= */
+.modal-overlay-employeepage {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+/* ================= EMPLOYEE MODAL CARD ================= */
+.modal-card-employeepage {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalFadeEmployee 0.3s ease;
+}
+.modal-card-employeepage.scrollable-employeepage{
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes modalFadeEmployee {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= TITLE ================= */
+.modal-card-employeepage h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #c79c60;
+  background: #000;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* ================= BODY ================= */
+.modal-body-employeepage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.modal-body-employeepage label{
+  font-size: 16px;
+  font-weight: 500;
+  color: #c1975b;
+}
+/* ================= INPUTS & SELECT ================= */
+.modal-body-employeepage input,
+.modal-body-employeepage select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.modal-body-employeepage input:focus,
+.modal-body-employeepage select:focus {
+  outline: none;
+  border-color: #c79c60;
+  box-shadow: 0 0 0 2px rgba(199, 156, 96, 0.15);
+}
+
+/* ================= DELETE TEXT ================= */
+.modal-card-employeepage p {
+  font-size: 14px;
+  color: #444;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.modal-card-employeepage p strong {
+  color: #000;
+}
+
+/* ================= ACTIONS ================= */
+.modal-actions-employeepage {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* Buttons */
+.modal-actions-employeepage button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* Cancel */
+.modal-actions-employeepage button:first-child {
+  background: #eee;
+  color: #333;
+}
+
+.modal-actions-employeepage button:first-child:hover {
+  background: #ddd;
+}
+
+/* Primary */
+.modal-actions-employeepage button:last-child {
+  background: #c79c60;
+  color: #fff;
+}
+
+.modal-actions-employeepage button:last-child:hover {
+  background: #b68c55;
+  transform: translateY(-1px);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .modal-card-employeepage {
+    padding: 20px;
+  }
+
+  .modal-card-employeepage h3 {
+    font-size: 18px;
+  }
+
+  .modal-actions-employeepage {
+    flex-direction: column;
+  }
+
+  .modal-actions-employeepage button {
     width: 100%;
   }
 }

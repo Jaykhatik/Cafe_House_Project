@@ -45,18 +45,18 @@ function Categories() {
   }, []);
 
   // ===================== ITEM COUNT MAP =====================
-const itemCountMap = useMemo(() => {
-  const map = {};
-  menuItems.forEach((item) => {
-    const key = String(item.categoryId);
-    map[key] = (map[key] || 0) + 1;
-  });
-  return map;
-}, [menuItems]);
+  const itemCountMap = useMemo(() => {
+    const map = {};
+    menuItems.forEach((item) => {
+      const key = String(item.categoryId);
+      map[key] = (map[key] || 0) + 1;
+    });
+    return map;
+  }, [menuItems]);
 
-const getItemCount = (categoryId) => {
-  return itemCountMap[String(categoryId)] || 0;
-};
+  const getItemCount = (categoryId) => {
+    return itemCountMap[String(categoryId)] || 0;
+  };
 
 
   // ===================== ADD / EDIT HANDLERS =====================
@@ -83,10 +83,10 @@ const getItemCount = (categoryId) => {
     }
 
     const newCategory = {
-     id: `CAT_${Date.now()}`,   // ✅ ADD THIS LINE
-  name: categoryName,
-  icon: categoryIcon,
-  color: categoryColor,
+      id: `CAT_${Date.now()}`,   // ✅ ADD THIS LINE
+      name: categoryName,
+      icon: categoryIcon,
+      color: categoryColor,
     };
 
     try {
@@ -116,31 +116,31 @@ const getItemCount = (categoryId) => {
   };
 
   const handleConfirmDelete = async () => {
-  try {
-    // 1️⃣ Delete all menu items in that category
-    const itemsToDelete = menuItems.filter(
-      item => String(item.categoryId) === String(deleteCategory.id)
-    );
+    try {
+      // 1️⃣ Delete all menu items in that category
+      const itemsToDelete = menuItems.filter(
+        item => String(item.categoryId) === String(deleteCategory.id)
+      );
 
-    for (let item of itemsToDelete) {
-      await axios.delete(`http://localhost:3002/menuItems/${item.id}`);
+      for (let item of itemsToDelete) {
+        await axios.delete(`http://localhost:3002/menuItems/${item.id}`);
+      }
+
+      // 2️⃣ Delete the category
+      await axios.delete(`http://localhost:3002/categories/${deleteCategory.id}`);
+
+      // Update UI
+      setCategories(prev => prev.filter(cat => cat.id !== deleteCategory.id));
+      setMenuItems(prev =>
+        prev.filter(item => String(item.categoryId) !== String(deleteCategory.id))
+      );
+
+      setShowDeleteModal(false);
+      setDeleteCategory(null);
+    } catch (err) {
+      console.error("Delete failed:", err);
     }
-
-    // 2️⃣ Delete the category
-    await axios.delete(`http://localhost:3002/categories/${deleteCategory.id}`);
-
-    // Update UI
-    setCategories(prev => prev.filter(cat => cat.id !== deleteCategory.id));
-    setMenuItems(prev =>
-      prev.filter(item => String(item.categoryId) !== String(deleteCategory.id))
-    );
-
-    setShowDeleteModal(false);
-    setDeleteCategory(null);
-  } catch (err) {
-    console.error("Delete failed:", err);
-  }
-};
+  };
 
 
   return (
@@ -193,32 +193,37 @@ const getItemCount = (categoryId) => {
 
       {/* ================= ADD / EDIT MODAL ================= */}
       {showAddModal && (
-        <div className="modal-overlay">
-          <div className="modal-card">
+        <div className="modal-overlay-categorypage">
+          <div className="modal-card-categorypage">
             <h3>{editingCategory ? "Edit Category" : "Add Category"}</h3>
-
-            <input
-              type="text"
-              placeholder="Category Name"
-              value={categoryName}
-              onChange={(e) => setCategoryName(e.target.value)}
-            />
-
-            <input
-              type="text"
-              placeholder="Category Icon (e.g., bi-cup-hot-fill)"
-              value={categoryIcon}
-              onChange={(e) => setCategoryIcon(e.target.value)}
-            />
-
-            <input
-              type="text"
-              placeholder="Category Color (e.g., bg-coffee)"
-              value={categoryColor}
-              onChange={(e) => setCategoryColor(e.target.value)}
-            />
-
-            <div className="modal-actions">
+            <div className="admin-form-group-categorypage">
+              <label>Category Name :</label>
+              <input
+                type="text"
+                placeholder="Enter category name..."
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="admin-form-group-categorypage">
+              <label>Category Icon :</label>
+              <input
+                type="text"
+                placeholder="e.g., bi-cup-hot-fill"
+                value={categoryIcon}
+                onChange={(e) => setCategoryIcon(e.target.value)}
+              />
+            </div>
+            <div className="admin-form-group-categorypage">
+              <label>Category_Color :</label>
+              <input
+                type="text"
+                placeholder="Category Color (e.g., bg-coffee)"
+                value={categoryColor}
+                onChange={(e) => setCategoryColor(e.target.value)}
+              />
+            </div>
+            <div className="modal-actions-categorypage">
               <button onClick={() => setShowAddModal(false)}>Cancel</button>
               <button
                 style={{ background: "#198754", color: "#fff" }}
@@ -233,15 +238,15 @@ const getItemCount = (categoryId) => {
 
       {/* ================= DELETE MODAL ================= */}
       {showDeleteModal && deleteCategory && (
-        <div className="modal-overlay">
-          <div className="modal-card">
+        <div className="modal-overlay-categorypage">
+          <div className="modal-card-categorypage">
             <h3>Delete Category</h3>
             <p>
               Are you sure you want to delete{" "}
               <strong>{deleteCategory.name}</strong>?
             </p>
 
-            <div className="modal-actions">
+            <div className="modal-actions-categorypage">
               <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
               <button
                 style={{ background: "#dc3545", color: "#fff" }}

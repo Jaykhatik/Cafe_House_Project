@@ -175,11 +175,11 @@ const Customers = () => {
               )}
             </tbody>
             {modalOpen && selectedCustomer && (
-              <div className="modal-overlay">
-                <div className="modal-content">
+              <div className="modal-overlay-customerpage">
+                <div className="modal-content-customerpage">
                   <h3>Customer Details</h3>
 
-                  <div className="customer-info">
+                  <div className="customer-info-customerpage">
                     <h4>Customer_Id :</h4>
                      <p>{selectedCustomer.id}</p>
                       <h4>Customer_Name :</h4>
@@ -207,7 +207,7 @@ const Customers = () => {
                     </p>
                   </div>
 
-                  <div className="modal-actions" style={{ marginTop: "20px", textAlign: "right" }}>
+                  <div className="modal-actions-customerpage" style={{ marginTop: "20px", textAlign: "right" }}>
                     <button
                       onClick={async () => {
                         try {

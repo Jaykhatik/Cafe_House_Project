@@ -193,7 +193,7 @@
 
 
 /* ================= MODAL OVERLAY ================= */
-.modal-overlay {
+.modal-overlay-customerpage {
   position: fixed;
   top: 0;
   left: 0;
@@ -209,7 +209,7 @@
 }
 
 /* ================= MODAL CONTENT ================= */
-.modal-content {
+.modal-content-customerpage {
   background-color: #ffffff;
   border-radius: 16px;
   max-width: 520px;
@@ -234,7 +234,7 @@
 }
 
 /* ================= MODAL TITLE ================= */
-.modal-content h3 {
+.modal-content-customerpage h3 {
   font-size: 22px;
   color: #c79c60;
   margin-bottom: 18px;
@@ -246,31 +246,31 @@
 }
 
 /* ================= CUSTOMER INFO ================= */
-.customer-info {
+.customer-info-customerpage {
   margin-top: 10px;
 }
 
-.customer-info h4 {
+.customer-info-customerpage h4 {
 margin-top: 15px;
   margin-bottom: 8px;
   font-size: 16px;
   color: #c79c60;
 }
 
-.customer-info p {
+.customer-info-customerpage p {
   margin: 8px 0;
   font-size: 14px;
   color: #444;
  
 }
 
-.customer-info strong {
+.customer-info-customerpage strong {
   color: #333;
   min-width: 90px;
 }
 
 /* ================= SELECT (LOYALTY) ================= */
-.customer-info select {
+.customer-info-customerpage select {
   padding: 6px 10px;
   margin-left: 8px;
   border-radius: 6px;
@@ -281,13 +281,13 @@ margin-top: 15px;
   transition: border-color 0.3s;
 }
 
-.customer-info select:focus {
+.customer-info-customerpage select:focus {
   border-color: #c79c60;
   outline: none;
 }
 
 /* ================= MODAL ACTIONS ================= */
-.modal-actions {
+.modal-actions-customerpage {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
@@ -295,7 +295,7 @@ margin-top: 15px;
 }
 
 /* ================= BUTTONS ================= */
-.modal-actions button {
+.modal-actions-customerpage button {
   padding: 8px 18px;
   border-radius: 8px;
   font-size: 14px;
@@ -304,52 +304,52 @@ margin-top: 15px;
 }
 
 /* UPDATE BUTTON */
-.modal-actions button:first-child {
+.modal-actions-customerpage button:first-child {
   background-color: #c79c60;
   color: #fff;
   border: none;
 }
 
-.modal-actions button:first-child:hover {
+.modal-actions-customerpage button:first-child:hover {
   background-color: #b68c55;
   transform: translateY(-2px);
 }
 
 /* CLOSE BUTTON */
-.modal-actions button:last-child {
+.modal-actions-customerpage button:last-child {
   background-color: #eee;
   color: #333;
   border: none;
 }
 
-.modal-actions button:last-child:hover {
+.modal-actions-customerpage button:last-child:hover {
   background-color: #ddd;
   transform: translateY(-2px);
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
-  .modal-content {
+  .modal-content-customerpage {
     padding: 22px;
   }
 
-  .modal-content h3 {
+  .modal-content-customerpage h3 {
     font-size: 20px;
   }
 
-  .customer-info p {
+  .customer-info-customerpage p {
     font-size: 13px;
   }
 
-  .customer-info strong {
+  .customer-info-customerpage strong {
     min-width: 80px;
   }
 
-  .customer-info select {
+  .customer-info-customerpage select {
     font-size: 13px;
   }
 
-  .modal-actions button {
+  .modal-actions-customerpage button {
     font-size: 13px;
     padding: 7px 14px;
   }

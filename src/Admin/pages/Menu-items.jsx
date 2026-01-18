@@ -269,18 +269,16 @@ const MenuItems = () => {
 
                     <td>
                       <i
-                        className="action edit"
+                        className="bi bi-pencil-square edit-icon-menuitem"
                         onClick={() => handleEditClick(item)}
                       >
-                        ✏️
                       </i>
 
 
                       <i
-                        className="action delete"
+                        className="bi bi-trash  delete-icon-menuitem"
                         onClick={() => handleDeleteClick(item)}
                       >
-                        🗑
                       </i>
 
                     </td>
@@ -299,14 +297,15 @@ const MenuItems = () => {
 
       </div>
       {showEditModal && editItem && (
-        <div className="modal-overlay">
-          <div className="modal-card scrollable">
+        <div className="modal-overlay-menuitempage">
+          <div className="modal-card-menuitempage scrollable-menuitempage">
 
             <h3>Edit Menu Item</h3>
 
             <label>Name</label>
             <input
               type="text"
+              placeholder="enter your name"
               name="name"
               value={editItem.name}
               onChange={handleEditChange}
@@ -382,7 +381,7 @@ const MenuItems = () => {
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
             </select>
-            <label className="checkbox">
+            <label className="checkbox-menuitempage">
               <input
                 type="checkbox"
                 name="isSpecial"
@@ -392,7 +391,7 @@ const MenuItems = () => {
               Special Item
             </label>
 
-            <div className="modal-actions">
+            <div className="modal-actions-menuitempage">
               <button onClick={() => setShowEditModal(false)}>Cancel</button>
               <button onClick={handleUpdateItem}>Save Changes</button>
             </div>
@@ -401,8 +400,8 @@ const MenuItems = () => {
         </div>
       )}
       {showDeleteModal && deleteItem && (
-        <div className="modal-overlay">
-          <div className="modal-card">
+        <div className="modal-overlay-menuitempage">
+          <div className="modal-card-menuitempage">
 
             <h3>Delete Item</h3>
 
@@ -411,7 +410,7 @@ const MenuItems = () => {
               <strong> {deleteItem.name}</strong>?
             </p>
 
-            <div className="modal-actions">
+            <div className="modal-actions-menuitempage">
               <button onClick={() => setShowDeleteModal(false)}>
                 Cancel
               </button>
@@ -428,8 +427,8 @@ const MenuItems = () => {
         </div>
       )}
       {showAddModal && (
-        <div className="modal-overlay">
-          <div className="modal-card scrollable">
+        <div className="modal-overlay-menuitempage">
+          <div className="modal-card-menuitempage scrollable-menuitempage">
 
             <h3>Add Menu Item</h3>
 
@@ -471,7 +470,7 @@ const MenuItems = () => {
               <option value="inactive">Inactive</option>
             </select>
 
-            <label className="checkbox">
+            <label className="checkbox-menuitempage">
               <input
                 type="checkbox"
                 name="isSpecial"
@@ -481,7 +480,7 @@ const MenuItems = () => {
               Special Item
             </label>
 
-            <div className="modal-actions">
+            <div className="modal-actions-menuitempage">
               <button onClick={() => setShowAddModal(false)}>Cancel</button>
               <button onClick={handleAddItem}>Add Item</button>
             </div>

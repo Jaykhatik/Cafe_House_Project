@@ -180,8 +180,8 @@ function Orders() {
             </tbody>
           </table>
           {modalOpen && selectedOrder && (
-            <div className="modal-overlay">
-              <div className="modal-content">
+            <div className="modal-overlay-orderpage">
+              <div className="modal-content-orderpage">
                 <h3>Order Details</h3>
                 <p><strong>Order ID:</strong> #{selectedOrder.id}</p>
                 {/* Customer */}
@@ -193,28 +193,28 @@ function Orders() {
                 {/* Items */}
                 <h4>Items</h4>
 
-<div className="order-items">
-  {selectedOrder.items.map((item, i) => {
-    const menuItem = menuItems.find(
-      m => String(m.id) === String(item.menuItemId)
-    );
+                <div className="order-items-orderpage">
+                  {selectedOrder.items.map((item, i) => {
+                    const menuItem = menuItems.find(
+                      m => String(m.id) === String(item.menuItemId)
+                    );
 
-    return (
-      <div className="order-item-card" key={i}>
-        <img
-          src={menuItem?.image || "/img/placeholder.png"}
-          alt={menuItem?.name}
-        />
+                    return (
+                      <div className="order-item-card-orderpage" key={i}>
+                        <img
+                          src={menuItem?.image || "/img/placeholder.png"}
+                          alt={menuItem?.name}
+                        />
 
-        <div className="order-item-info">
-          <h5>{menuItem?.name}</h5>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: ${item.price}</p>
-        </div>
-      </div>
-    );
-  })}
-</div>
+                        <div className="order-item-info-orderpage">
+                          <h5>{menuItem?.name}</h5>
+                          <p>Quantity: {item.quantity}</p>
+                          <p>Price: ${item.price}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
 
 
                 {/* Shipping */}
@@ -246,7 +246,7 @@ function Orders() {
                 </p>
 
                 {/* Actions */}
-                <div className="modal-actions" style={{ marginTop: "20px", textAlign: "right" }}>
+                <div className="modal-actions-orderpage" style={{ marginTop: "20px", textAlign: "right" }}>
                   <button
                     onClick={async () => {
                       try {
