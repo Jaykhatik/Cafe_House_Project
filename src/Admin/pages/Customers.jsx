@@ -7,6 +7,8 @@ const Customers = () => {
   const [search, setSearch] = useState("");
   const [customers, setCustomers] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [selectedCustomer, setSelectedCustomer] = useState(null); // For modal
+  const [modalOpen, setModalOpen] = useState(false);
 
   // ================= FETCH CUSTOMERS =================
   const fetchCustomers = async () => {
@@ -36,9 +38,9 @@ const Customers = () => {
 
   // ================= HELPER FUNCTIONS (FIXED) =================
   const getCustomerOrders = (customerId) =>
-  orders.filter(
-    (o) => o.customerId === customerId
-  );
+    orders.filter(
+      (o) => o.customerId === customerId
+    );
 
 
   const getOrderCount = (customerId) =>
@@ -47,7 +49,7 @@ const Customers = () => {
   const getTotalSpent = (customerId) =>
     getCustomerOrders(customerId).reduce(
       (sum, o) => sum + (o.totalAmount || 0)
-,
+      ,
       0
     );
 
@@ -151,7 +153,15 @@ const Customers = () => {
                       <td>{c.lastVisit}</td>
 
                       <td>
-                        <i className="bi bi-eye action-eye"></i>
+                        <i
+                          className="bi bi-eye action-eye"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            setSelectedCustomer({ ...c }); // clone customer for editing
+                            setModalOpen(true);
+                          }}
+                        ></i>
+
                       </td>
                     </tr>
                   );
@@ -164,7 +174,86 @@ const Customers = () => {
                 </tr>
               )}
             </tbody>
+            {modalOpen && selectedCustomer && (
+              <div className="modal-overlay">
+                <div className="modal-content">
+                  <h3>Customer Details</h3>
+
+                  <div className="customer-info">
+                    <h4>Customer_Id :</h4>
+                     <p>{selectedCustomer.id}</p>
+                      <h4>Customer_Name :</h4>
+                    <p>{selectedCustomer.name}</p>
+                     <h4>Email :</h4>
+                    <p>{selectedCustomer.email}</p>
+                     <h4>Phone :</h4>
+                    <p>{selectedCustomer.phone}</p>
+                     <h4>Last Visit :</h4>
+                    <p>{selectedCustomer.lastVisit}</p>
+                     <h4>Address :</h4>
+                    <p>{selectedCustomer.address}</p>
+                    <p>
+                      <strong>Loyalty:</strong>{" "}
+                      <select
+                        value={selectedCustomer.loyalty}
+                        onChange={(e) =>
+                          setSelectedCustomer({ ...selectedCustomer, loyalty: e.target.value })
+                        }
+                      >
+                        <option value="Bronze">Bronze</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                      </select>
+                    </p>
+                  </div>
+
+                  <div className="modal-actions" style={{ marginTop: "20px", textAlign: "right" }}>
+                    <button
+                      onClick={async () => {
+                        try {
+                          await axios.patch(
+                            `http://localhost:3002/customers/${selectedCustomer.id}`,
+                            { loyalty: selectedCustomer.loyalty }
+                          );
+                          fetchCustomers(); // refresh the table
+                          setModalOpen(false);
+                        } catch (err) {
+                          console.error("Update failed:", err);
+                        }
+                      }}
+                      style={{
+                        padding: "8px 16px",
+                        marginRight: "10px",
+                        backgroundColor: "#c79c60",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "8px",
+                        cursor: "pointer"
+                      }}
+                    >
+                      Update
+                    </button>
+
+                    <button
+                      onClick={() => setModalOpen(false)}
+                      style={{
+                        padding: "8px 16px",
+                        backgroundColor: "#eee",
+                        color: "#333",
+                        border: "none",
+                        borderRadius: "8px",
+                        cursor: "pointer"
+                      }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
           </table>
+
         </div>
 
       </div>

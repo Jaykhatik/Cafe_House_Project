@@ -6,43 +6,45 @@
       "categoryId": "CAT_1768653111431",
       "ingredients": "chocolate,milk,ice",
       "description": "best",
-      "price": 205,
+      "price": 199,
       "image": "/img/brownie.webp",
       "calories": "80 kcal",
       "rating": 9.7,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     }
   ],
   "orders": [
     {
-      "id": "ORDER_1768653501939",
-      "customerId": "CUSTOMER_1768653501923",
-      "totalAmount": 195,
-      "status": "pending",
-      "date": "17/01/2026, 18:08:21",
+      "id": "ORDER_1768721655410",
+      "customerId": "CUSTOMER_1768721655394",
+      "customer": {
+        "name": "jay",
+        "email": "jay@gmail.com",
+        "phone": "5858585858"
+      },
+      "shippingAddress": {
+        "address": "santoshinagar",
+        "city": "ahmedabad",
+        "state": "gujarat",
+        "zip": "258258",
+        "country": "India"
+      },
+      "payment": {
+        "method": "card",
+        "status": "Pending"
+      },
       "items": [
         {
           "menuItemId": "ITEM_1768653218644",
           "name": "Cold Brew",
           "price": 205,
-          "quantity": 1
+          "quantity": 4
         }
-      ]
-    },
-    {
-      "id": "ORDER_1768717798871",
-      "customerId": "CUSTOMER_1768717798854",
-      "totalAmount": 1630,
-      "status": "pending",
-      "date": "18/01/2026, 11:59:58",
-      "items": [
-        {
-          "menuItemId": "ITEM_1768653218644",
-          "name": "Cold Brew",
-          "price": 205,
-          "quantity": 8
-        }
-      ]
+      ],
+      "totalAmount": 810,
+      "status": "completed",
+      "date": "2026-01-18"
     }
   ],
   "inventory": [
@@ -277,23 +279,13 @@
   ],
   "customers": [
     {
-      "id": "CUSTOMER_1768653501923",
-      "name": "usha",
-      "initials": "U",
-      "email": "usha@gmail.com",
-      "phone": "1234567898",
-      "address": "ahmedabad",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-17"
-    },
-    {
-      "id": "CUSTOMER_1768717798854",
-      "name": "ch",
-      "initials": "C",
-      "email": "ch@gmail.com",
-      "phone": "7897897897",
-      "address": "fnfn",
-      "loyalty": "Bronze",
+      "id": "CUSTOMER_1768721655394",
+      "name": "jay",
+      "initials": "J",
+      "email": "jay@gmail.com",
+      "phone": "5858585858",
+      "address": "santoshinagar",
+      "loyalty": "Gold",
       "lastVisit": "2026-01-18"
     }
   ]
