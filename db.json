@@ -12,6 +12,18 @@
       "rating": 9.7,
       "isSpecial": true,
       "status": "active"
+    },
+    {
+      "id": "ITEM_1768837988107",
+      "name": "Oreo_Shake",
+      "categoryId": "CAT_1768653111431",
+      "ingredients": "chocolate,milk,ice",
+      "description": "super chocolaty shake",
+      "price": 200,
+      "image": "/img/mocha.avif",
+      "calories": "200 kcal",
+      "rating": 9,
+      "isSpecial": true
     }
   ],
   "orders": [
@@ -45,6 +57,37 @@
       "totalAmount": 810,
       "status": "cancelled",
       "date": "2026-01-18"
+    },
+    {
+      "id": "ORDER_1768837924624",
+      "customerId": "CUSTOMER_1768837924611",
+      "customer": {
+        "name": "jjjjj",
+        "email": "sfvbnm",
+        "phone": "45444455455"
+      },
+      "shippingAddress": {
+        "address": "svnbs",
+        "city": "gggggggggggggg",
+        "state": "gggg",
+        "zip": "77777",
+        "country": "India"
+      },
+      "payment": {
+        "method": "cod",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 189,
+      "status": "progress",
+      "date": "2026-01-19"
     }
   ],
   "inventory": [
@@ -265,6 +308,16 @@
       "address": "santoshinagar",
       "loyalty": "Gold",
       "lastVisit": "2026-01-18"
+    },
+    {
+      "id": "CUSTOMER_1768837924611",
+      "name": "jjjjj",
+      "initials": "J",
+      "email": "sfvbnm",
+      "phone": "45444455455",
+      "address": "svnbs",
+      "loyalty": "Bronze",
+      "lastVisit": "2026-01-19"
     }
   ]
 }

@@ -36,9 +36,10 @@ function App() {
           <Route element={<WebsiteLayout />}>
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
+            
             {/* SINGLE ITEM PAGE */}
             <Route path="/menuitem/:id" element={<MenuItemDetails />} />
-            {/* <Route path='/today_special' element={<><Today_special /></>} /> */}
+
             <Route path='/about' element={<><About /></>} />
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
