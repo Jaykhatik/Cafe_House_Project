@@ -27,10 +27,10 @@
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  min-height: 540px; 
-    max-height: max-content;  
-    margin-top: 40px;
-    margin-bottom: 40px;
+  min-height: 540px;
+  max-height: max-content;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 /* LEFT */
@@ -109,6 +109,7 @@
   color: #c89b3c;
   cursor: pointer;
 }
+
 .cafe-auth-desc {
   margin: 12px 0;
   line-height: 1.6;
@@ -148,21 +149,32 @@
   margin: 8px 0;
   opacity: 0.8;
 }
+
 /* ==== Animated Illustration ==== */
 .cafe-auth-illustration {
-   width: 70px;
+  width: 70px;
 
-  align-self: flex-start;     /* 👈 MOVE TO LEFT */
-  margin-left: -10px;         /* 👈 slight artistic offset */
+  align-self: flex-start;
+  /* 👈 MOVE TO LEFT */
+  margin-left: -10px;
+  /* 👈 slight artistic offset */
 
   animation: floatCoffee 3s ease-in-out infinite;
-   filter: drop-shadow(0 10px 0px rgba(0,0,0,0.35));
+  filter: drop-shadow(0 10px 0px rgba(0, 0, 0, 0.35));
 }
 
 @keyframes floatCoffee {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* ==== Forgot Links ==== */
@@ -219,3 +231,12 @@
   opacity: 0.9;
 }
 
+.auth-warning {
+  background: #fff3cd;
+  color: #856404;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  text-align: center;
+}

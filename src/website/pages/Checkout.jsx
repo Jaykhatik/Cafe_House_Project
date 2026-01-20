@@ -9,6 +9,18 @@ function Checkout() {
   const loggedCustomerId = localStorage.getItem("userId");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loggedCustomerId) {
+      navigate("/authentication", {
+        replace: true,
+        state: { fromCheckout: true }
+      });
+    }
+  }, [loggedCustomerId, navigate]);
+
+
+
   const isSubmitting = useRef(false);
 
   // ===== STATES =====
@@ -18,23 +30,23 @@ function Checkout() {
     phone: "",
     address: "",
   });
-useEffect(() => {
-  if (!loggedCustomerId) return;
+  useEffect(() => {
+    if (!loggedCustomerId) return;
 
-  axios
-    .get(`http://localhost:3002/customers/${loggedCustomerId}`)
-    .then((res) => {
-      setCustomer({
-        name: res.data.name,
-        email: res.data.email,
-        phone: res.data.phone || "",
-        address: res.data.address || "",
+    axios
+      .get(`http://localhost:3002/customers/${loggedCustomerId}`)
+      .then((res) => {
+        setCustomer({
+          name: res.data.name,
+          email: res.data.email,
+          phone: res.data.phone || "",
+          address: res.data.address || "",
+        });
+      })
+      .catch(() => {
+        console.log("Customer not found");
       });
-    })
-    .catch(() => {
-      console.log("Customer not found");
-    });
-}, [loggedCustomerId]);
+  }, [loggedCustomerId]);
 
 
 
@@ -144,14 +156,14 @@ useEffect(() => {
     try {
       let savedCustomerId;
 
-if (loggedCustomerId) {
-  savedCustomerId = loggedCustomerId;
-} else {
-  const existingCustomer = await findExistingCustomer(customer.email);
-  savedCustomerId = existingCustomer
-    ? existingCustomer.id
-    : await saveCustomer();
-}
+      if (loggedCustomerId) {
+        savedCustomerId = loggedCustomerId;
+      } else {
+        const existingCustomer = await findExistingCustomer(customer.email);
+        savedCustomerId = existingCustomer
+          ? existingCustomer.id
+          : await saveCustomer();
+      }
 
 
       const savedOrderId = await saveOrder(savedCustomerId);
@@ -212,11 +224,11 @@ if (loggedCustomerId) {
             />
           </div>
           <div className="form-group">
-          <input
-  placeholder="Email"
-  value={customer.email}
-  disabled={!!loggedCustomerId}
-/>
+            <input
+              placeholder="Email"
+              value={customer.email}
+              disabled={!!loggedCustomerId}
+            />
 
           </div>
           <div className="form-group">

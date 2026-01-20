@@ -36,68 +36,6 @@
   ],
   "orders": [
     {
-      "id": "ORDER_1768721655410",
-      "customerId": "CUSTOMER_1768721655394",
-      "customer": {
-        "name": "jay",
-        "email": "jay@gmail.com",
-        "phone": "5858585858"
-      },
-      "shippingAddress": {
-        "address": "santoshinagar",
-        "city": "ahmedabad",
-        "state": "gujarat",
-        "zip": "258258",
-        "country": "India"
-      },
-      "payment": {
-        "method": "card",
-        "status": "Pending"
-      },
-      "items": [
-        {
-          "menuItemId": "ITEM_1768653218644",
-          "name": "Cold Brew",
-          "price": 205,
-          "quantity": 4
-        }
-      ],
-      "totalAmount": 810,
-      "status": "cancelled",
-      "date": "2026-01-18"
-    },
-    {
-      "id": "ORDER_1768837924624",
-      "customerId": "CUSTOMER_1768837924611",
-      "customer": {
-        "name": "jjjjj",
-        "email": "sfvbnm",
-        "phone": "45444455455"
-      },
-      "shippingAddress": {
-        "address": "svnbs",
-        "city": "gggggggggggggg",
-        "state": "gggg",
-        "zip": "77777",
-        "country": "India"
-      },
-      "payment": {
-        "method": "cod",
-        "status": "Pending"
-      },
-      "items": [
-        {
-          "menuItemId": "ITEM_1768653218644",
-          "name": "Cold Brew",
-          "price": 199,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 189,
-      "status": "progress",
-      "date": "2026-01-19"
-    },
-    {
       "id": "ORDER_1768923290782",
       "customerId": "u_1768923198152",
       "customer": {
@@ -162,6 +100,74 @@
         }
       ],
       "totalAmount": 985,
+      "status": "pending",
+      "date": "2026-01-20"
+    },
+    {
+      "id": "ORDER_1768927563371",
+      "customerId": "CUSTOMER_1768927435503",
+      "customer": {
+        "name": "JayKumar Khatik",
+        "email": "jaykumarkhatik@gmail.com",
+        "phone": "9879813898"
+      },
+      "shippingAddress": {
+        "address": "ahmedabad",
+        "city": "ahmedabad",
+        "state": "gujarat",
+        "zip": "258963",
+        "country": "India"
+      },
+      "payment": {
+        "method": "upi",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 4
+        },
+        {
+          "menuItemId": "ITEM_1768837988107",
+          "name": "Oreo_Shake",
+          "price": 100,
+          "quantity": 3
+        }
+      ],
+      "totalAmount": 1086,
+      "status": "pending",
+      "date": "2026-01-20"
+    },
+    {
+      "id": "ORDER_1768927719661",
+      "customerId": "CUSTOMER_1768927435503",
+      "customer": {
+        "name": "JayKumar Khatik",
+        "email": "jaykumarkhatik@gmail.com",
+        "phone": "9879813898"
+      },
+      "shippingAddress": {
+        "address": "nsbvnbv",
+        "city": "sbns",
+        "state": "nsbvns",
+        "zip": "445544",
+        "country": "India"
+      },
+      "payment": {
+        "method": "cod",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 189,
       "status": "pending",
       "date": "2026-01-20"
     }
@@ -376,26 +382,6 @@
   ],
   "customers": [
     {
-      "id": "CUSTOMER_1768721655394",
-      "name": "jay",
-      "initials": "J",
-      "email": "jay@gmail.com",
-      "phone": "5858585858",
-      "address": "santoshinagar",
-      "loyalty": "Gold",
-      "lastVisit": "2026-01-18"
-    },
-    {
-      "id": "CUSTOMER_1768837924611",
-      "name": "jjjjj",
-      "initials": "J",
-      "email": "sfvbnm",
-      "phone": "45444455455",
-      "address": "svnbs",
-      "loyalty": "Bronze",
-      "lastVisit": "2026-01-19"
-    },
-    {
       "id": "u_1768923198152",
       "name": "chetan kahtik",
       "email": "chetan@gmail.com",
@@ -407,6 +393,20 @@
       "orderCount": 2,
       "lastVisit": "2026-01-20",
       "loyalty": "Silver"
+    },
+    {
+      "id": "CUSTOMER_1768927435503",
+      "name": "JayKumar Khatik",
+      "initials": "J",
+      "email": "jaykumarkhatik@gmail.com",
+      "phone": "9879813898",
+      "password": "190504",
+      "loyalty": "Bronze",
+      "totalSpent": 1275,
+      "orderCount": 2,
+      "status": "Active",
+      "registered": "2026-01-20T16:43:55.503Z",
+      "lastVisit": "2026-01-20"
     }
   ]
 }

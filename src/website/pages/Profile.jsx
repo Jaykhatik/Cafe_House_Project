@@ -16,7 +16,7 @@ function Profile() {
     const customerId = localStorage.getItem("userId");
 
     if (!customerId) {
-      navigate("/auth");
+      navigate("/authentication");
       return;
     }
 
@@ -24,7 +24,7 @@ function Profile() {
     axios
       .get(`http://localhost:3002/customers/${customerId}`)
       .then((res) => setCustomer(res.data))
-      .catch(() => navigate("/auth"));
+      .catch(() => navigate("/authentication"));
 
     // Fetch orders
     axios
@@ -133,7 +133,7 @@ function Profile() {
               localStorage.removeItem("userId");
               localStorage.removeItem("customerEmail");
               localStorage.removeItem("customerName");
-              navigate("/auth");
+              navigate("/authentication");
             }}
           >
             🚪 Logout
@@ -191,6 +191,22 @@ function Profile() {
                     <p><strong>Date:</strong> {order.date}</p>
                     <p><strong>Status:</strong> {order.status}</p>
                     <p><strong>Total:</strong> ₹{order.totalAmount}</p>
+                    <button
+                      onClick={() => navigate(`/orderdetails/${order.id}`)}
+                      style={{
+                        padding: "6px 12px",
+                        backgroundColor: "#000",
+                        color: "#f0ad4e",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                        marginTop: "8px",
+                      }}
+                    >
+                      View Details
+                    </button>
+
+
                   </div>
                 ))
               )}

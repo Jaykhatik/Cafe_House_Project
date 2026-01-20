@@ -22,6 +22,7 @@ import About from './website/pages/About';
 import MenuItemDetails from './website/pages/MenuItemDetails';
 import Profile from './website/pages/Profile';
 import CafeAuth from './Authnetication/authentication';
+import OrderDetail from './website/pages/Orderdetail';
 
 
 
@@ -36,7 +37,7 @@ function App() {
           <Route element={<WebsiteLayout />}>
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
-            
+
             {/* SINGLE ITEM PAGE */}
             <Route path="/menuitem/:id" element={<MenuItemDetails />} />
 
@@ -44,8 +45,9 @@ function App() {
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
-            <Route path='/profile' element={<Profile/>}/>
-            <Route path='/authentication' element={<CafeAuth/>}/>
+            <Route path='/profile' element={<Profile />} />
+            <Route path="/orderdetails/:orderId" element={<OrderDetail />} />
+            <Route path='/authentication' element={<CafeAuth />} />
           </Route>
           {/* admin pages routing */}
 

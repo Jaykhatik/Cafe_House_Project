@@ -29,7 +29,10 @@ const CafeAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
   const location = useLocation();
+  const showLoginMessage = location.state?.fromCheckout;
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -68,19 +71,19 @@ const CafeAuth = () => {
           return;
         }
 
-       const newUser = {
-  id: "CUSTOMER_" + Date.now(),
-  name: formData.name,
-  initials: formData.name.charAt(0).toUpperCase(),
-  email: formData.email,
-  phone: formData.phone,
-  password: formData.password,
-  loyalty: "Bronze",
-  totalSpent: 0,
-  orderCount: 0,
-  status: "Active",
-  registered: new Date().toISOString()
-};
+        const newUser = {
+          id: "CUSTOMER_" + Date.now(),
+          name: formData.name,
+          initials: formData.name.charAt(0).toUpperCase(),
+          email: formData.email,
+          phone: formData.phone,
+          password: formData.password,
+          loyalty: "Bronze",
+          totalSpent: 0,
+          orderCount: 0,
+          status: "Active",
+          registered: new Date().toISOString()
+        };
 
 
         const { data } = await axios.post(
@@ -191,6 +194,12 @@ const CafeAuth = () => {
 
         {/* RIGHT FORM SIDE */}
         <div className="cafe-auth-right">
+          {showLoginMessage && isLogin && (
+            <p className="auth-warning">
+              Please login to continue checkout 🛒
+            </p>
+          )}
+
           <h2>{isLogin ? "Welcome Back" : "Create Your Account"}</h2>
           <p className="cafe-auth-subtitle">
             {isLogin
