@@ -1,4 +1,10 @@
 {
+  "admin": [
+    {
+      "email": "admin@cafehouse.com",
+      "password": "admin123"
+    }
+  ],
   "menuItems": [
     {
       "id": "ITEM_1768653218644",
@@ -19,11 +25,12 @@
       "categoryId": "CAT_1768653111431",
       "ingredients": "chocolate,milk,ice",
       "description": "super chocolaty shake",
-      "price": 200,
+      "price": 100,
       "image": "/img/mocha.avif",
       "calories": "200 kcal",
       "rating": 9,
-      "isSpecial": true
+      "isSpecial": true,
+      "status": "active"
     }
   ],
   "orders": [
