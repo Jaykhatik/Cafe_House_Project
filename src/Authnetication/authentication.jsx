@@ -90,22 +90,31 @@ const CafeAuth = () => {
       }
 
       /* ================= LOGIN ================= */
-      else {
-        const { data: admin } = await axios.get(
-          `${BASE_URL}/admin`
-        );
 
+      //Admin Login
+      else {
+        // 1. Get admin array
+        const { data: admin } = await axios.get(`${BASE_URL}/admin`);
+        // 2. Check admin credentials (admin[0])
         if (
-          formData.email === admin.email &&
-          formData.password === admin.password
+          admin.length &&
+          formData.email === admin[0].email &&
+          formData.password === admin[0].password
         ) {
           localStorage.setItem("adminToken", "admin_logged_in");
+
+          // ✅ STORE ADMIN EMAIL (THIS IS THE KEY STEP)
+          localStorage.setItem("adminEmail", admin[0].email);
+
           toast.success("Admin logged in");
+
           await delay(800);
           navigate("/admin");
           return;
         }
 
+
+        //Customer login
         const { data: user } = await axios.get(
           `${BASE_URL}/customers`,
           {
@@ -268,7 +277,7 @@ const CafeAuth = () => {
                   : "Create Account"}
               <ArrowRight />
             </button>
-              {isLogin && (
+            {isLogin && (
               <div className="cafe-forgot-links">
                 <Link to="/forgot-password">Forgot Password?</Link>
                 <span>•</span>

@@ -1,10 +1,21 @@
 import "./Sidebar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 import logo from "../Sidebar/logo.png";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+ const navigate = useNavigate();
+
+ const handleLogout = () => {
+  // 🔐 clear admin session
+  localStorage.removeItem("adminToken");
+  localStorage.removeItem("adminEmail");
+
+  // 🔁 redirect to auth page
+  navigate("/authentication");
+};
 
   return (
     <aside className={`admin-sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -63,7 +74,7 @@ function Sidebar() {
 
       {/* ===== LOGOUT ===== */}
       <div className="logout">
-        <button className="logout-link">
+        <button className="logout-link" onClick={handleLogout}>
           <i className="bi bi-box-arrow-right"></i> Logout
         </button>
       </div>

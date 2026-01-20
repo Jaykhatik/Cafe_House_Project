@@ -5,6 +5,13 @@ import { useLocation } from "react-router-dom";
 function Topbar({ title }) {
   const location = useLocation();
 
+  const adminEmail = localStorage.getItem("adminEmail");
+
+  const adminName = adminEmail
+    ? adminEmail.split("@")[0].charAt(0).toUpperCase() +
+      adminEmail.split("@")[0].slice(1)
+    : "Admin";
+
   const pageTitles = {
     "/admin/dashboard": "Dashboard",
     "/admin/menu": "Menu Items",
@@ -19,7 +26,8 @@ function Topbar({ title }) {
     "/admin/settings": "Settings",
   };
 
-  const dynamicTitle = pageTitles[location.pathname] || title || "Admin Panel";
+  const dynamicTitle =
+    pageTitles[location.pathname] || title || "Admin Panel";
 
   return (
     <nav className="admin-topbar">
@@ -41,8 +49,8 @@ function Topbar({ title }) {
             <img src={image1} alt="User" />
           </div>
           <div className="user-info">
-            <p className="user-name">Admin User</p>
-            <small className="user-email">JK@cafehouse.com</small>
+            <p className="user-name">{adminName}</p>
+            <small className="user-email">{adminEmail}</small>
           </div>
         </div>
       </div>
