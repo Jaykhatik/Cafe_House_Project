@@ -68,15 +68,20 @@ const CafeAuth = () => {
           return;
         }
 
-        const newUser = {
-          id: "u_" + Date.now(),
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          password: formData.password,
-          status: "Active",
-          registered: new Date().toISOString()
-        };
+       const newUser = {
+  id: "CUSTOMER_" + Date.now(),
+  name: formData.name,
+  initials: formData.name.charAt(0).toUpperCase(),
+  email: formData.email,
+  phone: formData.phone,
+  password: formData.password,
+  loyalty: "Bronze",
+  totalSpent: 0,
+  orderCount: 0,
+  status: "Active",
+  registered: new Date().toISOString()
+};
+
 
         const { data } = await axios.post(
           `${BASE_URL}/customers`,
@@ -102,8 +107,6 @@ const CafeAuth = () => {
           formData.password === admin[0].password
         ) {
           localStorage.setItem("adminToken", "admin_logged_in");
-
-          // ✅ STORE ADMIN EMAIL (THIS IS THE KEY STEP)
           localStorage.setItem("adminEmail", admin[0].email);
 
           toast.success("Admin logged in");
@@ -115,8 +118,7 @@ const CafeAuth = () => {
 
 
         //Customer login
-        const { data: user } = await axios.get(
-          `${BASE_URL}/customers`,
+        const { data: user } = await axios.get(`${BASE_URL}/customers`,
           {
             params: {
               email: formData.email,
@@ -132,6 +134,9 @@ const CafeAuth = () => {
 
         localStorage.setItem("token", "user_logged_in");
         localStorage.setItem("userId", user[0].id);
+        // ✅ ADD THESE LINES
+        localStorage.setItem("customerEmail", user[0].email);
+        localStorage.setItem("customerName", user[0].name);
 
         toast.success("Welcome back ☕");
       }

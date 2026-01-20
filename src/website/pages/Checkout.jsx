@@ -16,6 +16,20 @@ function Checkout() {
     phone: "",
     address: "",
   });
+  // ✅ AUTO-FILL LOGGED IN CUSTOMER
+  React.useEffect(() => {
+    const email = localStorage.getItem("customerEmail");
+    const name = localStorage.getItem("customerName");
+
+    if (email && name) {
+      setCustomer((prev) => ({
+        ...prev,
+        name,
+        email,
+      }));
+    }
+  }, []);
+
 
   const [shipping, setShipping] = useState({
     address: "",
@@ -32,22 +46,38 @@ function Checkout() {
 
   // ===== SAVE CUSTOMER =====
   const saveCustomer = async () => {
+    // 1️⃣ Check existing customer by email
+    const res = await axios.get("http://localhost:3002/customers");
+    const existing = res.data.find(
+      (c) => c.email.toLowerCase() === customer.email.toLowerCase()
+    );
+
+    if (existing) {
+      return existing.id;
+    }
+
+    // 2️⃣ Create new customer
     const rawId = Date.now().toString();
     const customerId = `CUSTOMER_${rawId}`;
 
-    const res = await axios.post("http://localhost:3002/customers", {
+    const newCustomer = {
       id: customerId,
       name: customer.name,
-      initials: customer.name ? customer.name.charAt(0).toUpperCase() : "",
+      initials: customer.name.charAt(0).toUpperCase(),
       email: customer.email,
       phone: customer.phone,
       address: shipping.address,
       loyalty: "Bronze",
+      totalSpent: 0,
+      orderCount: 0,
       lastVisit: new Date().toISOString().split("T")[0],
-    });
+    };
 
-    return res.data.id;
+    await axios.post("http://localhost:3002/customers", newCustomer);
+
+    return customerId;
   };
+
 
   // ===== SAVE ORDER =====
   const saveOrder = async (customerId) => {
@@ -115,6 +145,20 @@ function Checkout() {
       }
 
       const savedOrderId = await saveOrder(savedCustomerId);
+      // ✅ UPDATE CUSTOMER STATS
+      const customerRes = await axios.get(
+        `http://localhost:3002/customers/${savedCustomerId}`
+      );
+
+      await axios.patch(
+        `http://localhost:3002/customers/${savedCustomerId}`,
+        {
+          totalSpent: (customerRes.data.totalSpent || 0) + total,
+          orderCount: (customerRes.data.orderCount || 0) + 1,
+          lastVisit: new Date().toISOString().split("T")[0],
+        }
+      );
+
 
       clearCart();
       navigate("/", { replace: true });

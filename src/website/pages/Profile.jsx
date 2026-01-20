@@ -1,10 +1,41 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import "../pages/cssOfWebsite/profile.css";
 
 function Profile() {
   const [activeSection, setActiveSection] = useState("profile");
+  const [customer, setCustomer] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
+
   const [profileImage, setProfileImage] = useState("https://i.pravatar.cc/150");
   const fileInputRef = useRef(null);
+  useEffect(() => {
+    const customerId = localStorage.getItem("userId");
+
+    if (!customerId) {
+      navigate("/auth");
+      return;
+    }
+
+    // Fetch customer
+    axios
+      .get(`http://localhost:3002/customers/${customerId}`)
+      .then((res) => setCustomer(res.data))
+      .catch(() => navigate("/auth"));
+
+    // Fetch orders
+    axios
+      .get("http://localhost:3002/orders")
+      .then((res) => {
+        const userOrders = res.data.filter(
+          (o) => o.customerId === customerId
+        );
+        setOrders(userOrders);
+      });
+  }, [navigate]);
 
   // Trigger file input
   const handleAvatarClick = () => {
@@ -49,12 +80,13 @@ function Profile() {
               />
             </div>
 
-            <h3>jay</h3>
-            <p>jk@gmail.com</p>
+            <h3>{customer?.name}</h3>
+            <p>{customer?.email}</p>
+
 
             <div className="tm-profile-stats">
               <div>
-                <strong>0</strong>
+                <strong>{customer?.orderCount || orders.length}</strong>
                 <span>Orders</span>
               </div>
               <div>
@@ -94,7 +126,19 @@ function Profile() {
             </button>
           </nav>
 
-          <button className="tm-logout-btn">🚪 Logout</button>
+          <button
+            className="tm-logout-btn"
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("userId");
+              localStorage.removeItem("customerEmail");
+              localStorage.removeItem("customerName");
+              navigate("/auth");
+            }}
+          >
+            🚪 Logout
+          </button>
+
         </aside>
 
         {/* ========== CONTENT ========== */}
@@ -106,22 +150,17 @@ function Profile() {
               <div className="tm-profile-form">
                 <div>
                   <label>First Name</label>
-                  <input type="text" value="jay" disabled />
-                </div>
-
-                <div>
-                  <label>Last Name</label>
-                  <input type="text" placeholder="Enter your last name" />
+                  <input type="text" value={customer?.name} />
                 </div>
 
                 <div>
                   <label>Email Address</label>
-                  <input type="email" value="jk@gmail.com" disabled />
+                  <input type="email" value={customer?.email} disabled />
                 </div>
 
                 <div>
                   <label>Phone Number</label>
-                  <input type="text" />
+                  <input type="tel" value={customer?.phone} />
                 </div>
               </div>
 
@@ -131,6 +170,33 @@ function Profile() {
               </div>
             </div>
           )}
+          {activeSection === "orders" && (
+            <div className="tm-profile-card fade-in">
+              <h2>My Orders</h2>
+
+              {orders.length === 0 ? (
+                <p>No orders found</p>
+              ) : (
+                orders.map((order) => (
+                  <div
+                    key={order.id}
+                    style={{
+                      border: "1px solid #eee",
+                      padding: "12px",
+                      marginBottom: "10px",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <p><strong>Order ID:</strong> {order.id}</p>
+                    <p><strong>Date:</strong> {order.date}</p>
+                    <p><strong>Status:</strong> {order.status}</p>
+                    <p><strong>Total:</strong> ₹{order.totalAmount}</p>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+
         </section>
       </div>
     </div>

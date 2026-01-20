@@ -2,7 +2,8 @@
   "admin": [
     {
       "email": "admin@cafehouse.com",
-      "password": "admin123"
+      "password": "admin123",
+      "id": "19aa"
     }
   ],
   "menuItems": [
@@ -95,6 +96,43 @@
       "totalAmount": 189,
       "status": "progress",
       "date": "2026-01-19"
+    },
+    {
+      "id": "ORDER_1768923290782",
+      "customerId": "u_1768923198152",
+      "customer": {
+        "name": "chetan",
+        "email": "chetan@gmail.com",
+        "phone": "7802905397"
+      },
+      "shippingAddress": {
+        "address": "vastral",
+        "city": "ahmedabad",
+        "state": "gujarat",
+        "zip": "382418",
+        "country": "India"
+      },
+      "payment": {
+        "method": "card",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 1
+        },
+        {
+          "menuItemId": "ITEM_1768837988107",
+          "name": "Oreo_Shake",
+          "price": 100,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 289,
+      "status": "pending",
+      "date": "2026-01-20"
     }
   ],
   "inventory": [
@@ -325,6 +363,19 @@
       "address": "svnbs",
       "loyalty": "Bronze",
       "lastVisit": "2026-01-19"
+    },
+    {
+      "id": "u_1768923198152",
+      "name": "chetan kahtik",
+      "email": "chetan@gmail.com",
+      "phone": "7802905397",
+      "password": "130898",
+      "status": "Active",
+      "registered": "2026-01-20T15:33:18.152Z",
+      "totalSpent": 289,
+      "orderCount": 1,
+      "lastVisit": "2026-01-20",
+      "loyalty": "Silver"
     }
   ]
 }
