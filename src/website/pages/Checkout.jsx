@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useCart } from "../component/cartcontext";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +6,8 @@ import "../pages/cssOfWebsite/Checkout.css"; // Import your CSS
 
 function Checkout() {
   const { cartItems, subtotal, clearCart } = useCart();
+  const loggedCustomerId = localStorage.getItem("userId");
+
   const navigate = useNavigate();
   const isSubmitting = useRef(false);
 
@@ -16,19 +18,24 @@ function Checkout() {
     phone: "",
     address: "",
   });
-  // ✅ AUTO-FILL LOGGED IN CUSTOMER
-  React.useEffect(() => {
-    const email = localStorage.getItem("customerEmail");
-    const name = localStorage.getItem("customerName");
+useEffect(() => {
+  if (!loggedCustomerId) return;
 
-    if (email && name) {
-      setCustomer((prev) => ({
-        ...prev,
-        name,
-        email,
-      }));
-    }
-  }, []);
+  axios
+    .get(`http://localhost:3002/customers/${loggedCustomerId}`)
+    .then((res) => {
+      setCustomer({
+        name: res.data.name,
+        email: res.data.email,
+        phone: res.data.phone || "",
+        address: res.data.address || "",
+      });
+    })
+    .catch(() => {
+      console.log("Customer not found");
+    });
+}, [loggedCustomerId]);
+
 
 
   const [shipping, setShipping] = useState({
@@ -135,14 +142,17 @@ function Checkout() {
     }
 
     try {
-      const existingCustomer = await findExistingCustomer(customer.email);
       let savedCustomerId;
 
-      if (existingCustomer) {
-        savedCustomerId = existingCustomer.id;
-      } else {
-        savedCustomerId = await saveCustomer();
-      }
+if (loggedCustomerId) {
+  savedCustomerId = loggedCustomerId;
+} else {
+  const existingCustomer = await findExistingCustomer(customer.email);
+  savedCustomerId = existingCustomer
+    ? existingCustomer.id
+    : await saveCustomer();
+}
+
 
       const savedOrderId = await saveOrder(savedCustomerId);
       // ✅ UPDATE CUSTOMER STATS
@@ -202,11 +212,12 @@ function Checkout() {
             />
           </div>
           <div className="form-group">
-            <input
-              placeholder="Email"
-              value={customer.email}
-              onChange={(e) => setCustomer({ ...customer, email: e.target.value })}
-            />
+          <input
+  placeholder="Email"
+  value={customer.email}
+  disabled={!!loggedCustomerId}
+/>
+
           </div>
           <div className="form-group">
             <input
