@@ -6,6 +6,7 @@
   align-items: center;
   font-family: "Segoe UI", sans-serif;
   color: #fff;
+  overflow: hidden;
 }
 
 .cafe-back-home {
@@ -19,13 +20,17 @@
 }
 
 .cafe-auth-card {
-  width: 900px;
+  width: 880px;
   max-width: 95%;
   display: flex;
   background: #111;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  min-height: 540px; 
+    max-height: max-content;  
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 /* LEFT */
@@ -35,12 +40,13 @@
   padding: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 18px;
 }
 
 .cafe-auth-left h1 {
   font-size: 32px;
+  margin-top: 6px;
 }
 
 .cafe-auth-left p {
@@ -103,3 +109,113 @@
   color: #c89b3c;
   cursor: pointer;
 }
+.cafe-auth-desc {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+.cafe-auth-features {
+  margin: 15px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.cafe-auth-features li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.cafe-auth-note {
+  margin-top: 1px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.cafe-auth-footer {
+  margin-top: auto;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.cafe-auth-subtitle {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.cafe-forgot,
+.cafe-terms {
+  font-size: 12px;
+  margin: 8px 0;
+  opacity: 0.8;
+}
+/* ==== Animated Illustration ==== */
+.cafe-auth-illustration {
+   width: 70px;
+
+  align-self: flex-start;     /* 👈 MOVE TO LEFT */
+  margin-left: -10px;         /* 👈 slight artistic offset */
+
+  animation: floatCoffee 3s ease-in-out infinite;
+   filter: drop-shadow(0 10px 0px rgba(0,0,0,0.35));
+}
+
+@keyframes floatCoffee {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ==== Forgot Links ==== */
+.cafe-forgot-links {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.cafe-forgot-links a {
+  color: #c89b3c;
+  text-decoration: none;
+}
+
+.cafe-forgot-links span {
+  opacity: 0.6;
+}
+
+/* ==== Divider ==== */
+.cafe-divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.cafe-divider span {
+  background: #111;
+  padding: 0 12px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ==== Social Buttons ==== */
+.cafe-social-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cafe-social-buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.cafe-social-buttons button:hover {
+  opacity: 0.9;
+}
+

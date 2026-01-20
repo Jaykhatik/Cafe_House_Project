@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../Authnetication/cssofauth/Authentication.css";
+
+
 import {
   Mail,
   Lock,
@@ -12,7 +14,9 @@ import {
   Coffee,
   ArrowRight,
   ArrowLeft,
-  Phone
+  Phone,
+  Github,
+  Chrome
 } from "lucide-react";
 
 /* ================= BASE URL ================= */
@@ -141,20 +145,44 @@ const CafeAuth = () => {
       </Link>
 
       <div className="cafe-auth-card">
-        {/* LEFT */}
+        {/* LEFT INFO SIDE */}
         <div className="cafe-auth-left">
-          <Coffee size={42} />
+          <img
+            src="img/authimg-removebg-preview.png"
+            alt="Coffee illustration"
+            className="cafe-auth-illustration"
+          />
           <h1>Cafe House</h1>
-          <p>
+
+          <p className="cafe-auth-desc">
             {isLogin
-              ? "Sip, relax and continue your journey with us."
-              : "Join Cafe House and enjoy handcrafted flavors every day."}
+              ? "Welcome back! Sign in to continue exploring delicious brews, exclusive offers, and quick ordering."
+              : "Create your Cafe House account and unlock a world of handcrafted coffee, exclusive discounts, and faster checkouts."}
           </p>
+
+          <ul className="cafe-auth-features">
+            <li>✔ Freshly brewed coffee & snacks</li>
+            <li>✔ Easy online ordering</li>
+            <li>✔ Secure & fast checkout</li>
+          </ul>
+
+          <p className="cafe-auth-note">
+            Trusted by 10,000+ coffee lovers ❤️
+          </p>
+
+          <span className="cafe-auth-footer">
+            Brewed with love at Cafe House
+          </span>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT FORM SIDE */}
         <div className="cafe-auth-right">
-          <h2>{isLogin ? "Sign In" : "Create Account"}</h2>
+          <h2>{isLogin ? "Welcome Back" : "Create Your Account"}</h2>
+          <p className="cafe-auth-subtitle">
+            {isLogin
+              ? "Sign in to continue your coffee journey"
+              : "Join us and enjoy handcrafted flavors every day"}
+          </p>
 
           <form onSubmit={handleSubmit}>
             {!isLogin && (
@@ -173,7 +201,7 @@ const CafeAuth = () => {
                   <Phone />
                   <input
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Phone Number"
                     onChange={handleChange}
                   />
                 </div>
@@ -185,7 +213,7 @@ const CafeAuth = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Email Address"
                 onChange={handleChange}
                 required
               />
@@ -215,22 +243,60 @@ const CafeAuth = () => {
                   onChange={handleChange}
                   required
                 />
-                <span onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                <span
+                  onClick={() =>
+                    setShowConfirmPassword(!showConfirmPassword)
+                  }
+                >
                   {showConfirmPassword ? <EyeOff /> : <Eye />}
                 </span>
               </div>
             )}
 
+
+            {!isLogin && (
+              <p className="cafe-terms">
+                {/* By signing up, you agree to our Terms & Privacy Policy. */}
+              </p>
+            )}
+
             <button disabled={isLoading}>
-              {isLoading ? "Brewing..." : isLogin ? "Sign In" : "Sign Up"}
+              {isLoading
+                ? "Brewing..."
+                : isLogin
+                  ? "Sign In"
+                  : "Create Account"}
               <ArrowRight />
             </button>
+              {isLogin && (
+              <div className="cafe-forgot-links">
+                <Link to="/forgot-password">Forgot Password?</Link>
+                <span>•</span>
+                <Link to="/forgot-account">Forgot Account?</Link>
+              </div>
+            )}
+            <div className="cafe-divider">
+              <span>OR</span>
+            </div>
+
+            <div className="cafe-social-buttons">
+              <button type="button" className="google-btn">
+                <Chrome size={18} />
+                Continue with Google
+              </button>
+
+              <button type="button" className="github-btn">
+                <Github size={18} />
+                Continue with GitHub
+              </button>
+            </div>
+
           </form>
 
           <p className="cafe-toggle">
-            {isLogin ? "New here?" : "Already a member?"}
+            {isLogin ? "New to Cafe House?" : "Already have an account?"}
             <span onClick={() => setIsLogin(!isLogin)}>
-              {isLogin ? " Create account" : " Sign in"}
+              {isLogin ? " Create Account" : " Sign In"}
             </span>
           </p>
         </div>
