@@ -167,11 +167,14 @@ function Menu() {
                                                     <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
 
                                                         <button
-                                                            className="tm-add-to-cart-btn"
+                                                            className="action-btn cart-btn"
                                                             onClick={() => addToCart(item)}
                                                         >
-                                                            Add to Cart
+                                                            <span className="icon">🛒</span>
+                                                            <span className="text">Add to Cart</span>
                                                         </button>
+
+
 
                                                         <button
                                                             onClick={() => {
@@ -185,18 +188,13 @@ function Menu() {
                                                                     ? removeFromWishlist(item.id)
                                                                     : addToWishlist(item);
                                                             }}
-                                                            style={{
-                                                                background: "transparent",
-                                                                border: "none",
-                                                                fontSize: "22px",
-                                                                cursor: "pointer",
-                                                                color: isInWishlist(item.id) ? "red" : "#999"
-                                                            }}
-                                                            title="Add to Wishlist"
+                                                            className={`action-btn wishlist-btn ${isInWishlist(item.id) ? "active" : ""}`}
                                                         >
-                                                            {isInWishlist(item.id) ? "❤️" : "🤍"}
-                                                            wishlist
+                                                            <span className="icon">{isInWishlist(item.id) ? "❤️" : "🤍"}</span>
+                                                            <span className="text">Wishlist</span>
                                                         </button>
+
+
 
                                                     </div>
 

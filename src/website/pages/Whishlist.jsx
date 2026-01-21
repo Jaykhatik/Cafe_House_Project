@@ -46,9 +46,19 @@ function Wishlist() {
               <p>₹{item.price}</p>
             </div>
 
-            <button onClick={() => addToCart(item)}>
+            <button
+              onClick={() => {
+                const isLoggedIn = !!localStorage.getItem("token");
+                if (!isLoggedIn) {
+                  alert("Please login to add to cart");
+                  return;
+                }
+                addToCart(item);
+              }}
+            >
               Add to Cart
             </button>
+
 
             <button
               onClick={() => removeFromWishlist(item.id)}

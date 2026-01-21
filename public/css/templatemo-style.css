@@ -913,6 +913,74 @@ button.tm-more-button {
 .tm-add-to-cart-btn:hover {
   background-color: #b0784f;
 }
+/* COMMON BUTTON BASE */
+.action-btn {
+  width: 140px;        /* 👈 same width */
+  height: 42px;        /* 👈 same height */
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+}
+
+/* ICON */
+.action-btn .icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+/* TEXT */
+.action-btn .text {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* HOVER EFFECT */
+.action-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* WISHLIST */
+.wishlist-btn:hover {
+  background: #ffecec;
+  border-color: #ff6b6b;
+}
+
+.wishlist-btn.active {
+  background: #ffeded;
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+.wishlist-btn:hover .icon {
+  transform: scale(1.15);
+}
+
+/* CART */
+.cart-btn:hover {
+  background: #e8f5ff;
+  border-color: #4da3ff;
+  color: #1d7ed8;
+}
+
+.cart-btn:hover .icon {
+  transform: translateX(2px);
+}
+
+/* CLICK FEEDBACK */
+.action-btn:active {
+  transform: scale(0.97);
+}
 
 /* ======================= IMAGE & UTILITY ======================= */
 .img-thumbnail-menupage {

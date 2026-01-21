@@ -7,11 +7,7 @@ import { useWishlist } from "../component/WhishlistContext";
 
 function Topbar() {
   const { totalItems } = useCart();
-  const { wishlistCount } = useWishlist();
   const { wishlist } = useWishlist();
-
-
-  useLocation();
   const isLoggedIn = !!localStorage.getItem("token");
 
 
@@ -42,19 +38,21 @@ function Topbar() {
             )}
           </NavLink>
 
+          
+
           {isLoggedIn && (
             <NavLink to="/profile" className="tm-topbar-icon">
               <i className="fa fa-user"></i>
             </NavLink>
           )}
-          {isLoggedIn && (
-            <NavLink to="/wishlist" className="tm-topbar-icon">
-              ❤️
-              {wishlist.length > 0 && (
-                <span className="tm-cart-badge">{wishlist.length}</span>
-              )}
-            </NavLink>
-          )}
+
+
+          <NavLink to="/wishlist" className="tm-topbar-icon">
+            ❤️
+            {wishlist.length > 0 && (
+              <span className="tm-cart-badge">{wishlist.length}</span>
+            )}
+          </NavLink>
 
 
 

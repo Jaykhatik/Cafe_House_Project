@@ -97,7 +97,7 @@ const { addToCart } = useCart();
                 <span>Orders</span>
               </div>
               <div>
-                <strong>0</strong>
+                 <strong>{wishlist.length}</strong>
                 <span>Wishlist</span>
               </div>
             </div>

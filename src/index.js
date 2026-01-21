@@ -8,9 +8,9 @@ import { WishlistProvider } from './website/component/WhishlistContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <WishlistProvider>
-    <CartProvider>
+  <CartProvider>
+    <WishlistProvider>
       <App />
-    </CartProvider>
-  </WishlistProvider>
+    </WishlistProvider>
+  </CartProvider>
 );
