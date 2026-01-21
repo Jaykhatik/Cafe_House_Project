@@ -1,69 +1,12 @@
 import React from "react";
-import { NavLink,useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Header() {
     const location = useLocation();
-
-    // Example: cartItems comes from your state or context
-    // You can replace this with your actual cart state
-    // const cartItems = [
-    //     { id: 1, quantity: 2 },
-    //     { id: 2, quantity: 1 },
-    //     { id: 3, quantity: 3 },
-    // ];
-
-    // Calculate total items in cart
-    // const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const isLoggedIn = !!localStorage.getItem("token");
 
     return (
         <>
-            {/* ===== TOPBAR ===== */}
-            {/* <div className="tm-topbar">
-                <div className="container tm-topbar-inner">
-                    
-                    <div className="tm-topbar-left">
-                        <span className="tm-tollfree">
-                            📞 HelpLine No: <strong>1800-123-456</strong>
-                        </span>
-                    </div>
-
-                    
-                    <div className="tm-topbar-center">
-                        <form className="tm-search-form">
-                            <input
-                                type="text"
-                                placeholder="Search for products..."
-                                className="tm-search-input"
-                            />
-                            <button type="submit" className="tm-search-button">
-                                <i className="fa fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    
-                    <div className="tm-topbar-right">
-                        <NavLink
-                            to="/cart"
-                            className={({ isActive }) =>
-                                isActive || window.location.pathname.startsWith("/cart/checkout")
-                                    ? "active-link tm-topbar-icon"
-                                    : "tm-topbar-icon"
-                            }
-                        >
-                            <i className="fa fa-shopping-cart"></i>
-                            {totalItems > 0 && (
-                                <span className="tm-cart-badge">{totalItems}</span>
-                            )}
-                        </NavLink>
-
-                        <NavLink to="/profile" className="tm-topbar-icon">
-                            <i className="fa fa-user"></i>
-                        </NavLink>
-                    </div>
-                </div>
-            </div> */}
-
             <header className="tm-top-header">
                 <div className="container">
                     <div className="row">
@@ -89,21 +32,21 @@ function Header() {
                             <nav className="tm-nav">
                                 <ul>
                                     <li>
-                                       <NavLink
-    to="/"
-    className={
-        location.pathname === "/" ||
-        location.pathname.startsWith("/menuitem")
-            ? "active"
-            : ""
-    }
->
-    Home
-</NavLink>
+                                        <NavLink
+                                            to="/"
+                                            className={
+                                                location.pathname === "/" ||
+                                                    location.pathname.startsWith("/menuitem")
+                                                    ? "active"
+                                                    : ""
+                                            }
+                                        >
+                                            Home
+                                        </NavLink>
 
                                     </li>
 
-                                     <li>
+                                    <li>
                                         <NavLink
                                             to="/about"
                                             className={({ isActive }) => isActive ? "active" : ""}
@@ -129,14 +72,18 @@ function Header() {
                                             Contact
                                         </NavLink>
                                     </li>
-                                     <li>
-                                        <NavLink
-                                            to="/authentication"
-                                            className={({ isActive }) => isActive ? "active" : ""}
-                                        >
-                                            Login
-                                        </NavLink>
-                                    </li>
+                                    {!isLoggedIn && (
+                                        <li>
+                                            <NavLink
+                                                to="/authentication"
+                                                className={({ isActive }) => isActive ? "active" : ""}
+                                            >
+                                                Login
+                                            </NavLink>
+                                        </li>
+                                    )}
+
+
                                 </ul>
                             </nav>
                         </div>

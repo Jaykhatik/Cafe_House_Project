@@ -170,6 +170,37 @@
       "totalAmount": 189,
       "status": "pending",
       "date": "2026-01-20"
+    },
+    {
+      "id": "ORDER_1768967577097",
+      "customerId": "CUSTOMER_1768967532990",
+      "customer": {
+        "name": "Harsha Bhaviskar",
+        "email": "Harsha@gmail.com",
+        "phone": "7897897897"
+      },
+      "shippingAddress": {
+        "address": "Nirantchokdi",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "zip": "382419",
+        "country": "India"
+      },
+      "payment": {
+        "method": "cod",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 189,
+      "status": "pending",
+      "date": "2026-01-21"
     }
   ],
   "inventory": [
@@ -407,6 +438,20 @@
       "status": "Active",
       "registered": "2026-01-20T16:43:55.503Z",
       "lastVisit": "2026-01-20"
+    },
+    {
+      "id": "CUSTOMER_1768967532990",
+      "name": "Harsha Bhaviskar",
+      "initials": "H",
+      "email": "Harsha@gmail.com",
+      "phone": "7897897897",
+      "password": "200124",
+      "loyalty": "Bronze",
+      "totalSpent": 189,
+      "orderCount": 1,
+      "status": "Active",
+      "registered": "2026-01-21T03:52:12.990Z",
+      "lastVisit": "2026-01-21"
     }
   ]
 }

@@ -1,10 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useCart } from "../component/cartcontext";
 import "../component/cssOfWebsiteComponent/Topbar.css";
 
 function Topbar() {
   const { totalItems } = useCart();
+  useLocation();
+  const isLoggedIn = !!localStorage.getItem("token");
+
 
   return (
     <div className="tm-topbar">
@@ -33,9 +36,12 @@ function Topbar() {
             )}
           </NavLink>
 
-          <NavLink to="/profile" className="tm-topbar-icon">
-            <i className="fa fa-user"></i>
-          </NavLink>
+          {isLoggedIn && (
+            <NavLink to="/profile" className="tm-topbar-icon">
+              <i className="fa fa-user"></i>
+            </NavLink>
+          )}
+
         </div>
       </div>
     </div>
