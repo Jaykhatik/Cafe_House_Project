@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useCart } from "../component/cartcontext";
+import { useWishlist } from "../component/WhishlistContext";
+
 
 
 function Menu() {
@@ -9,6 +11,8 @@ function Menu() {
     const [menuItems, setMenuItems] = useState([]);
     const [activeCategoryId, setActiveCategoryId] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+
 
     const categoryRefs = useRef({});
     const hasScrolledRef = useRef(false);
@@ -25,7 +29,7 @@ function Menu() {
 
                 const scrollToId = sessionStorage.getItem("scrollToCategoryId");
                 if (scrollToId) {
-                   setActiveCategoryId(scrollToId);
+                    setActiveCategoryId(scrollToId);
                 } else if (catRes.data.length > 0) {
                     setActiveCategoryId(catRes.data[0].id);
                 }
@@ -59,10 +63,10 @@ function Menu() {
 
     // ================= FILTER ITEMS (ONLY FIX HERE) =================
     const filteredItems = menuItems.filter(
-  item =>
-    String(item.categoryId) === String(activeCategoryId) &&
-    item.status !== "inactive"
-);
+        item =>
+            String(item.categoryId) === String(activeCategoryId) &&
+            item.status !== "inactive"
+    );
 
 
 
@@ -160,12 +164,41 @@ function Menu() {
                                                     <p className="tm-product-description-menupage">
                                                         {item.description}
                                                     </p>
-                                                    <button
-                                                        className="tm-add-to-cart-btn"
-                                                        onClick={() => addToCart(item)}
-                                                    >
-                                                        Add to Cart
-                                                    </button>
+                                                    <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+
+                                                        <button
+                                                            className="tm-add-to-cart-btn"
+                                                            onClick={() => addToCart(item)}
+                                                        >
+                                                            Add to Cart
+                                                        </button>
+
+                                                        <button
+                                                            onClick={() => {
+                                                                const isLoggedIn = !!localStorage.getItem("token");
+                                                                if (!isLoggedIn) {
+                                                                    alert("Please login to use wishlist");
+                                                                    return;
+                                                                }
+
+                                                                isInWishlist(item.id)
+                                                                    ? removeFromWishlist(item.id)
+                                                                    : addToWishlist(item);
+                                                            }}
+                                                            style={{
+                                                                background: "transparent",
+                                                                border: "none",
+                                                                fontSize: "22px",
+                                                                cursor: "pointer",
+                                                                color: isInWishlist(item.id) ? "red" : "#999"
+                                                            }}
+                                                            title="Add to Wishlist"
+                                                        >
+                                                            {isInWishlist(item.id) ? "❤️" : "🤍"}
+                                                        </button>
+
+                                                    </div>
+
                                                 </div>
                                                 <div className="tm-product-price-menupage">
                                                     <a href="#" className="tm-product-price-link-menupage">

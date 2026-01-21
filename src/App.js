@@ -23,6 +23,7 @@ import MenuItemDetails from './website/pages/MenuItemDetails';
 import Profile from './website/pages/Profile';
 import CafeAuth from './Authnetication/authentication';
 import OrderDetail from './website/pages/Orderdetail';
+import Wishlist from './website/pages/Whishlist';
 
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/wishlist' element={<Wishlist/>}/>
             <Route path="/orderdetails/:orderId" element={<OrderDetail />} />
             <Route path='/authentication' element={<CafeAuth />} />
           </Route>

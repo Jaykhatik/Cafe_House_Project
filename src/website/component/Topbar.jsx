@@ -2,9 +2,15 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useCart } from "../component/cartcontext";
 import "../component/cssOfWebsiteComponent/Topbar.css";
+import { useWishlist } from "../component/WhishlistContext";
+
 
 function Topbar() {
   const { totalItems } = useCart();
+  const { wishlistCount } = useWishlist();
+  const { wishlist } = useWishlist();
+
+
   useLocation();
   const isLoggedIn = !!localStorage.getItem("token");
 
@@ -41,6 +47,16 @@ function Topbar() {
               <i className="fa fa-user"></i>
             </NavLink>
           )}
+{isLoggedIn && (
+  <NavLink to="/wishlist" className="tm-topbar-icon">
+    ❤️
+    {wishlist.length > 0 && (
+      <span className="tm-cart-badge">{wishlist.length}</span>
+    )}
+  </NavLink>
+)}
+
+
 
         </div>
       </div>

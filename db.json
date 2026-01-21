@@ -201,6 +201,43 @@
       "totalAmount": 189,
       "status": "pending",
       "date": "2026-01-21"
+    },
+    {
+      "id": "ORDER_1768979947325",
+      "customerId": "CUSTOMER_1768927435503",
+      "customer": {
+        "name": "JayKumar Khatik",
+        "email": "jaykumarkhatik@gmail.com",
+        "phone": "9879813898"
+      },
+      "shippingAddress": {
+        "address": "jwdbjwvd",
+        "city": "jdwjbg",
+        "state": "vvvv",
+        "zip": "123456",
+        "country": "India"
+      },
+      "payment": {
+        "method": "cod",
+        "status": "Pending"
+      },
+      "items": [
+        {
+          "menuItemId": "ITEM_1768653218644",
+          "name": "Cold Brew",
+          "price": 199,
+          "quantity": 9
+        },
+        {
+          "menuItemId": "ITEM_1768837988107",
+          "name": "Oreo_Shake",
+          "price": 100,
+          "quantity": 3
+        }
+      ],
+      "totalAmount": 2081,
+      "status": "pending",
+      "date": "2026-01-21"
     }
   ],
   "inventory": [
@@ -433,11 +470,11 @@
       "phone": "9879813898",
       "password": "190504",
       "loyalty": "Bronze",
-      "totalSpent": 1275,
-      "orderCount": 2,
+      "totalSpent": 3356,
+      "orderCount": 3,
       "status": "Active",
       "registered": "2026-01-20T16:43:55.503Z",
-      "lastVisit": "2026-01-20"
+      "lastVisit": "2026-01-21"
     },
     {
       "id": "CUSTOMER_1768967532990",

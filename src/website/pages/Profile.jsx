@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../component/WhishlistContext";
+import { useCart } from "../component/cartcontext";
+
 
 import "../pages/cssOfWebsite/profile.css";
 
@@ -8,6 +11,10 @@ function Profile() {
   const [activeSection, setActiveSection] = useState("profile");
   const [customer, setCustomer] = useState(null);
   const [orders, setOrders] = useState([]);
+  const { wishlist, removeFromWishlist } = useWishlist();
+  
+const { addToCart } = useCart();
+
   const navigate = useNavigate();
 
   const [profileImage, setProfileImage] = useState("https://i.pravatar.cc/150");
@@ -212,6 +219,66 @@ function Profile() {
               )}
             </div>
           )}
+{activeSection === "wishlist" && (
+  <div className="tm-profile-card fade-in">
+    <h2>My Wishlist ❤️</h2>
+
+    {wishlist.length === 0 ? (
+      <p>No items in wishlist</p>
+    ) : (
+      wishlist.map(item => (
+        <div
+          key={item.id}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+            padding: "12px",
+            border: "1px solid #eee",
+            borderRadius: "10px",
+            marginBottom: "10px"
+          }}
+        >
+          <img
+            src={item.image}
+            alt={item.name}
+            style={{ width: "70px", borderRadius: "8px" }}
+          />
+
+          <div style={{ flex: 1 }}>
+            <h4>{item.name}</h4>
+            <p>₹{item.price}</p>
+          </div>
+
+          <button
+            onClick={() => addToCart(item)}
+            style={{
+              background: "#c79a2b",
+              color: "#fff",
+              border: "none",
+              padding: "6px 12px",
+              borderRadius: "6px"
+            }}
+          >
+            Add to Cart
+          </button>
+
+          <button
+            onClick={() => removeFromWishlist(item.id)}
+            style={{
+              background: "none",
+              border: "none",
+              color: "red",
+              fontSize: "18px"
+            }}
+          >
+            ✕
+          </button>
+        </div>
+      ))
+    )}
+  </div>
+)}
 
         </section>
       </div>
