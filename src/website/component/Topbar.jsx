@@ -47,14 +47,14 @@ function Topbar() {
               <i className="fa fa-user"></i>
             </NavLink>
           )}
-{isLoggedIn && (
-  <NavLink to="/wishlist" className="tm-topbar-icon">
-    ❤️
-    {wishlist.length > 0 && (
-      <span className="tm-cart-badge">{wishlist.length}</span>
-    )}
-  </NavLink>
-)}
+          {isLoggedIn && (
+            <NavLink to="/wishlist" className="tm-topbar-icon">
+              ❤️
+              {wishlist.length > 0 && (
+                <span className="tm-cart-badge">{wishlist.length}</span>
+              )}
+            </NavLink>
+          )}
 
 
 

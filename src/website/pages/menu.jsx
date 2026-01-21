@@ -195,6 +195,7 @@ function Menu() {
                                                             title="Add to Wishlist"
                                                         >
                                                             {isInWishlist(item.id) ? "❤️" : "🤍"}
+                                                            wishlist
                                                         </button>
 
                                                     </div>
