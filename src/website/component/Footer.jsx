@@ -24,7 +24,14 @@ function Footer() {
 
                             {/* ABOUT CAFE */}
                             <div className="col-lg-5 col-md-5 tm-footer-div">
-                                <h3 className="tm-footer-div-title">About Cafe House</h3>
+                                <div className="tm-footer-div-upper">
+                                    <img
+                                        src="/img/logo.png"
+                                        alt="Cafe House Logo"
+                                        className="tm-site-logo"
+                                    />
+                                    <h3 className="tm-footer-div-title">About Cafe House</h3>
+                                </div>
                                 <p className="margin-top-15">
                                     Cafe House is your perfect spot for premium coffee, handcrafted beverages,
                                     and freshly made bakery treats. We believe in delivering warmth, comfort,

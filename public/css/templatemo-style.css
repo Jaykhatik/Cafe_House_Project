@@ -391,13 +391,18 @@ ul {
 
 /* ==================================================Footer=============================================================== */
 .tm-black-bg {
-  background-color: #302f2f;
-  color: white;
+  background-color: #000;
+  color: whitesmoke;
   padding-top: 50px;
+}
+.tm-footer-div-upper{
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 .tm-footer-div-title {
-  color: white;
+  color: #b0784f;
   font-size: 21px;
   font-weight: 700;
 }
@@ -416,7 +421,7 @@ ul {
 }
 
 .tm-footer-nav li a {
-  color: white;
+  color: whitesmoke;
 }
 
 .tm-footer-nav li a:hover {
@@ -446,8 +451,8 @@ ul {
 }
 
 .tm-social-icon {
-  background-color: #505050;
-  color: white;
+  background-color: #000;
+  color: #b0784f;
   display: inline-block;
   font-size: 20px;
   -webkit-transition: all 0.3s ease;
@@ -999,7 +1004,7 @@ button.tm-more-button {
 /* ===========================================================about page================================================== */
 /* ====================== VALUES CARDS ====================== */
 .tm-values-card {
-  background: linear-gradient(135deg, #fff7ed, #f7f1e7);
+  background: #282726;
   padding: 30px 20px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -1012,7 +1017,6 @@ button.tm-more-button {
 .tm-values-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, #c79c60, #f7f1e7);
 }
 
 .tm-values-icon {
@@ -1022,6 +1026,7 @@ button.tm-more-button {
   color: #c79c60;
   transition: all 0.3s ease;
 }
+
 
 .tm-values-card:hover .tm-values-icon {
   transform: rotate(15deg) scale(1.2);
@@ -1035,7 +1040,7 @@ button.tm-more-button {
 }
 
 .tm-values-card:hover h3 {
-  color: #fff;
+  color: #b0784f;
 }
 
 .tm-values-card p {
@@ -1075,7 +1080,7 @@ button.tm-more-button {
   padding: 20px 30px;
   box-sizing: border-box;
   margin-bottom: 50px;
-  background: #fff7ed;
+  background: #282726;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.4s ease-in-out;
@@ -1115,7 +1120,7 @@ button.tm-more-button {
 
 /* ================= TESTIMONIAL CARD ================= */
 .tm-testimonial-card {
-  background: linear-gradient(135deg, #fff7ed, #f7f1e7);
+  background: #282726;
   padding: 30px 20px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -1150,10 +1155,10 @@ button.tm-more-button {
 
 .tm-motto-card {
   display: inline-block;
-  background: #fff7ed;
+  background: transparent;
   padding: 40px 30px;
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 8px 8px 10px #000;
   max-width: 700px;
   text-align: center;
   transition: all 0.4s ease;
@@ -1168,7 +1173,7 @@ button.tm-more-button {
 .tm-motto-text {
   font-family: "tm-handwriting-font", cursive;
   font-size: 22px;
-  color: #7c6a51;
+  color: #000;
   margin-bottom: 15px;
 }
 
