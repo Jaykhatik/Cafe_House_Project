@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, NavLink } from "react-router-dom";
 import '../pages/cssOfWebsite/detail.css';
-import { useCart } from "../component/cartcontext";
+import { useCart } from "../../context/cartcontext";
 
 
 function MenuItemDetails() {

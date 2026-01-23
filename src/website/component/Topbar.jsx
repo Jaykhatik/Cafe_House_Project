@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useCart } from "../component/cartcontext";
+import { useCart } from "../../context/cartcontext";
 import "../component/cssOfWebsiteComponent/Topbar.css";
-import { useWishlist } from "../component/WhishlistContext";
+import { useWishlist } from "../../context/WhishlistContext";
 import { useAuth } from "../../context/AuthContext"; // adjust the path if needed
 
 

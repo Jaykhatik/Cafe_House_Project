@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useCart } from "../component/cartcontext";
+import { useCart } from "../../context/cartcontext";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import "../pages/cssOfWebsite/Checkout.css"; // Import your CSS

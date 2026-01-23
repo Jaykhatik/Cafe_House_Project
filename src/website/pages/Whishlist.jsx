@@ -1,6 +1,6 @@
 import React from "react";
-import { useWishlist } from "../component/WhishlistContext";
-import { useCart } from "../component/cartcontext";
+import { useWishlist } from "../../context/WhishlistContext";
+import { useCart } from "../../context/cartcontext";
 import { NavLink } from "react-router-dom";
 
 function Wishlist() {

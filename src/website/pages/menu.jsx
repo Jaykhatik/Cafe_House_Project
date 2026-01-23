@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { useCart } from "../component/cartcontext";
-import { useWishlist } from "../component/WhishlistContext";
+import { useCart } from "../../context/cartcontext";
+import { useWishlist } from "../../context/WhishlistContext";
 
 
 

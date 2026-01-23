@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useWishlist } from "../component/WhishlistContext";
-import { useCart } from "../component/cartcontext";
+import { useWishlist } from "../../context/WhishlistContext";
+import { useCart } from "../../context/cartcontext";
 import { useAuth } from "../../context/AuthContext"; // adjust path
 
 
