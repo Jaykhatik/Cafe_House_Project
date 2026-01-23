@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 function Header() {
     const location = useLocation();
-    const isLoggedIn = !!localStorage.getItem("token");
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        sessionStorage.getItem("token") === "user_logged_in"
+    );
+    useEffect(() => {
+        const syncAuth = () => {
+            setIsLoggedIn(
+                sessionStorage.getItem("token") === "user_logged_in"
+            );
+        };
+
+        syncAuth();
+        window.addEventListener("storage", syncAuth);
+
+        return () => window.removeEventListener("storage", syncAuth);
+    }, []);
+
 
     return (
         <>

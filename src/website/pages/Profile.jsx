@@ -12,26 +12,24 @@ function Profile() {
   const [customer, setCustomer] = useState(null);
   const [orders, setOrders] = useState([]);
   const { wishlist, removeFromWishlist } = useWishlist();
-  
-const { addToCart } = useCart();
+
+  const { addToCart } = useCart();
 
   const navigate = useNavigate();
 
   const [profileImage, setProfileImage] = useState("https://i.pravatar.cc/150");
   const fileInputRef = useRef(null);
   useEffect(() => {
-    const customerId = localStorage.getItem("userId");
+    const customerId = sessionStorage.getItem("userId");
 
-    if (!customerId) {
-      navigate("/authentication");
-      return;
+    if (!customerId || sessionStorage.getItem("token") !== "user_logged_in") {
+      navigate("/authentication", { replace: true });
     }
-
     // Fetch customer
     axios
       .get(`http://localhost:3002/customers/${customerId}`)
       .then((res) => setCustomer(res.data))
-      .catch(() => navigate("/authentication"));
+      .catch(() => navigate("/authentication", { replace: true }));
 
     // Fetch orders
     axios
@@ -97,7 +95,7 @@ const { addToCart } = useCart();
                 <span>Orders</span>
               </div>
               <div>
-                 <strong>{wishlist.length}</strong>
+                <strong>{wishlist.length}</strong>
                 <span>Wishlist</span>
               </div>
             </div>
@@ -136,10 +134,10 @@ const { addToCart } = useCart();
           <button
             className="tm-logout-btn"
             onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.removeItem("userId");
-              localStorage.removeItem("customerEmail");
-              localStorage.removeItem("customerName");
+              sessionStorage.removeItem("token");
+              sessionStorage.removeItem("userId");
+              sessionStorage.removeItem("customerEmail");
+              sessionStorage.removeItem("customerName");
               navigate("/authentication");
             }}
           >
@@ -219,66 +217,66 @@ const { addToCart } = useCart();
               )}
             </div>
           )}
-{activeSection === "wishlist" && (
-  <div className="tm-profile-card fade-in">
-    <h2>My Wishlist ❤️</h2>
+          {activeSection === "wishlist" && (
+            <div className="tm-profile-card fade-in">
+              <h2>My Wishlist ❤️</h2>
 
-    {wishlist.length === 0 ? (
-      <p>No items in wishlist</p>
-    ) : (
-      wishlist.map(item => (
-        <div
-          key={item.id}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "15px",
-            padding: "12px",
-            border: "1px solid #eee",
-            borderRadius: "10px",
-            marginBottom: "10px"
-          }}
-        >
-          <img
-            src={item.image}
-            alt={item.name}
-            style={{ width: "70px", borderRadius: "8px" }}
-          />
+              {wishlist.length === 0 ? (
+                <p>No items in wishlist</p>
+              ) : (
+                wishlist.map(item => (
+                  <div
+                    key={item.id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "15px",
+                      padding: "12px",
+                      border: "1px solid #eee",
+                      borderRadius: "10px",
+                      marginBottom: "10px"
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      style={{ width: "70px", borderRadius: "8px" }}
+                    />
 
-          <div style={{ flex: 1 }}>
-            <h4>{item.name}</h4>
-            <p>₹{item.price}</p>
-          </div>
+                    <div style={{ flex: 1 }}>
+                      <h4>{item.name}</h4>
+                      <p>₹{item.price}</p>
+                    </div>
 
-          <button
-            onClick={() => addToCart(item)}
-            style={{
-              background: "#c79a2b",
-              color: "#fff",
-              border: "none",
-              padding: "6px 12px",
-              borderRadius: "6px"
-            }}
-          >
-            Add to Cart
-          </button>
+                    <button
+                      onClick={() => addToCart(item)}
+                      style={{
+                        background: "#c79a2b",
+                        color: "#fff",
+                        border: "none",
+                        padding: "6px 12px",
+                        borderRadius: "6px"
+                      }}
+                    >
+                      Add to Cart
+                    </button>
 
-          <button
-            onClick={() => removeFromWishlist(item.id)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "red",
-              fontSize: "18px"
-            }}
-          >
-            ✕
-          </button>
-        </div>
-      ))
-    )}
-  </div>
-)}
+                    <button
+                      onClick={() => removeFromWishlist(item.id)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "red",
+                        fontSize: "18px"
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
 
         </section>
       </div>

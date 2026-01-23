@@ -6,18 +6,20 @@ import "../pages/cssOfWebsite/Checkout.css"; // Import your CSS
 
 function Checkout() {
   const { cartItems, subtotal, clearCart } = useCart();
-  const loggedCustomerId = localStorage.getItem("userId");
+ const loggedCustomerId = sessionStorage.getItem("userId");
+
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loggedCustomerId) {
-      navigate("/authentication", {
-        replace: true,
-        state: { fromCheckout: true }
-      });
-    }
-  }, [loggedCustomerId, navigate]);
+  if (!loggedCustomerId) {
+    navigate("/authentication", {
+      replace: true,
+      state: { forceCheckout: true } // <-- use same flag as Cart
+    });
+  }
+}, [loggedCustomerId, navigate]);
+
 
 
 

@@ -4,7 +4,6 @@ import WebsiteLayout from './layouts/WebsiteLayout';
 import Index from './website/pages';
 import Menu from './website/pages/menu';
 import Contact from './website/pages/contact'
-// import Today_special from './website/pages/today_special'
 import AdminLayout from './layouts/AdminLayout';
 import Dashboard from './Admin/pages/dashboard';
 import MenuItems from './Admin/pages/Menu-items';
@@ -24,6 +23,11 @@ import Profile from './website/pages/Profile';
 import CafeAuth from './Authnetication/authentication';
 import OrderDetail from './website/pages/Orderdetail';
 import Wishlist from './website/pages/Whishlist';
+import UserProtectedRoute from './Routes/UserProtectedRoute';
+import AdminProtectedRoute from './Routes/AdminProtectedRoute';
+import AdminLogin from './Authnetication/Adminlogin';
+import AdminLockRoute from './Routes/AdminLockRoute';
+import UserLockRoute from './Routes/UserLockRoute';
 
 
 
@@ -35,25 +39,23 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route element={<WebsiteLayout />}>
+          <Route element={<AdminLockRoute><WebsiteLayout /></AdminLockRoute>}>
             <Route path="/" element={<><Index /></>} />
             <Route path="/menu" element={<><Menu /></>} />
-
-            {/* SINGLE ITEM PAGE */}
             <Route path="/menuitem/:id" element={<MenuItemDetails />} />
-
             <Route path='/about' element={<><About /></>} />
             <Route path='/Contact' element={<><Contact /></>} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/checkout' element={<Checkout />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/wishlist' element={<Wishlist/>}/>
-            <Route path="/orderdetails/:orderId" element={<OrderDetail />} />
-            <Route path='/authentication' element={<CafeAuth />} />
+            <Route path="/checkout" element={<UserProtectedRoute><Checkout /></UserProtectedRoute>} />
+            <Route path="/profile" element={<UserProtectedRoute><Profile /></UserProtectedRoute>} />
+            <Route path="/wishlist" element={<UserProtectedRoute><Wishlist /></UserProtectedRoute>} />
+            <Route path="/orderdetails/:orderId" element={<UserProtectedRoute><OrderDetail /></UserProtectedRoute>} />
+            <Route path="/authentication" element={<AdminLockRoute><UserLockRoute><CafeAuth /></UserLockRoute></AdminLockRoute>} />
+            <Route path='/admin-login' element={<AdminLogin />} />
           </Route>
           {/* admin pages routing */}
 
-          <Route path='/admin' element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminProtectedRoute><AdminLayout /></AdminProtectedRoute>}>
             <Route index element={<Dashboard />} />
             <Route path='dashboard' element={<Dashboard />} />
             <Route path='menu' element={<MenuItems />} />

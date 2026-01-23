@@ -21,7 +21,7 @@ function Cart() {
   return (
     <div className="tm-main-section detail-bg" style={{ padding: "60px 0" }}>
       <div className="container" style={{ maxWidth: "1100px" }}>
-        
+
         {/* ================= BREADCRUMB ================= */}
         <div className="detail-breadcrumb" style={{ marginBottom: "25px", color: "#888" }}>
           <NavLink to="/">Home</NavLink> / <span>Cart</span>
@@ -102,7 +102,17 @@ function Cart() {
               <span style={{ fontWeight: "bold", color: "#c79a2b" }}>₹{subtotal.toFixed(2)}</span>
             </div>
             <button
-              onClick={() => navigate("/checkout")}
+              onClick={() => {
+                const loggedCustomerId = sessionStorage.getItem("userId");
+                if (!loggedCustomerId) {
+                  navigate("/authentication", {
+                    replace: true,
+                    state: { forceCheckout: true } // <-- Pass this flag
+                  });
+                } else {
+                  navigate("/checkout");
+                }
+              }}
               style={{
                 width: "100%",
                 padding: "15px 0",
@@ -120,6 +130,7 @@ function Cart() {
             >
               Proceed to Checkout
             </button>
+
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Authnetication/cssofauth/Authentication.css";
 
 
@@ -29,9 +29,19 @@ const CafeAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
-
   const location = useLocation();
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    const redirectToCheckout = location.state?.fromCheckout;
+
+    if (token === "user_logged_in" && !redirectToCheckout) {
+      navigate("/", { replace: true });
+    }
+  }, [location, navigate]);
+
+
   const showLoginMessage = location.state?.fromCheckout;
+
 
 
   const [formData, setFormData] = useState({
@@ -42,7 +52,7 @@ const CafeAuth = () => {
     confirmPassword: ""
   });
 
-  const from = location.state?.from?.pathname || "/";
+  const redirectToCheckout = location.state?.fromCheckout;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -91,35 +101,15 @@ const CafeAuth = () => {
           newUser
         );
 
-        localStorage.setItem("token", "user_logged_in");
-        localStorage.setItem("userId", data.id);
+        sessionStorage.setItem("token", "user_logged_in");
+        sessionStorage.setItem("userId", data.id);
+
 
         toast.success("Welcome to Cafe House ☕");
       }
 
       /* ================= LOGIN ================= */
-
-      //Admin Login
       else {
-        // 1. Get admin array
-        const { data: admin } = await axios.get(`${BASE_URL}/admin`);
-        // 2. Check admin credentials (admin[0])
-        if (
-          admin.length &&
-          formData.email === admin[0].email &&
-          formData.password === admin[0].password
-        ) {
-          localStorage.setItem("adminToken", "admin_logged_in");
-          localStorage.setItem("adminEmail", admin[0].email);
-
-          toast.success("Admin logged in");
-
-          await delay(800);
-          navigate("/admin");
-          return;
-        }
-
-
         //Customer login
         const { data: user } = await axios.get(`${BASE_URL}/customers`,
           {
@@ -135,17 +125,19 @@ const CafeAuth = () => {
           return;
         }
 
-        localStorage.setItem("token", "user_logged_in");
-        localStorage.setItem("userId", user[0].id);
-        // ✅ ADD THESE LINES
-        localStorage.setItem("customerEmail", user[0].email);
-        localStorage.setItem("customerName", user[0].name);
+        sessionStorage.setItem("token", "user_logged_in");
+        sessionStorage.setItem("userId", user[0].id);
+        sessionStorage.setItem("customerEmail", user[0].email);
+        sessionStorage.setItem("customerName", user[0].name);
+
 
         toast.success("Welcome back ☕");
       }
 
       await delay(800);
-      navigate(from, { replace: true });
+      navigate(redirectToCheckout ? "/checkout" : "/", {
+        replace: true
+      });
 
     } catch (err) {
       console.error(err);

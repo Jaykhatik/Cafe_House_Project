@@ -6,16 +6,13 @@ import logo from "../Sidebar/logo.png";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
- const handleLogout = () => {
-  // 🔐 clear admin session
-  localStorage.removeItem("adminToken");
-  localStorage.removeItem("adminEmail");
-
-  // 🔁 redirect to auth page
-  navigate("/authentication");
-};
+  const handleLogout = () => {
+    sessionStorage.removeItem("adminToken");
+    sessionStorage.removeItem("adminEmail");
+    navigate("/admin-login", { replace: true });
+  };
 
   return (
     <aside className={`admin-sidebar ${collapsed ? "collapsed" : ""}`}>
