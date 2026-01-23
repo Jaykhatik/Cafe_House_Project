@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../Authnetication/cssofauth/Authentication.css";
+import { useAuth } from "../context/AuthContext"; // adjust path if needed
+
 
 
 import {
@@ -27,9 +29,11 @@ const CafeAuth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
+
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     const redirectToCheckout = location.state?.fromCheckout;
@@ -103,7 +107,7 @@ const CafeAuth = () => {
 
         sessionStorage.setItem("token", "user_logged_in");
         sessionStorage.setItem("userId", data.id);
-
+        login();
 
         toast.success("Welcome to Cafe House ☕");
       }
@@ -129,7 +133,7 @@ const CafeAuth = () => {
         sessionStorage.setItem("userId", user[0].id);
         sessionStorage.setItem("customerEmail", user[0].email);
         sessionStorage.setItem("customerName", user[0].name);
-
+        login();
 
         toast.success("Welcome back ☕");
       }

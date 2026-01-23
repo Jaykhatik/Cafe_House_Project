@@ -3,29 +3,16 @@ import { NavLink } from "react-router-dom";
 import { useCart } from "../component/cartcontext";
 import "../component/cssOfWebsiteComponent/Topbar.css";
 import { useWishlist } from "../component/WhishlistContext";
-import { useEffect, useState } from "react";
+import { useAuth } from "../../context/AuthContext"; // adjust the path if needed
 
 
 
 function Topbar() {
   const { totalItems } = useCart();
   const { wishlist } = useWishlist();
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    sessionStorage.getItem("token") === "user_logged_in"
-  );
+  const { isLoggedIn } = useAuth();
 
-  useEffect(() => {
-    const syncAuth = () => {
-      setIsLoggedIn(
-        sessionStorage.getItem("token") === "user_logged_in"
-      );
-    };
 
-    syncAuth();
-    window.addEventListener("storage", syncAuth);
-
-    return () => window.removeEventListener("storage", syncAuth);
-  }, []);
 
 
 

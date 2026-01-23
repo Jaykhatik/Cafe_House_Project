@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext"; // adjust the path if needed
 
 function Header() {
     const location = useLocation();
-    const [isLoggedIn, setIsLoggedIn] = useState(
-        sessionStorage.getItem("token") === "user_logged_in"
-    );
-    useEffect(() => {
-        const syncAuth = () => {
-            setIsLoggedIn(
-                sessionStorage.getItem("token") === "user_logged_in"
-            );
-        };
-
-        syncAuth();
-        window.addEventListener("storage", syncAuth);
-
-        return () => window.removeEventListener("storage", syncAuth);
-    }, []);
+    const { isLoggedIn } = useAuth();
 
 
     return (

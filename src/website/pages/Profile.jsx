@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../component/WhishlistContext";
 import { useCart } from "../component/cartcontext";
+import { useAuth } from "../../context/AuthContext"; // adjust path
 
 
 import "../pages/cssOfWebsite/profile.css";
@@ -19,6 +20,7 @@ function Profile() {
 
   const [profileImage, setProfileImage] = useState("https://i.pravatar.cc/150");
   const fileInputRef = useRef(null);
+
   useEffect(() => {
     const customerId = sessionStorage.getItem("userId");
 
@@ -55,6 +57,7 @@ function Profile() {
       setProfileImage(imageURL);
     }
   };
+  const { logout } = useAuth();
 
   return (
     <div className="tm-profile-page">
@@ -134,15 +137,13 @@ function Profile() {
           <button
             className="tm-logout-btn"
             onClick={() => {
-              sessionStorage.removeItem("token");
-              sessionStorage.removeItem("userId");
-              sessionStorage.removeItem("customerEmail");
-              sessionStorage.removeItem("customerName");
+              logout(); // clears token and updates state
               navigate("/authentication");
             }}
           >
             🚪 Logout
           </button>
+
 
         </aside>
 
